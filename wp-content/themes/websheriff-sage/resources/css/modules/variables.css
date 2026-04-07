@@ -1,0 +1,33 @@
+/* Design tokens – CSS custom properties */
+
+:root {
+  /* --- Colors --- */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-green: #479d41;
+  --color-text: #30357a;
+  --color-text-light: #5d5d5d; 
+  --color-primary: #30357a;
+  --color-accent: #af935b;
+  --color-bg-subtle: #f0f0f0;
+  --color-accent-secondary: #DDD1DB;
+  --color-accent-tertiary: #e6e4de;
+
+  /* --- Spacing --- */
+  --space-sm: 20px;
+  --space-md: 40px;
+  --space-lg: 80px;
+
+  /* --- Typography --- */
+  --font-heading: "Centra", sans-serif;
+  --font-body: "Centra", sans-serif;
+  --font-extra: "lalka", sans-serif;
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 18px;
+  --radius-lg: 40px;
+
+  /* --- Shadows --- */
+  --shadow-card: 0 0 15px rgba(0, 0, 0, 0.02);
+}

@@ -1,0 +1,1 @@
+load '.config/ci/Capfile'

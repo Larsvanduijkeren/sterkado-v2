@@ -1,0 +1,14 @@
+section.text {
+    &.center .content {
+        text-align: center;
+    }
+
+    .content {
+        max-width: 800px;
+        margin: 0 auto;
+
+        >*:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+set :deploy_config_path, '.config/ci/deploy/deploy.rb'
+set :stage_config_path, '.config/ci/deploy/environments'
+
+require "capistrano/setup"
+require "capistrano/deploy"
+require "capistrano/scm/git"
+
+install_plugin Capistrano::SCM::Git
+
+Dir.glob(".config/ci/tasks/*.rb").each { |r| import r }

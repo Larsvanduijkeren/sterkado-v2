@@ -1,0 +1,20 @@
+section.vacancy-archive {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  section.vacancy-archive .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  section.vacancy-archive .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 

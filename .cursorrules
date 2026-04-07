@@ -1,0 +1,157 @@
+# Project: Sterkado / WebSheriff Sage Theme
+
+## Stack
+- **Theme**: Roots/Sage 10 with Acorn 5
+- **PHP**: 8.2+
+- **Frontend**: Vite, CSS (native, with nesting), Blade
+- **CMS**: WordPress, ACF (Advanced Custom Fields)
+
+## Roots/Sage Conventions
+
+### Directory Structure
+- `app/` — PHP application code (providers, filters, helpers, view composers)
+- `app/Providers/` — Service providers (register hooks and bindings)
+- `app/View/Composers/` — Blade view composers (pass data to templates)
+- `resources/views/` — Blade templates (`.blade.php`)
+- `resources/views/components/blocks/` — ACF block Blade components
+- `resources/css/` — Styles (modules, partials, Gutenberg block styles)
+- `resources/js/` — JavaScript (app.js, editor.js, main.js)
+- `public/` — Compiled assets (do not edit manually)
+
+### Service Providers
+- Register WordPress actions and filters in service providers, not inline in `setup.php` or `functions.php`
+- Use `ThemeServiceProvider` for theme setup; create separate providers for distinct concerns (e.g., `AdminServiceProvider`, `ImageServiceProvider`, `AcfBlockServiceProvider`)
+- Register providers in `config/app.php` if needed
+
+### Blade Templates
+- Keep views logic-free where possible; use view composers to inject data
+- Use `@component` and Blade components for reusable UI
+- Prefer `@include` for partials, components for blocks
+- Use Sage/WordPress directives: `@posts`, `@query`, `@title`, `@content`, etc.
+- In block views, optional small `@php` at top to pull `$fields` / `$block` into variables for readability; keep heavy logic in `prepareBlockData()` in the provider
+
+---
+
+## PHP Style
+
+- **Namespace**: Use `App\` for all custom classes; `App\Providers\`, `App\View\Composers\`, etc.
+- **Type hints and return types**: Use on all methods (PHP 8.2+), e.g. `public function boot(): void`, `protected function getBlockFields(array $block): array`
+- **Named arguments**: Use where they improve clarity
+- **Queries**: Avoid `query_posts()`; use `WP_Query` or `get_posts()` and pass results into views via composers or block provider
+- **Arrays**: Format `tax_query` and other multi-key arrays multiline, one key per line:
+  ```php
+  $args['tax_query'] = [
+      [
+          'taxonomy' => 'category',
+          'field'    => 'term_id',
+          'terms'    => $catIds,
+      ],
+  ];
+  ```
+- **Post caches**: After `get_posts()` or `$query->posts`, call `update_post_caches($posts)` when non-empty (if function exists) to avoid N+1
+- **Indentation**: 4 spaces; opening `{` on same line as declaration
+- **Helpers**: Put shared helpers in `app/helpers.php` or `app/filters.php`; use Composer autoloading, no direct `require`/`include`
+
+---
+
+## JavaScript (jQuery)
+
+- **jQuery as default**: Prefer jQuery for DOM manipulation, event handling, and animations; use `$` or `jQuery` rather than vanilla DOM APIs where it fits
+- **Setup**: In `app.js`, `import $ from 'jquery'` and set `window.$ = window.jQuery = $`; then dynamically load heavy deps (Swiper, AOS, Lenis) only when needed (e.g. `$('.swiper').length`, `$('[data-aos]').length`)
+- **Entry**: `app.js` loads `initTheme` from `main.js` and passes an options object, e.g. `initTheme({ $, AOS, Lenis, Swiper, Navigation, Pagination, Scrollbar, EffectFade, Autoplay })`
+- **Initialization**: In `main.js`, `initTheme()` runs once (guard with `window.__wsThemeInitialized`); inside `$(function () { ... })` call feature init functions that receive `$` and optionally other deps (e.g. `accordion($)`, `faq($, AOS)`, `postSlider(Swiper, Scrollbar)`)
+- **Pattern**: One function per feature (e.g. `accordion($)`, `stickyFeatures($)`); early return if selector has no matches (`if (!$els.length) return;`)
+- **Selectors and iteration**: Use `$(selector)`, `.each(function () { const $el = $(this); ... })`, `.find()`, `.on('click', ...)`; use `.data()` for one-time init flags (e.g. `$acc.data('accordion-initialized', true)`)
+- **Scroll/resize**: Use `requestAnimationFrame` + a ticking flag to throttle updates
+- **Animations**: Use jQuery `.slideUp()` / `.slideDown()` for accordions; pass duration (e.g. 350)
+
+---
+
+## CSS / Styling
+
+### Naming convention
+
+- **All class names**: kebab-case only (e.g. `flex-wrapper`, `post-archive__filters`, `faq-topic`).
+- **Block/section root**: One class on the outer element, matching the block or section name in kebab-case (e.g. `class="faq"`, `class="post-archive"`, `class="content-tabs"`, `class="review-selection"`). For blocks, this is the block slug.
+- **Generic/shared names**: When styles are scoped by nesting under the block root, use short generic names with no prefix: `container`, `flex-wrapper`, `content`, `intro`, `gradient`, `buttons`, `image`, `accordion`, `question`, `answer`, `meta`, `label`, `summary`, `slider`, `overflow-wrap`, etc. Rely on the parent selector (e.g. `section.faq .question`) to avoid clashes.
+- **Block-specific elements**: When the element is specific to one block, use a block prefix:
+  - **Hyphenated**: `block-element` (e.g. `faq-topic`, `faq-topic-all`, `faq-content`, `faq-panel`, `faq-topics-list`).
+  - **BEM (double underscore)**: `block__element` when you want a clear element list (e.g. `post-archive__filters`, `post-archive__filter-list`, `post-archive__filter-item`, `pagination__list`, `pagination__item`).
+- **Reusable cards/components**: Name as `something-card` (e.g. `question-card`, `arrangement-card`, `activity-card`, `review-card`, `post-card`, `domain-card`).
+- **Modifiers**: Add as separate classes: variant `block-element-modifier` or `block-modifier` (e.g. `faq-topic-all`); state classes `is-active`, `open`, `hide`; buttons `btn`, `btn-ghost`, plus colour/size like `white`, `blue`, `small`, `mobile`.
+- **Typography as class**: Use semantic appearance classes where needed (e.g. `h2`, `h4` for heading look on a different tag).
+
+### Structure and files
+
+- **Native CSS with nesting**: Use plain CSS; nest selectors under a block root (e.g. `section.faq { .flex-wrapper { ... } }`) for block-scoped styles
+- **Spacing units**: Use **px** for margins, padding, gutters, gaps, and other layout spacing. Avoid rem for these; keep rem/em for typography (font-size, line-height) where appropriate.
+- **Variables**: Put design tokens in `resources/css/modules/variables.css` as `:root` custom properties (e.g. `--gutter`, `--font-body`, `--card-shadow`, `--radius-small`)
+- **Structure**: `app.css` imports variables, then base/partials (typography, buttons, inputs, etc.), then component partials, then each Gutenberg block file from `partials/components/gutenberg/<block-name>.css`
+- **Block styles**: One file per block in `resources/css/partials/components/gutenberg/` named to match block slug (e.g. `faq.css`, `hero.css`); scope under a top-level selector (e.g. `section.faq`, `section.hero`)
+- **Editor**: `editor.css` imports `app.css` and adds block-editor overrides (e.g. `.block-editor-block-list__block` with nested section/block rules so editor preview matches frontend)
+
+---
+
+## ACF Blocks
+
+- **Registration**: In `AcfBlockServiceProvider`, maintain a `protected array $blocks = [ 'slug' => 'Title', ... ]`. In `boot()`, hook `block_categories_all`, `acf/init` (register blocks), and optionally `allowed_block_types_all`
+- **Single render callback**: One `renderBlock(array $block, string $content, bool $isPreview, int $postId)` for all blocks. Resolve view as `components.blocks.{slug}` (slug = block name without `acf/`). Pass `block`, `fields`, `is_preview`, `post_id`, `slug`, `content`, and merge in `prepareBlockData($slug, $fields, $block, $postId)`
+- **Fields**: Use `getBlockFields($block)` (scoped by `$block['id']` with `get_fields($blockId)` when available, fallback to `get_fields()`). Return array; use in Blade as `$fields['field_name']`
+- **Block-specific data**: In `prepareBlockData()`, switch on `$slug` and return an array of prepared data (e.g. `posts`, `terms`, `query`, `pagination`). Do queries and `update_post_caches()` here so Blade stays presentational
+- **Naming**: Block slug = kebab-case; Blade file and CSS file names match slug (e.g. `content-tabs`, `content-tabs.blade.php`, `content-tabs.css`)
+
+### Block Blade template structure (preferred)
+
+Use this structure for every ACF block Blade file so components stay consistent and easy to build or change.
+
+1. **Single @php block at the top**  
+   Extract all needed data into named variables in one place. One variable per line; no logic, only assignment with defaults (e.g. `?? null`, `?? []`). Include:
+   - Every `$fields['...']` used in the template (e.g. `$title`, `$text`, `$buttons`, `$images`, `$order`)
+   - `$id = $block['anchor'] ?? null` for the section id  
+   Example:
+   ```php
+   @php
+   $order = $fields['order'] ?? null;
+   $title = $fields['title'] ?? null;
+   $text = $fields['text'] ?? null;
+   $buttons = $fields['buttons'] ?? null;
+   $images = $fields['images'] ?? null;
+   $id = $block['anchor'] ?? null;
+   @endphp
+   ```
+
+2. **Section root**  
+   - `<section id="@if($id) {{$id}} @endif" class="{block-slug} {modifiers}">`  
+   - Root class = block slug (e.g. `text-images`). Add modifier classes from field values (e.g. `{{ $order }}`, conditional like `{{ $small_images ? 'small-images' : '' }}`).
+
+3. **Layout**  
+   - Outer: `container` → `flex-wrapper`.  
+   - Main columns: a `content` div (with `data-aos="fade-up"` where appropriate) and optional media column (e.g. `images`, `image`). Use this two-column pattern unless the block is clearly single-column or a different layout.
+
+4. **Content column order**  
+   Inside `content`, output optional pieces in a consistent order when present: label → title → text → buttons. Wrap each in `@if($var)` (variables already have defaults from the top @php, so no need for `?? null` in the condition).
+
+5. **Repeaters and links**  
+   - Buttons: `@foreach($buttons as $button)`; use `$button['url']`, `$button['title']`, `$button['target']`; first button `btn`, rest `btn btn-ghost` (or same pattern as in text-images).  
+   - Image groups: `@foreach($images as $image)`; use `$image['sizes']['large']` (or appropriate size), `$image['alt']`.
+
+6. **Formatting**  
+   - 4-space indentation. Put long or multi-attribute tags on multiple lines. No extra blank lines between the logical sections (php block, section open, container, flex-wrapper, content, media, closing tags).
+
+---
+
+## Assets
+
+- **Entry points**: `resources/js/app.js` (frontend), `resources/js/editor.js` (block editor), `resources/js/main.js` (theme init, no direct script tag)
+- **Styles**: `resources/css/app.css` (frontend), `resources/css/editor.css` (block editor; imports app.css)
+- **Blade**: Use `@vite()` in layout to load frontend assets; editor assets enqueued via `setup.php` filters
+- **Do not** modify `vite.config.js` without a clear reason
+
+---
+
+## General Rules
+
+- Follow WordPress and Roots/Sage documentation
+- Avoid direct `require`/`include`; use Composer autoloading and Acorn
+- After dependency changes, run `composer install` and `yarn`/`npm install`
+- After refactoring, verify the theme in the browser and in the block editor

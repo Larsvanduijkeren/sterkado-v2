@@ -1,0 +1,63 @@
+---
+description: CSS nesting, desktop-first layout, and media query order
+globs: "**/*.css"
+alwaysApply: false
+---
+
+# CSS conventions
+
+## Use nesting when possible
+
+- Prefer **CSS nesting** instead of long selector chains.
+- Nest selectors under the main scope (e.g. `section.form`, `section.gallery`).
+- Use `&` for modifiers and pseudo-elements (e.g. `&.card`, `&::before`).
+
+```css
+/* Prefer: nested */
+section.form {
+  .flex-wrapper {
+    display: flex;
+
+    .content {
+      font-size: 1.1rem;
+      
+      .contact { ... }
+    }
+  }
+}
+
+/* Avoid: long flat chains */
+section.form .flex-wrapper .content .contact { ... }
+```
+
+## Desktop first, then media queries
+
+1. Write **desktop (default) styles first** in the main block.
+2. Put **all mobile/tablet overrides** in `@media (max-width: ...)` at the **end** of the file or block.
+3. Use **max-width** media queries for responsive overrides (mobile-first approach: base = small, then min-width for larger; or desktop-first: base = large, then max-width for smaller).
+
+```css
+section.example {
+  /* 1. Desktop styles first */
+  .flex-wrapper {
+    display: flex;
+    margin: -40px;
+    > * { width: calc(50% - 80px); margin: 40px; }
+  }
+
+  /* 2. Media queries last (max-width = mobile/tablet overrides) */
+  @media only screen and (max-width: 991px) {
+    .flex-wrapper {
+      display: block;
+      margin: 0;
+      > * { width: 100%; margin: 0 0 20px 0; }
+    }
+  }
+}
+```
+
+## Summary
+
+- Nest under a single root selector per component.
+- Desktop layout first; no media query for the default.
+- One or more `@media (max-width: ...)` blocks at the end for smaller viewports.

@@ -1,0 +1,83 @@
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=number],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 1rem;
+  color: var(--color-text) !important;
+  padding: 10px !important;
+  max-width: 100%;
+  background: var(--color-white);
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  outline: none;
+  box-shadow: none;
+  line-height: 1 !important;
+font-weight: 300 !important;
+  &::placeholder {
+    color: #686868 !important;
+    opacity: 1 !important;
+  }
+}
+
+.flatpickr-calendar select,
+.flatpickr-calendar input.cur-year {
+  padding: 2px 0 2px .5ch !important;
+  font-size: .9rem !important;
+  margin: 0 2px !important;
+} 
+
+label,
+legend {
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 5px !important;
+  line-height: 1.1;
+  font-weight: 600 !important;
+}
+
+.wpforms-container .wpforms-datepicker-wrap .wpforms-field-medium+.wpforms-datepicker-clear {
+  right: 10px !important;
+}
+
+.wpforms-container .wpforms-field,
+.wp-core-ui div.wpforms-container .wpforms-field {
+  padding: 0;
+}
+
+.wpforms-field {
+  margin-bottom: 20px !important;
+  padding: 0 !important;
+
+  ul li {
+    list-style: none;
+  }
+}
+
+.wpforms-submit-container {
+  margin-top: 20px;
+}
+
+.wpforms-field-layout {
+  margin: 0;
+}
+
+.wpforms-container input.wpforms-field-medium,
+.wpforms-container select.wpforms-field-medium,
+.wpforms-container .wpforms-field-row.wpforms-field-medium,
+.wp-core-ui div.wpforms-container input.wpforms-field-medium,
+.wp-core-ui div.wpforms-container select.wpforms-field-medium,
+.wp-core-ui div.wpforms-container .wpforms-field-row.wpforms-field-medium {
+  max-width: 100% !important;
+}
+
+.wpforms-container {
+  margin-bottom: 0;
+}

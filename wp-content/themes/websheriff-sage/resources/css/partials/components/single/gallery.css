@@ -1,0 +1,80 @@
+/* Single gallery: main swiper + thumbs as controls. Nesting under block root, generic names per cursorrules. */
+
+section.single-gallery {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .main-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+
+    .main {
+      width: 100%;
+      overflow: hidden;
+
+      .swiper-wrapper {
+        align-items: stretch;
+      }
+
+      .swiper-slide {
+        height: auto;
+        display: flex;
+      }
+
+      .image {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        background: var(--color-bg-subtle);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+    }
+  }
+
+  .thumbs-wrap {
+    width: 100%;
+    overflow: hidden;
+
+    .thumbs {
+      width: 100%;
+      overflow: hidden;
+      padding: 4px 0;
+
+      .swiper-slide {
+        height: auto;
+        flex-shrink: 0;
+        cursor: pointer;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 2px solid transparent;
+        opacity: 0.6;
+        transition: opacity 0.2s, border-color 0.2s;
+      }
+
+      .swiper-slide-thumb-active {
+        opacity: 1;
+        border-color: var(--color-primary);
+      }
+
+      .thumb {
+        aspect-ratio: 16 / 10;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+    }
+  }
+}

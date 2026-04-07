@@ -1,0 +1,43 @@
+.single-accordion__list .question h4 {
+  margin-bottom: 0;
+  cursor: pointer;
+  position: relative;
+  padding: var(--space-sm) 60px var(--space-sm) var(--space-sm);
+  transition: color 0.2s ease;
+  font-size: 1.25rem;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.single-accordion__list .question h4::after {
+  font-family: "Iconfont", sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  content: "\e90f";
+  position: absolute;
+  right: var(--space-sm);
+  font-size: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.single-accordion__list .question.open h4::after {
+  transform: translateY(-50%) scaleY(-1);
+}
+
+.single-accordion__list .question .answer {
+  padding: var(--space-sm);
+  color: var(--color-text);
+}
+
+.single-accordion__list .question {
+  margin-bottom: 10px;
+}
+
+.single-accordion__list .question .answer > *:last-child {
+  margin-bottom: 0;
+}

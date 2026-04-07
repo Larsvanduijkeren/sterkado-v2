@@ -1,0 +1,191 @@
+@nested-import "./modules/variables.css";
+
+@font-face {
+  font-family: 'Iconfont';
+  src: url('../fonts/icomoon.eot');
+  src:
+    url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.woff') format('woff'),
+    url('../fonts/icomoon.ttf') format('truetype'),
+    url('../fonts/icomoon.svg#Iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Centra';
+  src: url('../fonts/CentraNo2-Book.eot');
+  src:
+    url('../fonts/CentraNo2-Book.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/CentraNo2-Book.woff') format('woff'),
+    url('../fonts/CentraNo2-Book.woff2') format('woff2'),
+    url('../fonts/CentraNo2-Book.ttf') format('truetype'),
+    url('../fonts/CentraNo2-Book.svg#Iconfont') format('svg');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Centra';
+  src: url('../fonts/CentraNo2-Medium.eot');
+  src:
+    url('../fonts/CentraNo2-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/CentraNo2-Medium.woff') format('woff'),
+    url('../fonts/CentraNo2-Medium.woff2') format('woff2'),
+    url('../fonts/CentraNo2-Medium.ttf') format('truetype'),
+    url('../fonts/CentraNo2-Medium.svg#Iconfont') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lalka';
+  src: url('../fonts/lalka.eot');
+  src:
+    url('../fonts/lalka.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/lalka.woff') format('woff'),
+    url('../fonts/lalka.woff2') format('woff2'),
+    url('../fonts/lalka.ttf') format('truetype'),
+    url('../fonts/lalka.svg#Iconfont') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.block-editor-block-list__block:not(.is-selected):not(.editor-post-title) {
+  font-family: var(--font-body);
+  font-weight: 200;
+
+  /* Reset and general styling */
+  @nested-import "./partials/base.css";
+  @nested-import "./partials/tools.css";
+  @nested-import "./partials/typography.css";
+  @nested-import "./partials/inputs.css";
+  @nested-import "./partials/buttons.css";
+  @nested-import "./partials/styling.css";
+
+  /* Component specific styling */
+  @nested-import "./partials/components/header.css";
+  @nested-import "./partials/components/not-found.css";
+  @nested-import "./partials/components/footer.css";
+  @nested-import "./partials/components/mobile-nav.css";
+  @nested-import "./partials/components/post-card.css";
+  @nested-import "./partials/components/single-post.css";
+  @nested-import "./partials/components/vacancy-card.css";
+
+  /* Gutenberg blocks */
+  @nested-import "./partials/components/gutenberg/hero.css";
+  @nested-import "./partials/components/gutenberg/home-hero.css";
+  @nested-import "./partials/components/gutenberg/text.css";
+  @nested-import "./partials/components/gutenberg/text-images.css";
+  @nested-import "./partials/components/gutenberg/content-tabs.css";
+  @nested-import "./partials/components/gutenberg/content-cards.css";
+  @nested-import "./partials/components/gutenberg/faq.css";
+  @nested-import "./partials/components/gutenberg/vacancy-selection.css";
+  @nested-import "./partials/components/gutenberg/vacancy-archive.css";
+  @nested-import "./partials/components/gutenberg/partners.css";
+  @nested-import "./partials/components/gutenberg/contact.css";
+
+  .card {
+    max-width: 100%;
+    border: none;
+  }
+
+  [data-aos^=fade][data-aos^=fade] {
+    opacity: 1 !important;
+  }
+
+  .highlight {
+    color: var(--color-text);
+    background: transparent;
+  }
+}
+
+
+.block-editor-block-list__block {
+  max-width: 100%;
+}
+
+.block-editor-block-list__block[data-type="acf/vacancy-archive"],
+.block-editor-block-list__block[data-type="acf/hero"] {
+  overflow: visible;
+}
+
+/* Apply block styles when selected (editing) as well */
+.block-editor-block-list__block[data-type="acf/content-tabs"].is-selected {
+  @nested-import "./partials/components/gutenberg/content-tabs.css";
+}
+
+.block-editor-block-list__block[data-type="acf/content-cards"].is-selected {
+  @nested-import "./partials/components/gutenberg/content-cards.css";
+}
+
+.block-editor-block-list__block[data-type="acf/home-hero"].is-selected {
+  @nested-import "./partials/components/gutenberg/home-hero.css";
+}
+
+/* Home hero: no Swiper in editor — desktop grid for preview at any iframe width */
+.block-editor-block-list__block section.home-hero .home-hero-swiper {
+  overflow: visible !important;
+  padding-bottom: 0 !important;
+}
+
+.block-editor-block-list__block section.home-hero .home-hero-swiper .swiper-scrollbar {
+  display: none;
+}
+
+.block-editor-block-list__block section.home-hero .home-hero-swiper .swiper-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 10px;
+  width: 100% !important;
+  transform: none !important;
+}
+
+.block-editor-block-list__block section.home-hero .home-hero-swiper .swiper-slide {
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.block-editor-block-list__block section.home-hero .home-hero__slide--third {
+  grid-column: span 2;
+}
+
+.block-editor-block-list__block section.home-hero .home-hero__slide--half {
+  grid-column: span 3;
+}
+
+.block-editor-block-list__block section.home-hero .home-hero__slide--full {
+  grid-column: 1 / -1;
+}
+
+/* Fallback: 3-column grid for vacancy selection (no Swiper in editor) */
+.block-editor-block-list__block section.vacancy-selection .cards.selection-slider-wrap {
+  overflow: visible !important;
+}
+
+.block-editor-block-list__block section.vacancy-selection .cards.selection-slider-wrap .swiper-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  overflow: visible !important;
+}
+
+.block-editor-block-list__block section.vacancy-selection .cards.selection-slider-wrap .swiper-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .block-editor-block-list__block section.vacancy-selection .cards.selection-slider-wrap .swiper-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .block-editor-block-list__block section.vacancy-selection .cards.selection-slider-wrap .swiper-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

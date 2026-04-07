@@ -1,0 +1,207 @@
+[data-aos^=fade][data-aos^=fade] {
+  opacity: 0 !important;
+
+  &.aos-animate {
+    opacity: 1 !important;
+  }
+}
+
+.swiper-scrollbar-drag {
+  background: var(--color-primary) !important;
+}
+
+.swiper-scrollbar {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+ }
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: var(--color-white);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+
+  &.swiper-pagination-bullet-active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    width: 60px;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 40px !important;
+  height: 40px !important;
+  background: var(--color-white);
+  border-radius: 100%;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background: var(--color-accent);
+
+    &:before {
+      color: var(--color-white);
+    }
+  }
+
+  &:before {
+    font-family: 'Iconfont' !important;
+    content: '\e904';
+    font-size: 1rem;
+    transform: rotate(-90deg) translateY(5%);
+    transition: all 0.3s ease-in-out;
+    color: var(--color-accent);
+  }
+
+  &.swiper-button-prev {
+    &:before {
+      transform: rotate(90deg) translateY(5%);
+    }
+  }
+
+  &:after {
+    content: none !important;
+  }
+}
+
+section:not(.hero) {
+  +section:not(.contact):not(.bg-red):not(.bg-white):not(.bg-sand):not(.bg-grey) .container {
+    padding-top: 0 !important;
+  }
+
+
+  &.bg-white+section.bg-white .container {
+    padding-top: 0 !important;
+  }
+}
+
+/* Gutenberg wraps ACF blocks; default overflow can clip section.has-waves ::before (drawn below the section). */
+.wp-block-acf-vacancy-archive,
+.wp-block-acf-hero {
+  overflow: visible;
+}
+
+/* Wave mask URLs: use ../../images/… from this file so Vite resolves to hashed assets in production. */
+section {
+  background: var(--color-white);
+  position: relative;
+
+  &.has-waves {
+    +section {
+      padding-top: 60px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      height: 30px;
+      width: 100%;
+      background-color: var(--color-white);
+      background-image: none;
+      mask-image: url(../../images/wave-white.svg);
+      -webkit-mask-image: url(../../images/wave-white.svg);
+      mask-size: auto 100%;
+      -webkit-mask-size: auto 100%;
+      mask-repeat: repeat-x;
+      -webkit-mask-repeat: repeat-x;
+      mask-position: 0 0;
+      -webkit-mask-position: 0 0;
+      z-index: 1;
+    }
+  }
+
+  ul {
+    margin: 0 0 20px 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      padding-left: 25px;
+      margin: 0 0 5px 0;
+      position: relative;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        font-family: 'Iconfont' !important;
+        content: '\e907';
+        position: absolute;
+        left: 0;
+        top: 7px;
+      color: var(--color-green);
+        font-size: .6rem;
+      }
+    }
+  }
+
+  &.bg-red {
+    background: var(--color-accent-secondary);
+
+    &.has-waves::before {
+      background-color: var(--color-accent-secondary);
+      mask-image: url(../../images/wave-white.svg);
+      -webkit-mask-image: url(../../images/wave-white.svg);
+      mask-size: auto 100%;
+      -webkit-mask-size: auto 100%;
+      mask-repeat: repeat-x;
+      -webkit-mask-repeat: repeat-x;
+    }
+
+    +section.bg-red .container {
+      padding-top: 0 !important;
+    }
+  }
+
+  &.bg-grey {
+    background: var(--color-bg-subtle);
+
+    &.has-waves::before {
+      background-color: var(--color-bg-subtle);
+      mask-image: url(../../images/wave-white.svg);
+      -webkit-mask-image: url(../../images/wave-white.svg);
+      mask-size: auto 100%;
+      -webkit-mask-size: auto 100%;
+      mask-repeat: repeat-x;
+      -webkit-mask-repeat: repeat-x;
+    }
+
+    +section.bg-grey .container {
+      padding-top: 0 !important;
+    }
+  }
+
+  &.bg-sand {
+    background: var(--color-accent-tertiary);
+
+    &.has-waves::before {
+      background-color: var(--color-accent-tertiary);
+      mask-image: url(../../images/wave-white.svg);
+      -webkit-mask-image: url(../../images/wave-white.svg);
+      mask-size: auto 100%;
+      -webkit-mask-size: auto 100%;
+      mask-repeat: repeat-x;
+      -webkit-mask-repeat: repeat-x;
+    }
+
+    +section.bg-sand .container {
+      padding-top: 0 !important;
+    }
+  }
+}

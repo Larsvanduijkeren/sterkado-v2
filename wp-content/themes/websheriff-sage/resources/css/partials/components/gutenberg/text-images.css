@@ -1,0 +1,108 @@
+section.text-images {
+  &.images-first .flex-wrapper {
+    flex-direction: row-reverse;
+  }
+
+  &.small-images {
+    .flex-wrapper {
+      >* {
+        width: calc(33.33% - 80px);
+        max-width: calc(33.33% - 80px);
+        flex-basis: calc(33.33% - 80px);
+      }
+
+      >*.content {
+        width: calc(66.666% - 80px);
+        max-width: calc(66.666% - 80px);
+        flex-basis: calc(66.666% - 80px);
+      }
+    }
+  }
+
+  .flex-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: -40px;
+
+    >* {
+      width: calc(50% - 80px);
+      max-width: calc(50% - 80px);
+      flex-basis: calc(50% - 80px);
+      margin: 40px;
+
+      >*:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .images {
+      position: relative;
+      display: block;
+
+      .text-images-swiper {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 40px;
+      }
+
+      .swiper-slide {
+        position: relative;
+        display: block;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+
+        &::before {
+          content: '';
+          padding-top: 65%;
+          display: block;
+        }
+
+        img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      .swiper-scrollbar {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    .flex-wrapper {
+      display: block;
+      margin: 0;
+
+      > * {
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+        margin: 0 0 20px 0;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &.images-first .flex-wrapper {
+      flex-direction: column;
+    }
+
+    &.small-images .flex-wrapper > * {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex-basis: 100% !important;
+    }
+  }
+}

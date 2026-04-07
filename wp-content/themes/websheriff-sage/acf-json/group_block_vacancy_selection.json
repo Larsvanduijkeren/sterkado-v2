@@ -1,0 +1,74 @@
+{
+    "key": "group_block_vacancy_selection",
+    "title": "Block: Vacancy Selection",
+    "fields": [
+        {
+            "key": "field_vacsel_label",
+            "label": "Label",
+            "name": "label",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" }
+        },
+        {
+            "key": "field_vacsel_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" }
+        },
+        {
+            "key": "field_vacsel_text",
+            "label": "Text",
+            "name": "text",
+            "type": "wysiwyg",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_vacsel_buttons",
+            "label": "Buttons",
+            "name": "buttons",
+            "type": "repeater",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "layout": "block",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_vacsel_btn",
+                    "label": "Button",
+                    "name": "button",
+                    "type": "link",
+                    "required": 0,
+                    "return_format": "array",
+                    "parent_repeater": "field_vacsel_buttons"
+                }
+            ]
+        },
+        {
+            "key": "field_vacsel_category",
+            "label": "Category selection",
+            "name": "category_selection",
+            "type": "taxonomy",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" },
+            "taxonomy": "vacancy_category",
+            "field_type": "multi_select",
+            "return_format": "id"
+        }
+    ],
+    "location": [[{ "param": "block", "operator": "==", "value": "acf\/vacancy-selection" }]],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "active": true,
+    "show_in_rest": 0,
+    "modified": 1772900000
+}
