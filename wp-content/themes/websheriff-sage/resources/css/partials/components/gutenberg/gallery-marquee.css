@@ -20,8 +20,12 @@
 
 section.gallery-marquee {
   position: relative;
-  padding-top: 24px;
-  padding-bottom: 24px;
+
+  .container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   .gallery-marquee-rows {
     display: flex;
@@ -80,8 +84,6 @@ section.gallery-marquee {
   }
 
   @media only screen and (min-width: 768px) {
-    padding-top: 32px;
-    padding-bottom: 32px;
 
     .gallery-marquee-rows {
       gap: 20px;
@@ -101,8 +103,6 @@ section.gallery-marquee {
   }
 
   @media only screen and (max-width: 575px) {
-    padding-top: 16px;
-    padding-bottom: 16px;
 
     .gallery-marquee-rows {
       gap: 12px;

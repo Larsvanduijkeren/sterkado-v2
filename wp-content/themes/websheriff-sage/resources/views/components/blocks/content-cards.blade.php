@@ -4,8 +4,6 @@ $intro_title = $fields['intro_title'] ?? null;
 $intro_text = $fields['intro_text'] ?? null;
 $intro_buttons = $fields['intro_buttons'] ?? null;
 $cards = $fields['cards'] ?? null;
-$background_color = $fields['background_color'] ?? 'grey';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $cards = is_array($cards) ? array_values(array_filter($cards, static function ($row): bool {
     return is_array($row);
@@ -15,7 +13,7 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="content-cards columns-{{ $column_count }} bg-{{ $background_color }}{{ $has_intro ? ' has-intro' : '' }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="content-cards columns-{{ $column_count }}{{ $has_intro ? ' has-intro' : '' }}">
     <div class="container">
         @if($intro_title || $intro_text || $intro_buttons)
         <div class="intro content" data-aos="fade-up">
@@ -56,7 +54,6 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
             $highlight = $card['highlight_label'] ?? '';
             $tag = $card['label'] ?? '';
             $cardTitle = $card['title'] ?? '';
-            $squiggle = $card['title_squiggle_phrase'] ?? '';
             $cardText = $card['text'] ?? '';
             $link = $card['link'] ?? null;
             $link = is_array($link) ? $link : [];
@@ -73,27 +70,16 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
                         loading="lazy"
                         decoding="async">
                     @if($highlight !== '')
-                    <span class="content-cards-highlight">{{ $highlight }}</span>
+                    <span class="label content-cards-highlight">{{ $highlight }}</span>
                     @endif
                 </div>
                 @endif
                 <div class="body">
                     @if($tag !== '')
-                    <span class="label label--uppercase content-cards-card-tag">{{ $tag }}</span>
+                    <span class="label label--uppercase">{{ $tag }}</span>
                     @endif
                     @if($cardTitle !== '')
-                    <h3>
-                        @if($squiggle !== '' && str_contains($cardTitle, $squiggle))
-                        @php
-                        $parts = explode($squiggle, $cardTitle, 2);
-                        $before = $parts[0] ?? '';
-                        $after = $parts[1] ?? '';
-                        @endphp
-                        {{ $before }}<span class="content-cards-squiggle">{{ $squiggle }}</span>{{ $after }}
-                        @else
-                        {{ $cardTitle }}
-                        @endif
-                    </h3>
+                    <h3>{{ $cardTitle }}</h3>
                     @endif
                     @if($cardText !== '')
                     <div class="text">{!! wp_kses_post($cardText) !!}</div>

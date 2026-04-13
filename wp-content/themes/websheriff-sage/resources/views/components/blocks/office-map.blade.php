@@ -12,15 +12,13 @@ $address_note = $fields['address_note'] ?? null;
 $gegevens = $fields['gegevens'] ?? null;
 $map_embed = $fields['map_embed'] ?? null;
 $map_embed = is_string($map_embed) ? trim($map_embed) : '';
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $office_map_social_rows = isset($office_map_social_rows) && is_array($office_map_social_rows) ? $office_map_social_rows : [];
 $is_preview = $is_preview ?? false;
 @endphp
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="office-map bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="office-map">
     <div class="container">
         <div class="office-map-layout">
             <div class="office-map-main content" data-aos="fade-up">

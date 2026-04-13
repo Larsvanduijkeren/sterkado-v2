@@ -26,8 +26,6 @@ $testimonial_image = is_array($testimonial_image) ? $testimonial_image : [];
 $footer_note = $fields['footer_note'] ?? null;
 $form_shortcode = $fields['form_shortcode'] ?? null;
 $form_shortcode = is_string($form_shortcode) ? trim($form_shortcode) : '';
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $is_preview = $is_preview ?? false;
 $has_testimonial = (is_string($testimonial_quote) && trim($testimonial_quote) !== '')
     || (is_string($testimonial_name) && trim($testimonial_name) !== '')
@@ -37,7 +35,7 @@ $has_testimonial = (is_string($testimonial_quote) && trim($testimonial_quote) !=
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="lead-form bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="lead-form">
     <div class="container">
         <div class="lead-form-layout">
             <div class="lead-form-main content" data-aos="fade-up">

@@ -3,8 +3,6 @@ $intro_title = $fields['intro_title'] ?? null;
 $intro_text = $fields['intro_text'] ?? null;
 $search_placeholder = $fields['search_placeholder'] ?? null;
 $search_button_label = $fields['search_button_label'] ?? null;
-$background_color = $fields['background_color'] ?? 'grey';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $faq_term_cards = isset($faq_term_cards) && is_array($faq_term_cards) ? $faq_term_cards : [];
 $faq_search_query = isset($faq_search_query) ? (string) $faq_search_query : '';
@@ -20,7 +18,7 @@ $search_button_label = is_string($search_button_label) && $search_button_label !
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="faq bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="faq">
     <div class="container">
         @if($has_intro)
         <div class="faq-intro content" data-aos="fade-up">
@@ -81,27 +79,12 @@ $search_button_label = is_string($search_button_label) && $search_button_label !
             $posts = $card['posts'] ?? [];
             $term = $term instanceof \WP_Term ? $term : null;
             $posts = is_array($posts) ? $posts : [];
-            $grad_id = $term
-                ? 'faq-wave-' . sanitize_html_class((string) ($block['id'] ?? 'block')) . '-' . (int) $term->term_id
-                : 'faq-wave-0';
             @endphp
             @if($term)
             <article class="faq-card">
                 <div class="faq-card-header">
                     <i class="{{ esc_attr($faq_card_icon_class) }} faq-card-header-icon" aria-hidden="true"></i>
                     <h3 class="faq-card-title">{{ esc_html($term->name) }}</h3>
-                </div>
-                <div class="faq-card-divider" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 12" preserveAspectRatio="none" width="100%" height="12" focusable="false">
-                        <defs>
-                            <linearGradient id="{{ esc_attr($grad_id) }}" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="var(--color-brand-purple-secondary)" />
-                                <stop offset="55%" stop-color="var(--color-brand-purple-secondary)" />
-                                <stop offset="100%" stop-color="var(--color-surface-purple-tint-subtle)" />
-                            </linearGradient>
-                        </defs>
-                        <path fill="url(#{{ esc_attr($grad_id) }})" d="M0,12 L0,4 Q30,-1 60,4 T120,4 L120,12 Z" />
-                    </svg>
                 </div>
                 <div class="faq-card-body">
                     @if(count($posts))

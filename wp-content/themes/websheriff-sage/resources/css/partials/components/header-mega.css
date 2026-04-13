@@ -1,28 +1,49 @@
 /* Desktop mega menus (main header nav). Spacing in px; colors from design tokens. */
 
 @media only screen and (min-width: 992px) {
-  .header__main-nav {
+  /* Anchor mega to the full bottom row (nav + actions) so the panel matches .container width,
+     not only the nav column. `top: 100%` is still the row bottom (directly under the menu bar). */
+  header.header .header__row--bottom {
     position: relative;
+    overflow: visible;
   }
 
-  .header__main-nav .has-mega-panel.menu-item-has-children > a::before {
-    display: none;
+  .header__main-nav {
+    overflow: visible;
+  }
+
+  /* Mega panel is inside the <li>; default position:relative on li makes the panel
+     100% of the item width (a narrow strip). Anchor to the row instead. */
+  .header__main-nav .header-menu > li.has-mega-panel {
+    position: static;
+  }
+
+  /* Kill dropdown chevron (::before) on mega items — WP may omit menu-item-has-children */
+  .header__main-nav .has-mega-panel > a::before {
+    content: none !important;
+    display: none !important;
   }
 
   .header__main-nav .has-mega-panel > a {
     position: relative;
-    padding-right: 22px;
+    padding-right: 20px !important;
 
     &::after {
-      font-family: 'Iconfont' !important;
-      content: '\e90f';
+      content: '';
       position: absolute;
-      right: 0;
-      font-size: 0.6rem;
+      right: 2px;
       top: 50%;
-      transform: translateY(-45%);
-      width: 16px;
-      transition: transform 0.3s ease-in-out;
+      width: 6px;
+      height: 6px;
+      margin-top: -2px;
+      border-right: 1.5px solid currentcolor;
+      border-bottom: 1.5px solid currentcolor;
+      transform: translateY(-50%) rotate(45deg);
+      transform-origin: 50% 50%;
+      opacity: 0.85;
+      transition:
+        transform 0.25s ease,
+        opacity 0.2s ease;
     }
   }
 
@@ -33,7 +54,8 @@
 
   .header__main-nav .has-mega-panel:hover > a::after,
   .header__main-nav .has-mega-panel:focus-within > a::after {
-    transform: translateY(-45%) rotate(180deg);
+    transform: translateY(-50%) rotate(225deg);
+    opacity: 1;
   }
 
   .header__main-nav .has-mega-panel .sub-menu {

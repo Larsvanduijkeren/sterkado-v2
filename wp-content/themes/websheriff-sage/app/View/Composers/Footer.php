@@ -4,8 +4,6 @@ namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 
-use function App\last_section_footer_modifiers;
-
 class Footer extends Composer
 {
     /**
@@ -43,21 +41,9 @@ class Footer extends Composer
         ];
     }
 
-    /**
-     * Classes reflecting the last section’s background / waves (singular content only).
-     */
     protected function footerAfterSectionClass(): string
     {
-        if (! is_singular()) {
-            return '';
-        }
-
-        $post = get_queried_object();
-        if (! $post instanceof \WP_Post) {
-            return '';
-        }
-
-        return last_section_footer_modifiers($post);
+        return '';
     }
 
     protected function footerHeadingHtml(): string
@@ -85,20 +71,110 @@ class Footer extends Composer
     }
 
     /**
-     * @return array<string, mixed>|null
+     * @return array<string, mixed>|null  Normalized image data with a usable `url` for the img src attribute
      */
     protected function footerDisplayLogo(): ?array
     {
-        if (! function_exists('get_field')) {
+        $candidates = [];
+        if (function_exists('get_field')) {
+            $candidates[] = get_field('footer_logo', 'option');
+            $candidates[] = get_field('logo', 'option');
+        }
+        foreach ($candidates as $raw) {
+            $normalized = $this->normalizeImageForFooter($raw);
+            if ($normalized !== null) {
+                return $normalized;
+            }
+        }
+
+        $customLogoId = (int) get_theme_mod('custom_logo', 0);
+        if ($customLogoId > 0) {
+            return $this->normalizeImageForFooter($customLogoId);
+        }
+
+        return null;
+    }
+
+    /**
+     * @param  mixed  $raw  ACF image (array), attachment ID, or absolute URL string
+     * @return array<string, mixed>|null
+     */
+    protected function normalizeImageForFooter(mixed $raw): ?array
+    {
+        if ($raw === null || $raw === false || $raw === '') {
             return null;
         }
-        $footerLogo = get_field('footer_logo', 'option');
-        if (is_array($footerLogo) && ! empty($footerLogo['url'] ?? $footerLogo['ID'] ?? null)) {
-            return $footerLogo;
-        }
-        $logo = get_field('logo', 'option');
 
-        return is_array($logo) && ! empty($logo['url'] ?? $logo['ID'] ?? null) ? $logo : null;
+        if (is_numeric($raw)) {
+            $id = (int) $raw;
+            if ($id <= 0) {
+                return null;
+            }
+            $url = wp_get_attachment_image_url($id, 'medium')
+                ?: wp_get_attachment_image_url($id, 'large')
+                ?: wp_get_attachment_image_url($id, 'full');
+            if ($url === false || $url === '') {
+                return null;
+            }
+            $alt = (string) get_post_meta($id, '_wp_attachment_image_alt', true);
+
+            return [
+                'ID' => $id,
+                'url' => $url,
+                'alt' => $alt,
+                'sizes' => [
+                    'medium' => $url,
+                    'large' => wp_get_attachment_image_url($id, 'large') ?: $url,
+                ],
+            ];
+        }
+
+        if (is_string($raw)) {
+            $trim = trim($raw);
+            if ($trim === '' || filter_var($trim, FILTER_VALIDATE_URL) === false) {
+                return null;
+            }
+
+            return [
+                'url' => $trim,
+                'alt' => '',
+                'sizes' => [
+                    'medium' => $trim,
+                    'large' => $trim,
+                ],
+            ];
+        }
+
+        if (! is_array($raw)) {
+            return null;
+        }
+
+        if (! empty($raw['url']) && is_string($raw['url'])) {
+            return $raw;
+        }
+
+        $id = isset($raw['ID']) ? (int) $raw['ID'] : 0;
+        if ($id <= 0) {
+            return null;
+        }
+
+        $url = wp_get_attachment_image_url($id, 'medium')
+            ?: wp_get_attachment_image_url($id, 'large')
+            ?: wp_get_attachment_image_url($id, 'full');
+        if ($url === false || $url === '') {
+            return null;
+        }
+
+        return array_merge($raw, [
+            'url' => $url,
+            'sizes' => array_merge(
+                is_array($raw['sizes'] ?? null) ? $raw['sizes'] : [],
+                [
+                    'medium' => wp_get_attachment_image_url($id, 'medium') ?: $url,
+                    'large' => wp_get_attachment_image_url($id, 'large') ?: $url,
+                ]
+            ),
+        ]);
     }
 
     /**

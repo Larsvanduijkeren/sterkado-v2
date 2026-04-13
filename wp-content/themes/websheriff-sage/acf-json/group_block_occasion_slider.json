@@ -4,11 +4,11 @@
     "fields": [
         {
             "key": "field_os_column_count",
-            "label": "Slides per row (desktop)",
+            "label": "Slides per row (tablet)",
             "name": "column_count",
             "aria-label": "",
             "type": "select",
-            "instructions": "How many cards are visible at once on wide screens. One column on small screens.",
+            "instructions": "How many cards show between 768px and 991px. From 992px (desktop) up, 6 cards are shown. One partial card on small screens.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -30,58 +30,6 @@
             "placeholder": "",
             "create_options": 0,
             "save_options": 0
-        },
-        {
-            "key": "field_os_background_color",
-            "label": "Background color",
-            "name": "background_color",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "white": "White",
-                "red": "Red",
-                "sand": "Sand",
-                "grey": "Grey"
-            },
-            "default_value": "grey",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 1,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_os_add_waves",
-            "label": "Add waves",
-            "name": "add_waves",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Wave at the bottom of the section. Avoid if the next section uses the same background.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
         },
         {
             "key": "field_os_intro_title",
@@ -217,28 +165,6 @@
                     "parent_repeater": "field_os_slides"
                 },
                 {
-                    "key": "field_os_slide_highlight",
-                    "label": "Highlight label",
-                    "name": "highlight_label",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Optional badge on the image (white text on orange).",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_os_slides"
-                },
-                {
                     "key": "field_os_slide_label",
                     "label": "Card label",
                     "name": "label",
@@ -248,7 +174,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },

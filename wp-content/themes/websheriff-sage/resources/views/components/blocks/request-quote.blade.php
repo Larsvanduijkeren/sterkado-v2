@@ -36,18 +36,20 @@ $id = $block['anchor'] ?? null;
             </div>
             @if($quote)
             <aside class="request-quote-hero__quote" aria-label="{{ esc_attr(__('Quote', 'sage')) }}">
-                @if(!empty($quoteImage['url'] ?? null))
-                <div class="request-quote-hero__quote-image">
-                    <img src="{{ esc_url($quoteImage['sizes']['large'] ?? $quoteImage['url']) }}" alt="{{ esc_attr($quoteImage['alt'] ?? '') }}" loading="lazy" decoding="async">
-                </div>
-                @endif
-                <div class="request-quote-hero__quote-body">
-                    <blockquote class="request-quote-hero__quote-text">
-                        <p>{!! nl2br(esc_html($quote)) !!}</p>
-                    </blockquote>
-                    @if($quoteAuthor)
-                    <p class="request-quote-hero__quote-author">{{ e($quoteAuthor) }}</p>
+                <div class="request-quote-hero__quote-visual">
+                    @if(!empty($quoteImage['url'] ?? null))
+                    <div class="request-quote-hero__quote-logo">
+                        <img src="{{ esc_url($quoteImage['sizes']['large'] ?? $quoteImage['url']) }}" alt="{{ esc_attr($quoteImage['alt'] ?? '') }}" loading="lazy" decoding="async">
+                    </div>
                     @endif
+                    <div class="request-quote-hero__quote-card">
+                        <blockquote class="request-quote-hero__quote-text">
+                            <p>{!! nl2br(esc_html($quote)) !!}</p>
+                        </blockquote>
+                        @if($quoteAuthor)
+                        <p class="request-quote-hero__quote-author">{{ e($quoteAuthor) }}</p>
+                        @endif
+                    </div>
                 </div>
             </aside>
             @endif

@@ -55,15 +55,6 @@ $panelId = 'mega-panel-' . preg_replace('/[^a-z0-9\-]+/i', '-', (string) $trigge
 @php
 $hl = $mega['highlight_link'] ?? [];
 $hl = is_array($hl) ? $hl : [];
-$iconClass = static function (string $key): string {
-    return match ($key) {
-        'youtube' => 'fa-brands fa-youtube',
-        'instagram' => 'fa-brands fa-instagram',
-        'facebook' => 'fa-brands fa-facebook-f',
-        'linkedin' => 'fa-brands fa-linkedin-in',
-        default => 'fa-solid fa-link',
-    };
-};
 @endphp
 <div class="mega-menu mega-menu-featured" id="{{ $panelId }}" role="region" aria-label="{{ esc_attr(__('Submenu', 'sage')) }}">
     <div class="mega-menu-inner container">
@@ -86,12 +77,12 @@ $iconClass = static function (string $key): string {
                             @foreach($mega['social'] as $soc)
                             <li>
                                 <a
-                                    href="{{ esc_url($soc['url']) }}"
+                                    href="{{ esc_url($soc['url'] ?? '') }}"
                                     class="mega-menu-social-link"
                                     target="{{ esc_attr($soc['target'] ?? '_self') }}"
                                     @if(($soc['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif
-                                    @if($soc['title'] !== '') aria-label="{{ esc_attr($soc['title']) }}" @endif>
-                                    <i class="{{ $iconClass($soc['icon'] ?? '') }}" aria-hidden="true"></i>
+                                    aria-label="{{ esc_attr($soc['aria_label'] ?? '') }}">
+                                    <i class="{{ esc_attr($soc['icon_class'] ?? 'fa-solid fa-link') }}" aria-hidden="true"></i>
                                 </a>
                             </li>
                             @endforeach

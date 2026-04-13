@@ -108,5 +108,4 @@ $is_preview = $is_preview ?? false;
             </div>
         </div>
     </div>
-    <div class="not-found-slope" aria-hidden="true"></div>
 </section>

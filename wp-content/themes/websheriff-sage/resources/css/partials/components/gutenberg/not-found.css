@@ -1,10 +1,8 @@
-/* Not found block: centered copy, outline CTA, contact row, diagonal base */
+/* Not found block: centered copy, outline CTA, contact row */
 
 section.not-found {
   position: relative;
-  overflow: hidden;
-  background: var(--color-surface-purple-tint-subtle);
-  padding: 72px 0 140px;
+  padding: 64px 0 72px;
   color: var(--color-brand-purple-secondary);
 }
 
@@ -134,16 +132,4 @@ section.not-found .not-found-contact-secondary {
   font-size: 0.875rem;
   line-height: 1.4;
   color: var(--color-text-muted-on-light);
-}
-
-section.not-found .not-found-slope {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: min(28vw, 200px);
-  background: var(--color-surface-white);
-  clip-path: polygon(0 55%, 100% 0, 100% 100%, 0 100%);
-  z-index: 0;
-  pointer-events: none;
 }

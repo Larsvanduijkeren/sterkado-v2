@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use function App\social_links_from_options;
+
 use Roots\Acorn\Sage\SageServiceProvider;
 
 class MegaMenuServiceProvider extends SageServiceProvider
@@ -191,26 +193,7 @@ class MegaMenuServiceProvider extends SageServiceProvider
             ];
         }
 
-        $socialRaw = $row['feat_social'] ?? null;
-        $socialRaw = is_array($socialRaw) ? $socialRaw : [];
-        $social = [];
-        foreach ($socialRaw as $s) {
-            if (! is_array($s)) {
-                continue;
-            }
-            $link = $s['social_link'] ?? null;
-            $link = is_array($link) ? $link : [];
-            $href = isset($link['url']) ? trim((string) $link['url']) : '';
-            if ($href === '') {
-                continue;
-            }
-            $social[] = [
-                'url' => $href,
-                'title' => isset($link['title']) ? trim((string) $link['title']) : '',
-                'target' => isset($link['target']) ? (string) $link['target'] : '_self',
-                'icon' => isset($s['social_icon']) ? (string) $s['social_icon'] : 'linkedin',
-            ];
-        }
+        $social = social_links_from_options();
 
         $linksRaw = $row['feat_column_links'] ?? null;
         $linksRaw = is_array($linksRaw) ? $linksRaw : [];

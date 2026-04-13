@@ -1,15 +1,13 @@
 @php
 $title = $fields['title'] ?? null;
 $text = $fields['text'] ?? null;
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $is_preview = $is_preview ?? false;
 @endphp
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="card-links bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="card-links">
     <div class="container">
         <div class="card-links-banner">
             <div class="card-links-layout">
@@ -20,14 +18,14 @@ $is_preview = $is_preview ?? false;
                     @if($text)
                     <div class="card-links-intro-text">{!! wp_kses_post($text) !!}</div>
                     @endif
-                    @if($is_preview && count($category_cards ?? []) === 0)
-                    <p class="card-links-preview-note">{{ __('Geen categorieën op dit bericht; kaarten verschijnen op de site zodra termen gekoppeld zijn.', 'sage') }}</p>
+                    @if($is_preview && count($cards ?? []) === 0)
+                    <p class="card-links-preview-note">{{ __('Geen kaarten om te tonen: voeg rijen toe bij “Cards (manual)” met een geldige link.', 'sage') }}</p>
                     @endif
                 </div>
 
-                @if(count($category_cards ?? []))
+                @if(count($cards ?? []))
                 <div class="card-links-cards" data-aos="fade-up">
-                    @foreach($category_cards ?? [] as $card)
+                    @foreach($cards ?? [] as $card)
                     <article class="card-links-card">
                         @if($card['name'] !== '')
                         <h3 class="card-links-card-title">{{ $card['name'] }}</h3>

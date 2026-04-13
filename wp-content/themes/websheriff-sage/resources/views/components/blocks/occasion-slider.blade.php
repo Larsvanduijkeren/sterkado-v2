@@ -4,8 +4,6 @@ $intro_title = $fields['intro_title'] ?? null;
 $intro_text = $fields['intro_text'] ?? null;
 $intro_buttons = $fields['intro_buttons'] ?? null;
 $slides_raw = $fields['slides'] ?? null;
-$background_color = $fields['background_color'] ?? 'grey';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $slides = [];
 if (is_array($slides_raw)) {
@@ -29,8 +27,8 @@ $show_nav = $slide_count > 1;
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="occasion-slider bg-{{ $background_color }}{{ $has_intro ? ' has-intro' : '' }} {{ $add_waves ? 'has-waves' : '' }}"
-    data-slides-desktop="{{ $column_count }}">
+    class="occasion-slider{{ $has_intro ? ' has-intro' : '' }}"
+    data-slides-tablet="{{ $column_count }}">
     <div class="container">
         @if($has_intro)
         <div class="intro content" data-aos="fade-up">
@@ -79,7 +77,6 @@ $show_nav = $slide_count > 1;
                     @foreach($slides as $slide)
                     @php
                     $img = $slide['image'] ?? null;
-                    $highlight = $slide['highlight_label'] ?? '';
                     $label = $slide['label'] ?? '';
                     $link = $slide['link'] ?? [];
                     $link = is_array($link) ? $link : [];
@@ -101,14 +98,6 @@ $show_nav = $slide_count > 1;
                                     loading="lazy"
                                     decoding="async">
                                 @endif
-                                @if($highlight !== '')
-                                <span class="occasion-slider-highlight">{{ $highlight }}</span>
-                                @endif
-                            </div>
-                            <div class="occasion-slider-card-divider" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 12" preserveAspectRatio="none" width="100%" height="12" focusable="false">
-                                    <path fill="currentColor" d="M0,12 L0,4 Q30,-1 60,4 T120,4 L120,12 Z" />
-                                </svg>
                             </div>
                             @if($label !== '')
                             <div class="occasion-slider-card-footer">

@@ -7,16 +7,13 @@ $title = $fields['title'] ?? null;
 $text = $fields['text'] ?? null;
 $buttons = $fields['buttons'] ?? null;
 $images = $fields['images'] ?? null;
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = $fields['add_waves'] ?? false;
-
 $id = $block['anchor'] ?? null;
 $is_preview = $is_preview ?? false;
 @endphp
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="text-images {{ $order }} {{ $small_images ? 'small-images' : '' }} bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="text-images {{ $order }} {{ $small_images ? 'small-images' : '' }}">
     <div class="container">
         <div class="flex-wrapper">
             <div class="content" data-aos="fade-up">

@@ -20,9 +20,15 @@ section.logos {
   }
 
   .logos__grid {
+    --logos-col-gap: 32px;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 24px 20px;
+    width: 100%;
+    /* At most 5 columns; fewer logos share the row equally and fill the width. */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, max(100px, calc((100% - 4 * var(--logos-col-gap)) / 5))), 1fr)
+    );
+    gap: 24px var(--logos-col-gap);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -71,13 +77,21 @@ section.logos {
     }
 
     .logos__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      --logos-col-gap: 24px;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, max(96px, calc((100% - 2 * var(--logos-col-gap)) / 3))), 1fr)
+      );
     }
   }
 
   @media only screen and (max-width: 575px) {
     .logos__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      --logos-col-gap: 20px;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, max(88px, calc((100% - 1 * var(--logos-col-gap)) / 2))), 1fr)
+      );
     }
   }
 }

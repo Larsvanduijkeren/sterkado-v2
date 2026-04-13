@@ -3,58 +3,6 @@
     "title": "Block: CTA",
     "fields": [
         {
-            "key": "field_cta_background_color",
-            "label": "Background color",
-            "name": "background_color",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "Default matches the cream-style section (sand).",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "white": "White",
-                "red": "Red",
-                "sand": "Sand",
-                "grey": "Grey"
-            },
-            "default_value": "sand",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 1,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_cta_add_waves",
-            "label": "Add waves",
-            "name": "add_waves",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
             "key": "field_cta_title",
             "label": "Title",
             "name": "title",
@@ -77,11 +25,11 @@
         },
         {
             "key": "field_cta_title_emphasis",
-            "label": "Title ring phrase",
+            "label": "Title emphasis phrase",
             "name": "title_emphasis_phrase",
             "aria-label": "",
             "type": "text",
-            "instructions": "Optional. Exact phrase that appears inside the title; it will be shown with an orange ring. Leave empty for a plain title.",
+            "instructions": "Optional. Exact substring of the title to highlight in orange (no outline). Leave empty for a plain title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -123,7 +71,7 @@
             "name": "button",
             "aria-label": "",
             "type": "link",
-            "instructions": "Purple pill-style CTA with white label and arrow.",
+            "instructions": "Orange pill CTA, centered in the card. White label and arrow.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -182,5 +130,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776240000
+    "modified": 1776330000
 }

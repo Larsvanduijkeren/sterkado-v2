@@ -18,6 +18,12 @@
   /* White surfaces */
   --color-surface-white: #ffffff;
 
+  /* Neutral soft background (e.g. request quote hero) */
+  --color-surface-neutral-soft: #f7f9fa;
+
+  /* Strong heading on light neutral (charcoal) */
+  --color-text-heading-strong: #333333;
+
   /* Section / UI tints — only color-mix from brand hues + white */
   --color-surface-purple-tint-subtle: color-mix(in srgb, var(--color-brand-purple-secondary) 6%, var(--color-surface-white));
   --color-surface-purple-tint-muted: color-mix(in srgb, var(--color-brand-purple-secondary) 14%, var(--color-surface-white));

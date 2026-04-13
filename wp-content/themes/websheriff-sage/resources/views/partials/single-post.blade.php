@@ -65,7 +65,7 @@ if (has_post_thumbnail($post)) {
                 </div>
             </aside>
             <div class="content">
-                {!! get_the_content(null, false, $post) !!}
+                {!! apply_filters('the_content', get_the_content(null, false, $post)) !!}
             </div>
         </div>
     </div>

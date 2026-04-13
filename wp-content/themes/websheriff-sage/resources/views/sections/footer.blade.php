@@ -21,11 +21,19 @@ $showTopRow = $footerShowTopRow ?? false;
                         @endif
                     </div>
                     @if(!empty($displayLogo))
+                    @php
+                    $logoSrc = $displayLogo['sizes']['medium'] ?? $displayLogo['sizes']['large'] ?? $displayLogo['url'] ?? '';
+                    $logoAlt = isset($displayLogo['alt']) && is_string($displayLogo['alt']) && trim($displayLogo['alt']) !== ''
+                        ? trim($displayLogo['alt'])
+                        : get_bloginfo('name');
+                    @endphp
+                    @if($logoSrc !== '')
                     <div class="footer__logo-wrap">
                         <a href="{{ home_url('/') }}" class="logo footer__logo-link" aria-label="{{ esc_attr(get_bloginfo('name')) }}">
-                            <img src="{{ esc_url($displayLogo['sizes']['medium'] ?? $displayLogo['url'] ?? '') }}" alt="">
+                            <img src="{{ esc_url($logoSrc) }}" alt="{{ esc_attr($logoAlt) }}">
                         </a>
                     </div>
+                    @endif
                     @endif
                 </div>
                 <div class="footer__divider" role="presentation"></div>

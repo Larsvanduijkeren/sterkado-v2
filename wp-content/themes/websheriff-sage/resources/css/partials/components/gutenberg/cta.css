@@ -1,4 +1,27 @@
 section.cta {
+  .cta-card {
+    position: relative;
+    overflow: visible;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 40px 20px 44px;
+    border-radius: var(--radius-outside-400);
+    background: var(--color-surface-orange-tint-subtle);
+    box-shadow: var(--shadow-card);
+  }
+
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: 48px 32px 52px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .cta-card {
+      padding: 56px 40px 60px;
+    }
+  }
+
   .cta-layout {
     display: grid;
     grid-template-columns: minmax(72px, 1fr) minmax(0, 520px) minmax(72px, 1fr);
@@ -133,13 +156,9 @@ section.cta {
     color: var(--color-brand-purple-secondary);
   }
 
-  .cta-title-ring {
-    display: inline;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    padding: 1px 6px;
-    border-radius: 999px;
-    box-shadow: 0 0 0 2px var(--color-brand-orange-accent);
+  .cta-title-emphasis {
+    color: var(--color-brand-orange-accent);
+    font-weight: 700;
   }
 
   .cta-text {
@@ -152,73 +171,12 @@ section.cta {
   }
 
   .cta-center .buttons {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 0;
-  }
-
-  .cta-button {
-    appearance: none;
-    -webkit-appearance: none;
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 44px;
-    padding: 12px 25px;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1;
-    border-radius: 999px;
-    cursor: pointer;
-    outline: none;
-    box-shadow: none;
-    text-decoration: none;
-    border: 1px solid var(--color-brand-purple-secondary);
-    background-color: var(--color-brand-purple-secondary);
-    color: var(--color-text-on-purple-background);
-    transition:
-      background-color 0.2s ease,
-      border-color 0.2s ease,
-      color 0.2s ease;
-  }
-
-  .cta-button:hover,
-  .cta-button:focus-visible {
-    filter: brightness(1.06);
-  }
-
-  @media (min-width: 768px) {
-    .cta-button {
-      padding: 15px 40px;
-      font-size: 16px;
-    }
-  }
-
-  .cta-button-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 1.25em;
-    height: 1.25em;
-  }
-
-  .cta-button-icon::before {
-    font-family: 'Iconfont' !important;
-    content: '\e910';
-    font-size: 0.65em;
-    line-height: 1;
-    color: var(--color-surface-white);
-    transform: rotate(-45deg);
-    display: block;
-    transition: transform 0.2s ease;
-  }
-
-  .cta-button:hover .cta-button-icon::before,
-  .cta-button:focus-visible .cta-button-icon::before {
-    transform: rotate(0);
   }
 
   @media only screen and (max-width: 991px) {
@@ -230,15 +188,12 @@ section.cta {
       display: none;
     }
 
-    .cta-center .buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+    .cta-card {
+      padding: 32px 20px 36px;
     }
 
-    .cta-center .buttons .cta-button {
-      width: 100%;
-      box-sizing: border-box;
+    .cta-center .buttons {
+      justify-content: center;
     }
   }
 }

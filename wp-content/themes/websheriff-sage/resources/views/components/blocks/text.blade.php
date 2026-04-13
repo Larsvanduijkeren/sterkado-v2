@@ -5,8 +5,6 @@ $label = $fields['label'] ?? null;
 $title = $fields['title'] ?? null;
 $text = $fields['text'] ?? null;
 $buttons = $fields['buttons'] ?? null;
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $is_split = $layout === 'split';
 $alignment_class = $is_split ? 'normal' : ($alignment ?? 'normal');
@@ -14,7 +12,7 @@ $alignment_class = $is_split ? 'normal' : ($alignment ?? 'normal');
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="text {{ $alignment_class }} bg-{{ $background_color }}{{ $is_split ? ' layout-split' : '' }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="text {{ $alignment_class }}{{ $is_split ? ' layout-split' : '' }}">
     <div class="container">
         @if($is_split)
         @if($label)

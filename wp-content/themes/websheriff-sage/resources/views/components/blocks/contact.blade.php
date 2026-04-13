@@ -4,15 +4,13 @@ $title = $fields['title'] ?? null;
 $intro = $fields['intro'] ?? null;
 $form_shortcode = $fields['form_shortcode'] ?? null;
 $form_shortcode = is_string($form_shortcode) ? trim($form_shortcode) : '';
-$background_color = $fields['background_color'] ?? 'grey';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $contact_methods = isset($contact_methods) && is_array($contact_methods) ? $contact_methods : [];
 $is_preview = $is_preview ?? false;
 @endphp
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="contact bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="contact">
     <div class="container">
         <div class="contact-layout">
             <div class="contact-main content" data-aos="fade-up">

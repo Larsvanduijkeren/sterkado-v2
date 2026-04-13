@@ -10,12 +10,13 @@ $back_label = $back_label ?? null;
 $has_image = $image && has_post_thumbnail($image);
 @endphp
 
-<section class="single-hero">
-    <div class="container">
-        <div class="single-hero__grid {{ $has_image ? 'single-hero__grid--has-image' : '' }}">
-            <div class="single-hero__content" data-aos="fade-up">
+<section class="single-hero{{ $has_image ? ' single-hero--has-image' : '' }}">
+    <div class="single-hero__track">
+    <div class="single-hero__layout">
+        <div class="single-hero__content" data-aos="fade-up">
+            <div class="single-hero__content-inner">
                 @if($label)
-                <span class="single-hero__label">{{ $label }}</span>
+                <span class="label">{{ $label }}</span>
                 @endif
 
                 @if($title)
@@ -31,21 +32,30 @@ $has_image = $image && has_post_thumbnail($image);
                 @endif
 
                 @if($button && !empty($button['url']) && !empty($button['title']))
-                <a href="{{ $button['url'] }}" target="{{ $button['target'] ?? '_self' }}" class="btn">{{ $button['title'] }}</a>
+                <a
+                    href="{{ esc_url($button['url']) }}"
+                    target="{{ esc_attr($button['target'] ?? '_self') }}"
+                    class="btn"
+                    @if(($button['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif>{{ $button['title'] }}</a>
                 @endif
 
                 @if($back_url && $back_label)
                 <p class="single-hero__back">
-                    <a href="{{ $back_url }}" class="btn btn-ghost">{{ $back_label }}</a>
+                    <a href="{{ esc_url($back_url) }}" class="btn btn-ghost">{{ $back_label }}</a>
                 </p>
                 @endif
             </div>
-
-            @if($has_image)
-            <div class="single-hero__image" data-aos="fade-up">
-                {!! get_the_post_thumbnail($image, 'large') !!}
-            </div>
-            @endif
         </div>
+
+        @if($has_image)
+        <div class="single-hero__image" data-aos="fade-up">
+            {!! get_the_post_thumbnail($image, 'large', [
+                'loading' => 'eager',
+                'decoding' => 'async',
+                'sizes' => '(max-width: 991px) 100vw, min(800px, calc((100vw - 80px) / 2))',
+            ]) !!}
+        </div>
+        @endif
+    </div>
     </div>
 </section>

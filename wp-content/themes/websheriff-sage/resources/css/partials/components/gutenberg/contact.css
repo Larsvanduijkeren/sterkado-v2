@@ -37,6 +37,7 @@ section.contact {
 
   .contact-method {
     margin-bottom: 12px;
+    margin-left: 0;
   }
 
   .contact-method:last-child {

@@ -235,8 +235,8 @@ function occasionSlider(Swiper, Navigation) {
             return;
         }
 
-        const slidesDesktop = parseInt($block.attr('data-slides-desktop'), 10);
-        const cols = slidesDesktop === 3 ? 3 : 2;
+        const slidesTablet = parseInt($block.attr('data-slides-tablet'), 10);
+        const colsTablet = slidesTablet === 3 ? 3 : 2;
         const prevEl = $block.find('.occasion-slider-nav-prev')[0];
         const nextEl = $block.find('.occasion-slider-nav-next')[0];
         if (!prevEl || !nextEl) {
@@ -259,8 +259,12 @@ function occasionSlider(Swiper, Navigation) {
             },
             breakpoints: {
                 768: {
-                    slidesPerView: cols,
+                    slidesPerView: colsTablet,
                     spaceBetween: 20,
+                },
+                992: {
+                    slidesPerView: 6,
+                    spaceBetween: 16,
                 },
             },
         });
@@ -377,12 +381,12 @@ function heroGallerySlider($, Swiper, EffectFade, Autoplay) {
             slidesPerView: 1,
             spaceBetween: 0,
             loop: true,
-            speed: 900,
+            speed: 2700,
             allowTouchMove: false,
             simulateTouch: false,
             grabCursor: false,
             autoplay: {
-                delay: 5000,
+                delay: 15000,
                 disableOnInteraction: false,
             },
             pagination: false,

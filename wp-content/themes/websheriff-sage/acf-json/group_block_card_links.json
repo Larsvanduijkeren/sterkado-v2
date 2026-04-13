@@ -3,12 +3,30 @@
     "title": "Block: Card links",
     "fields": [
         {
+            "key": "field_card_links_help",
+            "label": "How this block works",
+            "name": "card_links_how_it_works",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Add one or more rows under “Cards (manual)”. Each row needs a valid link; title and text are optional. Use the global button label when a row’s own label is empty.",
+            "new_lines": "wpautop",
+            "esc_html": 1
+        },
+        {
             "key": "field_card_links_title",
-            "label": "Title",
+            "label": "Intro title",
             "name": "title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Left column heading.",
+            "instructions": "Heading in the left column above the intro text.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -25,11 +43,11 @@
         },
         {
             "key": "field_card_links_text",
-            "label": "Text",
+            "label": "Intro text",
             "name": "text",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "Intro copy in the left column.",
+            "instructions": "Supporting copy in the left column (next to the cards).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -45,12 +63,120 @@
             "delay": 0
         },
         {
+            "key": "field_card_links_manual",
+            "label": "Cards (manual)",
+            "name": "manual_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Only these rows appear on the front end. Each row needs a valid card link.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_card_links_manual_title",
+            "button_label": "Add card",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_card_links_manual_title",
+                    "label": "Card title",
+                    "name": "card_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_card_links_manual"
+                },
+                {
+                    "key": "field_card_links_manual_text",
+                    "label": "Card text",
+                    "name": "card_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_card_links_manual"
+                },
+                {
+                    "key": "field_card_links_manual_link",
+                    "label": "Card link",
+                    "name": "card_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "URL is required for this row to appear on the front end.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_card_links_manual"
+                },
+                {
+                    "key": "field_card_links_manual_btn",
+                    "label": "Button label (this card)",
+                    "name": "card_button_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Leave empty to use the global button label below.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_card_links_manual"
+                }
+            ]
+        },
+        {
             "key": "field_card_links_button_label",
-            "label": "Button label (all cards)",
+            "label": "Button label (global)",
             "name": "button_label",
             "aria-label": "",
             "type": "text",
-            "instructions": "Shown on every category card. Leave empty to use the default “Meer info”.",
+            "instructions": "Used when a card’s own button label is empty. Leave empty for “Meer info”.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -85,5 +211,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776035000
+    "modified": 1776211200
 }

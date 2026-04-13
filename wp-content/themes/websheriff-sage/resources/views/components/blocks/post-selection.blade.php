@@ -5,8 +5,6 @@ $intro_button = is_array($intro_button) ? $intro_button : [];
 $intro_url = $intro_button['url'] ?? '';
 $intro_btn_title = $intro_button['title'] ?? '';
 $intro_target = $intro_button['target'] ?? '_self';
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $posts = isset($posts) && is_array($posts) ? $posts : [];
 $is_preview = $is_preview ?? false;
@@ -15,7 +13,7 @@ $has_intro = (bool) ($intro_title || ($intro_url !== '' && $intro_btn_title !== 
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="post-selection bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="post-selection">
     <div class="container">
         @if($has_intro)
         <div class="post-selection-intro" data-aos="fade-up">
@@ -83,7 +81,7 @@ $has_intro = (bool) ($intro_title || ($intro_url !== '' && $intro_btn_title !== 
             <div class="post-selection-pagination swiper-pagination"></div>
         </div>
         @elseif($is_preview)
-        <p class="post-selection-empty">{{ __('Select posts in the block fields to show slides.', 'sage') }}</p>
+        <p class="post-selection-empty">{{ __('Choose “Recent posts” or “Category” (and pick a category), and set “Maximum posts”.', 'sage') }}</p>
         @endif
     </div>
 </section>

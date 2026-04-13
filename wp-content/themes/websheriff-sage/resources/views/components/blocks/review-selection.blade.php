@@ -3,8 +3,6 @@ $intro_label = $fields['intro_label'] ?? null;
 $intro_title = $fields['intro_title'] ?? null;
 $intro_text = $fields['intro_text'] ?? null;
 $intro_buttons = $fields['intro_buttons'] ?? null;
-$background_color = $fields['background_color'] ?? 'grey';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $reviews = isset($reviews) && is_array($reviews) ? $reviews : [];
 $is_preview = $is_preview ?? false;
@@ -13,7 +11,7 @@ $has_intro = (bool) ($intro_label || $intro_title || $intro_text || (is_array($i
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="review-selection bg-{{ $background_color }}{{ $has_intro ? ' has-intro' : '' }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="review-selection{{ $has_intro ? ' has-intro' : '' }}">
     <div class="container">
         @if($has_intro)
         <div class="intro content" data-aos="fade-up">

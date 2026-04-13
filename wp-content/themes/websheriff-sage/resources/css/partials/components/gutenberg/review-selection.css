@@ -4,11 +4,6 @@ section.review-selection {
     margin: 0 auto 32px;
     text-align: center;
 
-    .label {
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-
     h2 {
       margin: 0 0 16px;
       color: var(--color-brand-purple-secondary);
@@ -70,6 +65,11 @@ section.review-selection {
     border: none;
     flex: 1 1 auto;
     min-height: 0;
+
+    &::before {
+      content: none;
+      display: none;
+    }
   }
 
   .review-selection-quote p {

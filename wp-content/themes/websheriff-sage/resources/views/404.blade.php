@@ -23,9 +23,7 @@ if ($notFoundPageId > 0 && get_post_status($notFoundPageId) === 'publish') {
 $GLOBALS['post'] = $notFoundPost;
 setup_postdata($notFoundPost);
 @endphp
-<div class="not-found-page-content">
-    {!! apply_filters('the_content', $notFoundPost->post_content) !!}
-</div>
+{!! apply_filters('the_content', $notFoundPost->post_content) !!}
 @php
 wp_reset_postdata();
 @endphp

@@ -21,6 +21,7 @@ class QuestionPostTypeServiceProvider extends SageServiceProvider
 
         add_action('init', [$this, 'registerQuestionPostType']);
         add_action('init', [$this, 'registerQuestionCategoryTaxonomy']);
+        add_filter('use_block_editor_for_post_type', [$this, 'disableBlockEditorForQuestion'], 10, 2);
         add_action('admin_post_nopriv_question_feedback', [$this, 'handleQuestionFeedback']);
         add_action('admin_post_question_feedback', [$this, 'handleQuestionFeedback']);
     }
@@ -87,6 +88,15 @@ class QuestionPostTypeServiceProvider extends SageServiceProvider
 
         wp_safe_redirect(add_query_arg('feedback', 'sent', $questionUrl));
         exit;
+    }
+
+    public function disableBlockEditorForQuestion(bool $use, string $postType): bool
+    {
+        if ($postType === self::POST_TYPE) {
+            return false;
+        }
+
+        return $use;
     }
 
     public function registerQuestionPostType(): void

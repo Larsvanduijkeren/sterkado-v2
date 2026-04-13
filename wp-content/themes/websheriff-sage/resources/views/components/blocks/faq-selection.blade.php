@@ -1,7 +1,5 @@
 @php
 $title = $fields['title'] ?? null;
-$background_color = $fields['background_color'] ?? 'grey';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $faq_selection_questions = isset($faq_selection_questions) && is_array($faq_selection_questions) ? $faq_selection_questions : [];
 $is_preview = $is_preview ?? false;
@@ -9,7 +7,7 @@ $is_preview = $is_preview ?? false;
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="faq-selection bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="faq-selection">
     <div class="container">
         @if($title)
         <div class="faq-selection-intro content" data-aos="fade-up">

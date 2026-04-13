@@ -95,10 +95,3 @@ p {
   margin: 0 0 var(--space-sm) 0;
   color: var(--color-text-body-on-light);
 }
-
-span.label {
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
-  color: var(--color-brand-orange-accent) !important;
-}

@@ -171,6 +171,10 @@ section.lead-form {
     margin: 0 0 10px;
     padding: 0;
     border: none;
+
+    &:before {
+      content: none;
+    }
   }
 
   .lead-form-testimonial-quote p {

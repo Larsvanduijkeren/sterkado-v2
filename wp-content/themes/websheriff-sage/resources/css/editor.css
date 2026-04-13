@@ -35,6 +35,7 @@
   @nested-import "./partials/components/footer.css";
   @nested-import "./partials/components/mobile-nav.css";
   @nested-import "./partials/components/post-card.css";
+  @nested-import "./partials/components/single-hero.css";
   @nested-import "./partials/components/single-post.css";
   @nested-import "./partials/components/single-product.css";
   @nested-import "./partials/components/single-question.css";

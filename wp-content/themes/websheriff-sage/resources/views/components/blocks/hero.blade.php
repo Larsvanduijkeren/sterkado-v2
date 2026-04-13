@@ -50,15 +50,13 @@ $partner_logos = is_array($partner_logos_raw) ? array_values(array_filter($partn
 
     return is_array($img) && (!empty($img['ID']) || !empty($img['url']));
 })) : [];
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $is_bleed = $image_layout === 'bleed';
 @endphp
 
 <section
     @if($id) id="{{ $id }}" @endif
-    class="hero hero--split bg-{{ $background_color }}{{ $is_bleed ? ' hero-image-bleed' : ' hero-image-contained' }}{{ $add_waves ? ' has-waves' : '' }}">
+    class="hero hero--split{{ $is_bleed ? ' hero-image-bleed' : ' hero-image-contained' }}">
     <div class="hero-split">
         <div class="hero-split-grid">
             <div class="hero-copy-col">
@@ -161,7 +159,6 @@ $is_bleed = $image_layout === 'bleed';
                     </div>
                     @endif
                     <div class="hero-visual-media">
-                        <div class="hero-visual-pattern" aria-hidden="true"></div>
                         @if(count($gallery) > 1)
                         <div class="swiper hero-gallery-swiper" aria-label="{{ __('Achtergrondafbeeldingen', 'sage') }}">
                             <div class="swiper-wrapper">

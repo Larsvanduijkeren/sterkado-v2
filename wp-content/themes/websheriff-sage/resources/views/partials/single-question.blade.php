@@ -123,12 +123,10 @@ $breadcrumb_schema = [
                     @php
                     $term = $card['term'] ?? null;
                     $card_posts = $card['posts'] ?? [];
-                    $grad_id = $term instanceof \WP_Term ? 'single-q-wave-' . (int) $term->term_id : 'single-q-wave-0';
                     @endphp
                     @include('partials.question-sidebar-card', [
                     'term' => $term,
                     'posts' => $card_posts,
-                    'grad_id' => $grad_id,
                     'icon_class' => $question_sidebar_icon_class,
                     ])
                     @endforeach

@@ -41,12 +41,12 @@
             "allow_in_bindings": 0
         },
         {
-            "key": "field_ps_background_color",
-            "label": "Background color",
-            "name": "background_color",
+            "key": "field_ps_post_list_source",
+            "label": "Posts to show",
+            "name": "post_list_source",
             "aria-label": "",
             "type": "select",
-            "instructions": "",
+            "instructions": "Load posts from a category, or the most recently published posts.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -55,12 +55,10 @@
                 "id": ""
             },
             "choices": {
-                "white": "White",
-                "red": "Red",
-                "sand": "Sand",
-                "grey": "Grey"
+                "category": "Category",
+                "recent": "Recent posts"
             },
-            "default_value": "white",
+            "default_value": "recent",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -72,12 +70,46 @@
             "save_options": 0
         },
         {
-            "key": "field_ps_add_waves",
-            "label": "Add waves",
-            "name": "add_waves",
+            "key": "field_ps_post_category",
+            "label": "Category",
+            "name": "post_category",
             "aria-label": "",
-            "type": "true_false",
-            "instructions": "Wave at the bottom of the section.",
+            "type": "taxonomy",
+            "instructions": "Posts in this category (newest first).",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_ps_post_list_source",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "select",
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "bidirectional_target": [],
+            "multiple": 0
+        },
+        {
+            "key": "field_ps_max_posts",
+            "label": "Maximum posts",
+            "name": "max_posts",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Slider shows four cards per row on large screens; extra posts are in the carousel.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -85,44 +117,14 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
+            "default_value": 8,
+            "min": 1,
+            "max": 48,
             "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_ps_posts",
-            "label": "Posts",
-            "name": "posts",
-            "aria-label": "",
-            "type": "relationship",
-            "instructions": "Order is preserved. Slider shows four cards per row on large screens.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post"
-            ],
-            "post_status": [
-                "publish"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "return_format": "object",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "elements": "",
-            "bidirectional": 0,
-            "bidirectional_target": []
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -144,5 +146,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776230000
+    "modified": 1776310000
 }

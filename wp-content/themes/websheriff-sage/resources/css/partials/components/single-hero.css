@@ -1,0 +1,197 @@
+/* Single post hero — 50/50 split when featured image; width matches .container (1600px max) */
+
+section.single-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-white);
+  color: var(--color-text-body-on-light);
+}
+
+section.single-hero .single-hero__track {
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+section.single-hero:not(.single-hero--has-image) .single-hero__track {
+  max-width: 800px;
+  padding: 40px 24px 32px;
+}
+
+section.single-hero:not(.single-hero--has-image) .single-hero__layout {
+  margin: 0;
+}
+
+section.single-hero:not(.single-hero--has-image) .single-hero__content-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+section.single-hero.single-hero--has-image .single-hero__track {
+  max-width: 1600px;
+  padding: 40px 40px 48px;
+}
+
+section.single-hero .single-hero__layout {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+section.single-hero.single-hero--has-image .single-hero__layout {
+  width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  section.single-hero.single-hero--has-image .single-hero__track {
+    padding: 32px 20px 40px;
+  }
+
+  section.single-hero.single-hero--has-image .single-hero__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  section.single-hero.single-hero--has-image .single-hero__content {
+    padding: 0 0 24px;
+    order: 1;
+  }
+
+  section.single-hero.single-hero--has-image .single-hero__image {
+    order: 2;
+    min-height: 220px;
+    max-height: 52vh;
+    border-radius: var(--radius-outside-400);
+
+    img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      max-height: 52vh;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  section.single-hero.single-hero--has-image .single-hero__track {
+    padding: 28px 16px 36px;
+  }
+
+  section.single-hero:not(.single-hero--has-image) .single-hero__track {
+    padding: 36px 16px 28px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  section.single-hero.single-hero--has-image .single-hero__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: stretch;
+    min-height: min(72vh, 680px);
+  }
+
+  section.single-hero.single-hero--has-image .single-hero__content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 0;
+    min-width: 0;
+  }
+
+  section.single-hero.single-hero--has-image .single-hero__content-inner {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  section.single-hero.single-hero--has-image .single-hero__image {
+    position: relative;
+    min-height: min(72vh, 680px);
+    border-radius: var(--radius-outside-400);
+    overflow: hidden;
+    background: var(--color-surface-purple-tint-muted);
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+section.single-hero .single-hero__title {
+  margin: 0 0 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 2.2vw + 1rem, 2.75rem);
+  line-height: 1.15;
+  color: var(--color-brand-purple-secondary);
+}
+
+section.single-hero .single-hero__meta {
+  margin: 0 0 20px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted-on-light);
+
+  .date {
+    margin-right: 8px;
+    padding-right: 14px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 4px;
+      height: 4px;
+      background: var(--color-text-muted-on-light);
+      border-radius: 50%;
+      opacity: 0.85;
+    }
+  }
+
+  .reading-time {
+    font-weight: 400;
+  }
+}
+
+section.single-hero .single-hero__summary {
+  margin: 0 0 28px;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  max-width: 52ch;
+
+  p {
+    margin: 0;
+
+    + p {
+      margin-top: 12px;
+    }
+  }
+}
+
+section.single-hero .single-hero__back {
+  margin: 16px 0 0;
+}
+
+section.single-hero .single-hero__image {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--color-surface-purple-tint-muted);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+  }
+}

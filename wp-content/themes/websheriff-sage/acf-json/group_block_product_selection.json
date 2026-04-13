@@ -45,6 +45,35 @@
             "delay": 0
         },
         {
+            "key": "field_product_sel_list_source",
+            "label": "Products to show",
+            "name": "product_list_source",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Pick products yourself, or load published products from one product category.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "manual": "Manual selection",
+                "category": "Category"
+            },
+            "default_value": "manual",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_product_sel_products",
             "label": "Products",
             "name": "products",
@@ -52,7 +81,15 @@
             "type": "relationship",
             "instructions": "Order is preserved. Desktop shows three columns when enough items are selected.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_product_sel_list_source",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -75,6 +112,71 @@
             "elements": "",
             "bidirectional": 0,
             "bidirectional_target": []
+        },
+        {
+            "key": "field_product_sel_category",
+            "label": "Product category",
+            "name": "product_category",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Newest products in this category first.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_product_sel_list_source",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "product_category",
+            "field_type": "select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_product_sel_max_products",
+            "label": "Maximum products",
+            "name": "max_products",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Caps how many products are loaded from the category.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_product_sel_list_source",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 12,
+            "min": 1,
+            "max": 48,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_product_sel_primary_label",
@@ -134,5 +236,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776084259
+    "modified": 1776320000
 }

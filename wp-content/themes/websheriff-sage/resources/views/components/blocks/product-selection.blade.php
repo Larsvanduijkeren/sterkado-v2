@@ -1,8 +1,6 @@
 @php
 $intro_title = $fields['intro_title'] ?? null;
 $intro_text = $fields['intro_text'] ?? null;
-$background_color = $fields['background_color'] ?? 'white';
-$add_waves = filter_var($fields['add_waves'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $id = $block['anchor'] ?? null;
 $is_preview = $is_preview ?? false;
 $product_cards = is_array($product_cards ?? null) ? $product_cards : [];
@@ -16,7 +14,7 @@ $has_secondary = $sec_url !== '' && $sec_title !== '';
 
 <section
     id="@if($id) {{ $id }} @endif"
-    class="product-selection bg-{{ $background_color }} {{ $add_waves ? 'has-waves' : '' }}">
+    class="product-selection">
     <div class="container">
         @if($intro_title || $intro_text)
         <div class="product-selection-intro content" data-aos="fade-up">
@@ -67,7 +65,7 @@ $has_secondary = $sec_url !== '' && $sec_title !== '';
             @endforeach
         </div>
         @elseif($is_preview)
-        <p class="product-selection-empty">{{ __('Selecteer producten in dit blok om kaarten te tonen.', 'sage') }}</p>
+        <p class="product-selection-empty">{{ __('Choose “Manual selection” and pick products, or “Category”, a product category, and “Maximum products”.', 'sage') }}</p>
         @endif
     </div>
 </section>

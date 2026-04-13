@@ -15,10 +15,6 @@ section.hero.hero--split {
   overflow-x: clip;
   font-size: 1.3rem;
 
-  &.has-waves {
-    overflow-x: visible;
-  }
-
   h1 {
     color: var(--color-brand-purple-secondary) !important;
     margin: 0 0 16px;
@@ -75,8 +71,21 @@ section.hero.hero--split {
       color: var(--color-text-muted-on-light);
     }
 
+    /* Rank Math (and similar) may use .label on segments — not the green pill */
     .label,
     .last {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: inherit;
+      line-height: inherit;
+      text-transform: none;
+      letter-spacing: normal;
       color: var(--color-text-body-on-light);
     }
   }
@@ -192,22 +201,6 @@ section.hero.hero--split {
     border-radius: inherit;
     overflow: hidden;
     background: var(--color-surface-purple-tint-muted);
-  }
-
-  .hero-visual-pattern {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: min(45%, 200px);
-    height: 100%;
-    z-index: 3;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      -55deg,
-      color-mix(in srgb, var(--color-brand-purple-secondary) 92%, var(--color-surface-white)) 0 12px,
-      color-mix(in srgb, var(--color-brand-purple-secondary) 100%, var(--color-surface-white)) 12px 24px
-    );
-    opacity: 0.95;
   }
 
   .hero-visual-media img,

@@ -137,13 +137,13 @@ class AcfBlockServiceProvider extends SageServiceProvider
     {
         if ($slug === 'post-selection') {
             return [
-                'posts' => $this->getPostSelectionPosts($fields),
+                'posts' => $this->getPostSelectionPosts($fields, $postId),
             ];
         }
 
         if ($slug === 'card-links') {
             return [
-                'category_cards' => $this->getCardLinksCategoryCards($fields, $postId),
+                'cards' => $this->buildCardLinksManualCards($fields),
             ];
         }
 
@@ -292,8 +292,7 @@ class AcfBlockServiceProvider extends SageServiceProvider
     protected function getGalleryMarqueeBlockData(array $fields): array
     {
         $images = $this->normalizeGalleryField($fields['gallery'] ?? null);
-        $count = count($images);
-        if ($count === 0) {
+        if ($images === []) {
             return [
                 'gallery_marquee_top' => [],
                 'gallery_marquee_bottom' => [],
@@ -302,19 +301,14 @@ class AcfBlockServiceProvider extends SageServiceProvider
             ];
         }
 
-        $mid = (int) ceil($count / 2);
-        $top = array_slice($images, 0, $mid);
-        $bottom = array_slice($images, $mid);
+        $minStripCells = max(24, count($images) * 4);
+        $topCycle = $this->shuffleGalleryImages($images);
+        $bottomCycle = $this->shuffleGalleryImages($images);
+        $top = $this->expandMarqueeStrip($topCycle, $minStripCells);
+        $bottom = $this->expandMarqueeStrip($bottomCycle, $minStripCells);
 
-        if ($bottom === [] && $top !== []) {
-            $bottom = $top;
-        }
-        if ($top === [] && $bottom !== []) {
-            $top = $bottom;
-        }
-
-        $topDuration = (int) max(25, min(120, count($top) * 6));
-        $bottomDuration = (int) max(25, min(120, count($bottom) * 6));
+        $topDuration = (int) max(30, min(100, count($top) * 2));
+        $bottomDuration = (int) max(30, min(100, count($bottom) * 2));
 
         return [
             'gallery_marquee_top' => $top,
@@ -322,6 +316,40 @@ class AcfBlockServiceProvider extends SageServiceProvider
             'gallery_marquee_top_duration' => $topDuration,
             'gallery_marquee_bottom_duration' => $bottomDuration,
         ];
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $images
+     * @return array<int, array<string, mixed>>
+     */
+    protected function shuffleGalleryImages(array $images): array
+    {
+        $copy = array_values($images);
+        shuffle($copy);
+
+        return $copy;
+    }
+
+    /**
+     * Repeat a shuffled cycle until the strip is long enough to fill wide viewports when duplicated for CSS marquee.
+     *
+     * @param  array<int, array<string, mixed>>  $cycle
+     * @return array<int, array<string, mixed>>
+     */
+    protected function expandMarqueeStrip(array $cycle, int $minItems): array
+    {
+        if ($cycle === []) {
+            return [];
+        }
+
+        $out = [];
+        while (count($out) < $minItems) {
+            foreach ($cycle as $img) {
+                $out[] = $img;
+            }
+        }
+
+        return $out;
     }
 
     /**
@@ -392,6 +420,43 @@ class AcfBlockServiceProvider extends SageServiceProvider
      */
     protected function getProductSelectionProducts(array $fields): array
     {
+        $source = isset($fields['product_list_source']) ? (string) $fields['product_list_source'] : 'manual';
+        if (! in_array($source, ['manual', 'category'], true)) {
+            $source = 'manual';
+        }
+
+        if ($source === 'category') {
+            $termId = $this->resolveAcfTaxonomyTermId($fields['product_category'] ?? null);
+            if ($termId === null) {
+                return [];
+            }
+
+            $max = isset($fields['max_products']) ? (int) $fields['max_products'] : 12;
+            $max = max(1, min(48, $max));
+
+            $posts = get_posts([
+                'post_type' => ProductPostTypeServiceProvider::POST_TYPE,
+                'post_status' => 'publish',
+                'posts_per_page' => $max,
+                'orderby' => 'date',
+                'order' => 'DESC',
+                'no_found_rows' => true,
+                'tax_query' => [
+                    [
+                        'taxonomy' => ProductPostTypeServiceProvider::TAXONOMY_CATEGORY,
+                        'field' => 'term_id',
+                        'terms' => [$termId],
+                    ],
+                ],
+            ]);
+
+            if ($posts !== [] && function_exists('update_post_caches')) {
+                update_post_caches($posts);
+            }
+
+            return $posts;
+        }
+
         $selected = $fields['products'] ?? null;
         if (! is_array($selected) || $selected === []) {
             return [];
@@ -427,156 +492,126 @@ class AcfBlockServiceProvider extends SageServiceProvider
     }
 
     /**
-     * Cards are built from hierarchical taxonomy terms assigned to the current post
-     * (e.g. FAQ “question” categories). Prefers {@see category}, otherwise the first
-     * hierarchical public taxonomy on the post type that has terms on this post.
-     *
      * @return array<int, array{name: string, description: string, url: string, button_label: string}>
      */
-    protected function getCardLinksCategoryCards(array $fields, int $postId): array
+    protected function buildCardLinksManualCards(array $fields): array
     {
-        $resolvedId = $postId > 0 ? $postId : (int) get_the_ID();
-        if ($resolvedId <= 0) {
+        $manual = $fields['manual_cards'] ?? null;
+        if (! is_array($manual) || $manual === []) {
             return [];
         }
 
-        $post = get_post($resolvedId);
-        if (! $post instanceof \WP_Post || in_array($post->post_status, ['trash', 'auto-draft'], true)) {
-            return [];
-        }
-
-        $taxonomy = $this->resolveCardLinksTaxonomy($post);
-        if ($taxonomy === null) {
-            return [];
-        }
-
-        $terms = wp_get_post_terms($resolvedId, $taxonomy, [
-            'orderby' => 'name',
-            'order' => 'ASC',
-        ]);
-
-        if (! is_array($terms) || $terms === []) {
-            return [];
-        }
-
-        $terms = array_values(array_filter($terms, static function ($term) use ($taxonomy): bool {
-            if (! $term instanceof \WP_Term) {
-                return false;
-            }
-            if ($taxonomy === 'category' && $term->slug === 'uncategorized') {
-                return false;
-            }
-
-            return true;
-        }));
-
-        if ($terms === []) {
-            return [];
-        }
-
-        $buttonLabelRaw = isset($fields['button_label']) ? trim((string) $fields['button_label']) : '';
-        $buttonLabel = $buttonLabelRaw !== ''
-            ? $buttonLabelRaw
+        $globalBtnRaw = isset($fields['button_label']) ? trim((string) $fields['button_label']) : '';
+        $globalBtn = $globalBtnRaw !== ''
+            ? $globalBtnRaw
             : __('Meer info', 'sage');
 
-        $cards = [];
-        foreach ($terms as $term) {
-            $link = get_term_link($term);
-            if ($link instanceof \WP_Error) {
+        $out = [];
+        foreach ($manual as $row) {
+            if (! is_array($row)) {
                 continue;
             }
-            $cards[] = [
-                'name' => $term->name,
-                'description' => term_description($term, $taxonomy),
-                'url' => (string) $link,
+            $link = $row['card_link'] ?? null;
+            $link = is_array($link) ? $link : [];
+            $url = isset($link['url']) ? trim((string) $link['url']) : '';
+            if ($url === '') {
+                continue;
+            }
+            $title = isset($row['card_title']) ? trim((string) $row['card_title']) : '';
+            $textRaw = $row['card_text'] ?? '';
+            $description = is_string($textRaw) ? trim($textRaw) : '';
+            $rowBtn = isset($row['card_button_label']) ? trim((string) $row['card_button_label']) : '';
+            $buttonLabel = $rowBtn !== '' ? $rowBtn : $globalBtn;
+            $out[] = [
+                'name' => $title,
+                'description' => $description,
+                'url' => $url,
                 'button_label' => $buttonLabel,
             ];
         }
 
-        return $cards;
-    }
-
-    protected function resolveCardLinksTaxonomy(\WP_Post $post): ?string
-    {
-        $objects = get_object_taxonomies($post->post_type, 'objects');
-        if (! is_array($objects) || $objects === []) {
-            return null;
-        }
-
-        $candidates = [];
-        foreach ($objects as $name => $tax) {
-            if (! $tax instanceof \WP_Taxonomy) {
-                continue;
-            }
-            if (! is_taxonomy_hierarchical($name)) {
-                continue;
-            }
-            if (isset($tax->public) && ! $tax->public) {
-                continue;
-            }
-            $candidates[] = $name;
-        }
-
-        if ($candidates === []) {
-            return null;
-        }
-
-        if (in_array('category', $candidates, true)) {
-            $terms = wp_get_post_terms($post->ID, 'category', ['fields' => 'ids']);
-            if (! is_wp_error($terms) && is_array($terms) && $terms !== []) {
-                return 'category';
-            }
-        }
-
-        sort($candidates);
-
-        foreach ($candidates as $name) {
-            $terms = wp_get_post_terms($post->ID, $name, ['fields' => 'ids']);
-            if (! is_wp_error($terms) && is_array($terms) && $terms !== []) {
-                return $name;
-            }
-        }
-
-        return null;
+        return $out;
     }
 
     /**
      * @return array<int, \WP_Post>
      */
-    protected function getPostSelectionPosts(array $fields): array
+    protected function getPostSelectionPosts(array $fields, int $contextPostId = 0): array
     {
-        $selected = $fields['posts'] ?? null;
-        if (! is_array($selected) || $selected === []) {
-            return [];
+        $source = isset($fields['post_list_source']) ? (string) $fields['post_list_source'] : 'recent';
+        if (! in_array($source, ['category', 'recent'], true)) {
+            $source = 'recent';
         }
 
-        $ids = [];
-        foreach ($selected as $item) {
-            if ($item instanceof \WP_Post) {
-                $ids[] = (int) $item->ID;
-            } elseif (is_numeric($item)) {
-                $ids[] = (int) $item;
-            }
-        }
-        $ids = array_values(array_unique(array_filter($ids)));
+        $max = isset($fields['max_posts']) ? (int) $fields['max_posts'] : 8;
+        $max = max(1, min(48, $max));
 
-        if ($ids === []) {
-            return [];
+        $exclude = [];
+        if ($contextPostId > 0) {
+            $exclude[] = $contextPostId;
         }
 
-        $posts = get_posts([
+        $args = [
             'post_type' => 'post',
-            'post__in' => $ids,
-            'posts_per_page' => -1,
-            'orderby' => 'post__in',
             'post_status' => 'publish',
-        ]);
+            'posts_per_page' => $max,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'ignore_sticky_posts' => true,
+            'no_found_rows' => true,
+        ];
+
+        if ($exclude !== []) {
+            $args['post__not_in'] = $exclude;
+        }
+
+        if ($source === 'category') {
+            $termId = $this->resolveAcfTaxonomyTermId($fields['post_category'] ?? null);
+            if ($termId === null) {
+                return [];
+            }
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => 'category',
+                    'field' => 'term_id',
+                    'terms' => [$termId],
+                ],
+            ];
+        }
+
+        $posts = get_posts($args);
 
         if ($posts !== [] && function_exists('update_post_caches')) {
             update_post_caches($posts);
         }
 
         return $posts;
+    }
+
+    /**
+     * @param  mixed  $raw  ACF taxonomy (return ID): int, numeric string, WP_Term, or empty.
+     */
+    protected function resolveAcfTaxonomyTermId(mixed $raw): ?int
+    {
+        if ($raw instanceof \WP_Term) {
+            return (int) $raw->term_id;
+        }
+        if (is_array($raw)) {
+            $first = $raw[0] ?? null;
+            if (! is_numeric($first)) {
+                return null;
+            }
+            $id = (int) $first;
+
+            return $id > 0 ? $id : null;
+        }
+        if (is_numeric($raw)) {
+            $id = (int) $raw;
+
+            return $id > 0 ? $id : null;
+        }
+
+        return null;
     }
 
     /**

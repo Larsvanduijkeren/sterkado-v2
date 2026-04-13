@@ -54,7 +54,7 @@ section.content-cards {
   .content-cards-card .image {
     position: relative;
     margin: 0;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     background: var(--color-surface-purple-tint-subtle);
 
     img {
@@ -66,46 +66,31 @@ section.content-cards {
     }
   }
 
-  .content-cards-highlight {
+  /* Image overlay: uses global .label; keep compact width */
+  .content-cards-card .image .content-cards-highlight {
     position: absolute;
     top: 12px;
     right: 12px;
+    left: auto;
     z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 72px;
-    min-height: 72px;
-    max-width: calc(100% - 24px);
-    padding: 8px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    background: var(--color-brand-orange-accent);
-    color: var(--color-surface-white);
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 11px;
-    line-height: 1.2;
+    margin: 0;
+    max-width: min(240px, calc(100% - 24px));
     text-align: center;
+    text-wrap: balance;
   }
 
   @media (min-width: 768px) {
-    .content-cards-highlight {
-      font-size: 13px;
-      min-width: 88px;
-      min-height: 88px;
+    .content-cards-card .image .content-cards-highlight {
       top: 16px;
       right: 16px;
+      max-width: min(260px, calc(100% - 32px));
     }
   }
 
-  .content-cards-card-tag {
-    display: inline-block;
-    margin: 0 0 12px;
-    padding: 6px 10px;
-    border-radius: var(--radius-inside-400);
-    background: var(--color-brand-green-primary);
-    color: var(--color-surface-white);
+  /* Flex column defaults to stretch — label was growing full card width; do not override global .label (green pill) */
+  .content-cards-card .body > .label {
+    align-self: flex-start;
+    max-width: min(100%, 280px);
   }
 
   .content-cards-card .body {
@@ -114,10 +99,12 @@ section.content-cards {
     flex-direction: column;
     flex: 1 1 auto;
     min-height: 0;
+    background: var(--color-brand-purple-secondary);
+    color: var(--color-text-on-purple-background);
 
     h3 {
       margin: 0 0 12px;
-      color: var(--color-brand-purple-secondary);
+      color: var(--color-text-on-purple-background);
       font-family: var(--font-heading);
       font-weight: 700;
     }
@@ -125,10 +112,39 @@ section.content-cards {
     .text {
       flex: 1 1 auto;
       margin: 0 0 20px;
-      color: var(--color-text-body-on-light);
+      color: var(--color-text-on-purple-background);
+
+      p,
+      li,
+      ul,
+      ol,
+      blockquote {
+        color: var(--color-text-on-purple-background);
+      }
 
       p:last-child {
         margin-bottom: 0;
+      }
+
+      a {
+        color: var(--color-text-on-purple-background);
+        text-decoration: underline;
+        text-decoration-color: var(--color-brand-orange-accent);
+        text-underline-offset: 2px;
+
+        &:hover,
+        &:focus-visible {
+          color: var(--color-text-on-purple-background);
+          text-decoration-color: var(--color-brand-orange-accent);
+        }
+      }
+
+      strong {
+        color: var(--color-text-on-purple-background);
+      }
+
+      li::marker {
+        color: var(--color-text-on-purple-background);
       }
     }
 
@@ -136,15 +152,6 @@ section.content-cards {
       margin-top: auto;
       margin-bottom: 0;
     }
-  }
-
-  .content-cards-squiggle {
-    display: inline;
-    text-decoration: underline;
-    text-decoration-style: wavy;
-    text-decoration-color: var(--color-brand-orange-accent);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
   }
 
   @media only screen and (max-width: 991px) {
