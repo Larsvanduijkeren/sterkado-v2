@@ -47,19 +47,6 @@
       margin-top: 24px;
     }
 
-    .mobile-nav__logo {
-      display: block;
-      margin-bottom: 16px;
-
-      img {
-        height: 40px;
-        width: auto;
-        max-width: 220px;
-        object-fit: contain;
-        object-position: left center;
-      }
-    }
-
     .mobile-nav__feedback {
       margin-bottom: 16px;
       font-size: 0.85rem;
@@ -260,7 +247,7 @@
   width: 35px;
   height: 35px;
   flex-shrink: 0;
-  background: var(--color-brand-orange-accent);
+  background: var(--color-brand-purple-secondary);
   border-radius: var(--radius-inside-400);
   transition: background 0.3s ease-in-out;
 

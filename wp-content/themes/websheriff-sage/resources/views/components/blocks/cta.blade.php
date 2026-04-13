@@ -4,6 +4,12 @@ $title_emphasis = $fields['title_emphasis_phrase'] ?? '';
 $text = $fields['text'] ?? null;
 $button = $fields['button'] ?? null;
 $button = is_array($button) ? $button : [];
+$ctaButtonClass = \App\acf_button_style_class(
+    isset($fields['button_style']) && is_string($fields['button_style']) && $fields['button_style'] !== ''
+        ? trim($fields['button_style'])
+        : null,
+    'primary'
+);
 $gallery_raw = $fields['images'] ?? null;
 $id = $block['anchor'] ?? null;
 $images = is_array($gallery_raw) ? array_values(array_filter($gallery_raw, static function ($item): bool {
@@ -18,7 +24,7 @@ $images_right = array_slice($images, $half);
     id="@if($id) {{ $id }} @endif"
     class="cta">
     <div class="container">
-        <div class="cta-card">
+        <div class="cta-card" data-aos="fade-up">
             <div class="cta-layout">
                 <div class="cta-side cta-side-left{{ count($images_left) ? '' : ' is-empty' }}" @if(count($images_left)) aria-hidden="true" @endif>
                     @foreach($images_left as $img)
@@ -32,7 +38,7 @@ $images_right = array_slice($images, $half);
                     @endforeach
                 </div>
 
-                <div class="cta-center content" data-aos="fade-up">
+                <div class="cta-center content">
                     @if($title !== '')
                     <h2 class="cta-title">
                         @if($title_emphasis !== '' && str_contains($title, $title_emphasis))
@@ -56,7 +62,7 @@ $images_right = array_slice($images, $half);
                     <div class="buttons">
                         <a
                             href="{{ esc_url($button['url']) }}"
-                            class="btn"
+                            class="{{ esc_attr($ctaButtonClass) }}"
                             target="{{ esc_attr($button['target'] ?? '_self') }}"
                             @if(($button['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif>{{ $button['title'] }}</a>
                     </div>

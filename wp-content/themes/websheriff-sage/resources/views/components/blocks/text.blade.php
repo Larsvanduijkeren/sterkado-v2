@@ -38,12 +38,14 @@ $alignment_class = $is_split ? 'normal' : ($alignment ?? 'normal');
                     $url = $button_obj['url'] ?? null;
                     $button_title = $button_obj['title'] ?? null;
                     $target = $button_obj['target'] ?? '_self';
+                    $bs = isset($button['button_style']) && is_string($button['button_style']) ? trim($button['button_style']) : '';
+                    $btnRowClass = \App\acf_button_style_class($bs !== '' ? $bs : null, $loop->first ? 'primary' : 'tertiary');
                     @endphp
                     @if($url && $button_title)
                     <a
                         href="{{ esc_url($url) }}"
                         target="{{ esc_attr($target) }}"
-                        class="{{ $loop->first ? 'btn' : 'btn btn-ghost' }}">
+                        class="{{ esc_attr($btnRowClass) }}">
                         {{ $button_title }}
                     </a>
                     @endif
@@ -74,12 +76,14 @@ $alignment_class = $is_split ? 'normal' : ($alignment ?? 'normal');
                 $url = $button_obj['url'] ?? null;
                 $button_title = $button_obj['title'] ?? null;
                 $target = $button_obj['target'] ?? '_self';
+                $bs = isset($button['button_style']) && is_string($button['button_style']) ? trim($button['button_style']) : '';
+                $btnRowClass = \App\acf_button_style_class($bs !== '' ? $bs : null, $loop->first ? 'primary' : 'tertiary');
                 @endphp
                 @if($url && $button_title)
                 <a
                     href="{{ esc_url($url) }}"
                     target="{{ esc_attr($target) }}"
-                    class="{{ $loop->first ? 'btn' : 'btn btn-ghost' }}">
+                    class="{{ esc_attr($btnRowClass) }}">
                     {{ $button_title }}
                 </a>
                 @endif

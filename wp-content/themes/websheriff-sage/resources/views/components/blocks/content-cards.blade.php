@@ -31,12 +31,14 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
                 $url = $button_obj['url'] ?? null;
                 $button_title = $button_obj['title'] ?? null;
                 $target = $button_obj['target'] ?? '_self';
+                $bs = isset($button['button_style']) && is_string($button['button_style']) ? trim($button['button_style']) : '';
+                $btnRowClass = \App\acf_button_style_class($bs !== '' ? $bs : null, $loop->first ? 'primary' : 'tertiary');
                 @endphp
                 @if($url && $button_title)
                 <a
                     href="{{ esc_url($url) }}"
                     target="{{ esc_attr($target) }}"
-                    class="{{ $loop->first ? 'btn' : 'btn btn-ghost' }}">
+                    class="{{ esc_attr($btnRowClass) }}">
                     {{ $button_title }}
                 </a>
                 @endif
@@ -60,6 +62,8 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
             $linkUrl = $link['url'] ?? '';
             $linkTitle = $link['title'] ?? '';
             $linkTarget = $link['target'] ?? '_self';
+            $lbs = isset($card['link_button_style']) && is_string($card['link_button_style']) ? trim($card['link_button_style']) : '';
+            $cardLinkBtnClass = \App\acf_button_style_class($lbs !== '' ? $lbs : null, 'secondary');
             @endphp
             <article class="content-cards-card">
                 @if(is_array($img) && (!empty($img['ID']) || !empty($img['url'])))
@@ -88,7 +92,7 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
                     <div class="buttons">
                         <a
                             href="{{ esc_url($linkUrl) }}"
-                            class="btn-secondary"
+                            class="{{ esc_attr($cardLinkBtnClass) }}"
                             target="{{ esc_attr($linkTarget) }}"
                             @if(($linkTarget ?? '_self') === '_blank') rel="noopener noreferrer" @endif>{{ $linkTitle }}</a>
                     </div>

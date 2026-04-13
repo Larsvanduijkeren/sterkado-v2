@@ -187,7 +187,13 @@ section.post-selection {
     .post-selection-intro {
       flex-direction: column;
       align-items: stretch;
+      gap: 12px;
       margin-bottom: 24px;
+    }
+
+    /* Row uses 240px as min width; in column the main axis is vertical — same flex-basis became a tall box */
+    .post-selection-intro-title {
+      flex: 0 1 auto;
     }
 
     .post-selection-intro-actions {

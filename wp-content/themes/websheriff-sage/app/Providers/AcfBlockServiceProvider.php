@@ -492,7 +492,7 @@ class AcfBlockServiceProvider extends SageServiceProvider
     }
 
     /**
-     * @return array<int, array{name: string, description: string, url: string, button_label: string}>
+     * @return array<int, array{name: string, description: string, url: string, button_label: string, button_style: string|null}>
      */
     protected function buildCardLinksManualCards(array $fields): array
     {
@@ -522,11 +522,14 @@ class AcfBlockServiceProvider extends SageServiceProvider
             $description = is_string($textRaw) ? trim($textRaw) : '';
             $rowBtn = isset($row['card_button_label']) ? trim((string) $row['card_button_label']) : '';
             $buttonLabel = $rowBtn !== '' ? $rowBtn : $globalBtn;
+            $styleRaw = isset($row['button_style']) ? trim((string) $row['button_style']) : '';
+            $buttonStyle = in_array($styleRaw, ['primary', 'secondary', 'tertiary'], true) ? $styleRaw : null;
             $out[] = [
                 'name' => $title,
                 'description' => $description,
                 'url' => $url,
                 'button_label' => $buttonLabel,
+                'button_style' => $buttonStyle,
             ];
         }
 

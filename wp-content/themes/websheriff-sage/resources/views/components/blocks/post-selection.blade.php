@@ -5,6 +5,12 @@ $intro_button = is_array($intro_button) ? $intro_button : [];
 $intro_url = $intro_button['url'] ?? '';
 $intro_btn_title = $intro_button['title'] ?? '';
 $intro_target = $intro_button['target'] ?? '_self';
+$introBtnClass = \App\acf_button_style_class(
+    isset($fields['intro_button_style']) && is_string($fields['intro_button_style']) && $fields['intro_button_style'] !== ''
+        ? trim($fields['intro_button_style'])
+        : null,
+    'secondary'
+);
 $id = $block['anchor'] ?? null;
 $posts = isset($posts) && is_array($posts) ? $posts : [];
 $is_preview = $is_preview ?? false;
@@ -24,7 +30,7 @@ $has_intro = (bool) ($intro_title || ($intro_url !== '' && $intro_btn_title !== 
             <div class="post-selection-intro-actions">
                 <a
                     href="{{ esc_url($intro_url) }}"
-                    class="btn-secondary"
+                    class="{{ esc_attr($introBtnClass) }}"
                     target="{{ esc_attr($intro_target) }}"
                     @if($intro_target === '_blank') rel="noopener noreferrer" @endif>{{ $intro_btn_title }}</a>
             </div>

@@ -26,8 +26,6 @@ $topNavHtml = wp_nav_menu([
 @endphp
 
 @include('partials.mobile-nav', [
-    'logo' => $logo,
-    'phone' => $phone,
     'ctaTertiary' => $ctaTertiary,
     'ctaSecondary' => $ctaSecondary,
     'mainNavHtml' => $mainNavHtml,

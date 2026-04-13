@@ -10,6 +10,18 @@ $sec_url = $product_secondary_button['url'] ?? '';
 $sec_title = $product_secondary_button['title'] ?? '';
 $sec_target = $product_secondary_button['target'] ?? '_self';
 $has_secondary = $sec_url !== '' && $sec_title !== '';
+$productPrimaryBtnClass = \App\acf_button_style_class(
+    isset($fields['primary_button_style']) && is_string($fields['primary_button_style']) && $fields['primary_button_style'] !== ''
+        ? trim($fields['primary_button_style'])
+        : null,
+    'primary'
+);
+$productSecondaryBtnClass = \App\acf_button_style_class(
+    isset($fields['secondary_button_style']) && is_string($fields['secondary_button_style']) && $fields['secondary_button_style'] !== ''
+        ? trim($fields['secondary_button_style'])
+        : null,
+    'tertiary'
+);
 @endphp
 
 <section
@@ -50,12 +62,12 @@ $has_secondary = $sec_url !== '' && $sec_title !== '';
                     @endif
                     <div class="buttons">
                         @if($card['permalink'] !== '' && $product_primary_label !== '')
-                        <a href="{{ esc_url($card['permalink']) }}" class="btn">{{ $product_primary_label }}</a>
+                        <a href="{{ esc_url($card['permalink']) }}" class="{{ esc_attr($productPrimaryBtnClass) }}">{{ $product_primary_label }}</a>
                         @endif
                         @if($has_secondary)
                         <a
                             href="{{ esc_url($sec_url) }}"
-                            class="btn-ghost"
+                            class="{{ esc_attr($productSecondaryBtnClass) }}"
                             target="{{ esc_attr($sec_target) }}"
                             @if($sec_target === '_blank') rel="noopener noreferrer" @endif>{{ $sec_title }}</a>
                         @endif

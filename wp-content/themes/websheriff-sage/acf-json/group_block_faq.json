@@ -87,6 +87,36 @@
             "append": ""
         },
         {
+            "key": "field_faq_search_button_style",
+            "label": "Search button style",
+            "name": "search_button_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Brand preset. Leave unset for primary (orange).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary (orange)",
+                "secondary": "Secondary (green)",
+                "tertiary": "Tertiary (outline)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_faq_questions_per_category",
             "label": "Questions per category card",
             "name": "questions_per_category",

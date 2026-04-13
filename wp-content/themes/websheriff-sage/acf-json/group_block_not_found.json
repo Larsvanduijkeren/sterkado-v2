@@ -62,6 +62,36 @@
             "allow_in_bindings": 0
         },
         {
+            "key": "field_not_found_button_style",
+            "label": "Knopstijl",
+            "name": "button_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Merkstijl. Leeg laten voor tertiary (outline), zoals voorheen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary (oranje)",
+                "secondary": "Secondary (groen)",
+                "tertiary": "Tertiary (outline)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_not_found_phone_hint",
             "label": "Telefoon — regel eronder",
             "name": "phone_hint",

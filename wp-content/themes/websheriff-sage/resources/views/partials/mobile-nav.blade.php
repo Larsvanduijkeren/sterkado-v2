@@ -1,6 +1,4 @@
 @php
-$logo = $logo ?? null;
-$phone = $phone ?? null;
 $ctaTertiary = $ctaTertiary ?? [];
 $ctaSecondary = $ctaSecondary ?? [];
 $mainNavHtml = $mainNavHtml ?? '';
@@ -11,20 +9,10 @@ $feedbackRaw = $feedbackRaw ?? '';
     <div class="content">
         <div class="nav">
             <div class="flex-wrapper">
-                @if(!empty($logo['url'] ?? null))
-                <a href="{{ home_url('/') }}" class="mobile-nav__logo" aria-label="{{ esc_attr(sprintf(__('Home — %s', 'sage'), get_bloginfo('name'))) }}">
-                    <img src="{{ esc_url($logo['sizes']['large'] ?? $logo['url']) }}" alt="{{ esc_attr($logo['alt'] ?? get_bloginfo('name')) }}">
-                </a>
-                @endif
-
                 @if(is_string($feedbackRaw) && $feedbackRaw !== '')
                 <div class="mobile-nav__feedback">
                     {!! do_shortcode(wp_unslash($feedbackRaw)) !!}
                 </div>
-                @endif
-
-                @if(!empty($phone))
-                <a class="phone" href="tel:{{ esc_attr(preg_replace('/\s+/', '', wp_strip_all_tags($phone))) }}">{{ $phone }}</a>
                 @endif
 
                 @if($topNavHtml)

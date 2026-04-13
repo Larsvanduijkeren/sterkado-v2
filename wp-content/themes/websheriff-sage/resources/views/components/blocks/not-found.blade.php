@@ -7,6 +7,12 @@ $button = is_array($button) ? $button : [];
 $buttonUrl = isset($button['url']) ? trim((string) $button['url']) : '';
 $buttonTitle = isset($button['title']) ? trim((string) $button['title']) : '';
 $buttonTarget = isset($button['target']) ? (string) $button['target'] : '_self';
+$notFoundBtnClass = \App\acf_button_style_class(
+    isset($fields['button_style']) && is_string($fields['button_style']) && $fields['button_style'] !== ''
+        ? trim($fields['button_style'])
+        : null,
+    'tertiary'
+);
 $phonePrimary = $not_found_phone_primary ?? '';
 $phoneSecondary = $not_found_phone_secondary ?? '';
 $phoneUrl = $not_found_phone_url ?? '';
@@ -32,7 +38,7 @@ $is_preview = $is_preview ?? false;
                 <div class="not-found-actions">
                     <a
                         href="{{ esc_url($buttonUrl) }}"
-                        class="btn btn-ghost not-found-cta"
+                        class="{{ esc_attr($notFoundBtnClass) }} not-found-cta"
                         @if($buttonTarget !== '') target="{{ esc_attr($buttonTarget) }}" @endif
                         @if($buttonTarget === '_blank') rel="noopener noreferrer" @endif>{{ $buttonTitle }}</a>
                 </div>

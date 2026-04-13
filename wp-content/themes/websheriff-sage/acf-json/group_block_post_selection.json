@@ -29,7 +29,7 @@
             "name": "intro_button",
             "aria-label": "",
             "type": "link",
-            "instructions": "Optional. Green secondary style, right-aligned next to the title.",
+            "instructions": "Optional. Right-aligned next to the title. Use “Intro button style” for the colour.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -39,6 +39,36 @@
             },
             "return_format": "array",
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_ps_intro_button_style",
+            "label": "Intro button style",
+            "name": "intro_button_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Brand preset. Leave unset for secondary (green), as before.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary (orange)",
+                "secondary": "Secondary (green)",
+                "tertiary": "Tertiary (outline)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_ps_post_list_source",

@@ -110,3 +110,23 @@ function office_map_sanitize_embed(string $html): string
 
     return wp_kses($html, $allowed);
 }
+
+/**
+ * Map ACF “Button style” values to front-end classes (Sterkado: primary orange, secondary green, tertiary outline).
+ *
+ * @param string|null $acfValue Stored value: primary, secondary, or tertiary. Null or empty uses $fallback.
+ * @param 'primary'|'secondary'|'tertiary' $fallback Preserves previous per-block defaults when the field is unset.
+ */
+function acf_button_style_class(?string $acfValue, string $fallback = 'primary'): string
+{
+    $v = is_string($acfValue) ? trim($acfValue) : '';
+    $key = $v !== '' && in_array($v, ['primary', 'secondary', 'tertiary'], true)
+        ? $v
+        : (in_array($fallback, ['primary', 'secondary', 'tertiary'], true) ? $fallback : 'primary');
+
+    return match ($key) {
+        'secondary' => 'btn-secondary',
+        'tertiary' => 'btn-ghost',
+        default => 'btn',
+    };
+}

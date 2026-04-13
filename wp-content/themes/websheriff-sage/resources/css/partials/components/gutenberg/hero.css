@@ -168,9 +168,9 @@ section.hero.hero--split {
 
   .hero-partners-logo img,
   .hero-partners-logo-link img {
-    max-height: 36px;
+    max-height: 28px;
     width: auto;
-    max-width: 140px;
+    max-width: 118px;
     height: auto;
     object-fit: contain;
     filter: grayscale(1);

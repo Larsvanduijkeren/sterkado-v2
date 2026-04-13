@@ -14,6 +14,12 @@ $has_intro = (bool) ($intro_title || $intro_text);
 $search_active = $faq_search_query !== '';
 $search_placeholder = is_string($search_placeholder) && $search_placeholder !== '' ? $search_placeholder : __('Zoek op onderwerp', 'sage');
 $search_button_label = is_string($search_button_label) && $search_button_label !== '' ? $search_button_label : __('Zoeken', 'sage');
+$faqSearchBtnClass = \App\acf_button_style_class(
+    isset($fields['search_button_style']) && is_string($fields['search_button_style']) && $fields['search_button_style'] !== ''
+        ? trim($fields['search_button_style'])
+        : null,
+    'primary'
+);
 @endphp
 
 <section
@@ -46,7 +52,7 @@ $search_button_label = is_string($search_button_label) && $search_button_label !
                 value="{{ esc_attr($faq_search_query) }}"
                 placeholder="{{ esc_attr($search_placeholder) }}"
                 autocomplete="off">
-            <button type="submit" class="btn">{{ $search_button_label }}</button>
+            <button type="submit" class="{{ esc_attr($faqSearchBtnClass) }}">{{ $search_button_label }}</button>
         </form>
 
         @if($search_active)

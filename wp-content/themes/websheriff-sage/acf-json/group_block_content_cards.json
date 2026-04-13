@@ -79,7 +79,7 @@
             "name": "intro_buttons",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "First button uses primary (orange) style; additional rows use outline style.",
+            "instructions": "Optional per-row “Button style”. When unset, the first row is primary (orange) and further rows are tertiary (outline).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -111,6 +111,37 @@
                     },
                     "return_format": "array",
                     "allow_in_bindings": 0,
+                    "parent_repeater": "field_cc_intro_buttons"
+                },
+                {
+                    "key": "field_cc_intro_button_style",
+                    "label": "Button style",
+                    "name": "button_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Overrides the intro default for this row when set.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary": "Primary (orange)",
+                        "secondary": "Secondary (green)",
+                        "tertiary": "Tertiary (outline)"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
                     "parent_repeater": "field_cc_intro_buttons"
                 }
             ]
@@ -280,7 +311,7 @@
                     "name": "link",
                     "aria-label": "",
                     "type": "link",
-                    "instructions": "Green secondary button style.",
+                    "instructions": "Card CTA. Leave unset for secondary (green), as before.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -290,6 +321,37 @@
                     },
                     "return_format": "array",
                     "allow_in_bindings": 0,
+                    "parent_repeater": "field_cc_cards"
+                },
+                {
+                    "key": "field_cc_card_link_button_style",
+                    "label": "Link button style",
+                    "name": "link_button_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Leave unset for secondary (green).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary": "Primary (orange)",
+                        "secondary": "Secondary (green)",
+                        "tertiary": "Tertiary (outline)"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
                     "parent_repeater": "field_cc_cards"
                 }
             ]

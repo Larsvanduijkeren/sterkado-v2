@@ -6,7 +6,7 @@ $logoRows = is_array($logos) ? $logos : [];
 @endphp
 <section @if($id) id="{{ $id }}" @endif class="logos">
     <div class="container">
-        <div class="logos__card">
+        <div class="logos__card" data-aos="fade-up">
             @if($heading)
             <h2 class="logos__heading">{{ e($heading) }}</h2>
             @endif

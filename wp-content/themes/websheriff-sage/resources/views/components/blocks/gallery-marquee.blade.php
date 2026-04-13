@@ -12,7 +12,7 @@ $durBottom = (int) ($gallery_marquee_bottom_duration ?? 40);
     class="gallery-marquee">
     @if(count($top) || count($bottom))
     <div class="container">
-        <div class="gallery-marquee-rows">
+        <div class="gallery-marquee-rows" data-aos="fade-up">
             @if(count($top))
             <div class="gallery-marquee-row gallery-marquee-row-forward" style="--gallery-marquee-duration: {{ $durTop }}s;">
                 <div class="gallery-marquee-scroll">

@@ -24,7 +24,7 @@ $id = $block['anchor'] ?? null;
 <section @if($id) id="{{ $id }}-hero" @endif class="request-quote-hero">
     <div class="container">
         <div class="request-quote-hero__inner flex-wrapper">
-            <div class="content">
+            <div class="content" data-aos="fade-up">
                 @if($heroTitle)
                 <h1 class="h2 request-quote-hero__title">{{ e($heroTitle) }}</h1>
                 @endif
@@ -35,7 +35,7 @@ $id = $block['anchor'] ?? null;
                 @endif
             </div>
             @if($quote)
-            <aside class="request-quote-hero__quote" aria-label="{{ esc_attr(__('Quote', 'sage')) }}">
+            <aside data-aos="fade-up" class="request-quote-hero__quote" aria-label="{{ esc_attr(__('Quote', 'sage')) }}">
                 <div class="request-quote-hero__quote-visual">
                     @if(!empty($quoteImage['url'] ?? null))
                     <div class="request-quote-hero__quote-logo">
@@ -67,7 +67,7 @@ $id = $block['anchor'] ?? null;
 
 <section @if($id) id="{{ $id }}" @endif class="request-quote">
     <div class="container">
-        <div class="request-quote__layout flex-wrapper">
+        <div class="request-quote__layout flex-wrapper" data-aos="fade-up">
             <div class="request-quote__main content flow-wrapper">
                 <nav class="request-quote__controls controls" aria-label="{{ esc_attr(__('Stappen', 'sage')) }}">
                     <button type="button" class="request-quote__control step step-1 current" data-step-target="1">

@@ -167,8 +167,8 @@ header.header {
   list-style: none;
 }
 
-.header__top-nav .header-menu > li,
-.header__main-nav .header-menu > li {
+.header__top-nav .header-menu>li,
+.header__main-nav .header-menu>li {
   list-style: none;
   display: inline-block;
   position: relative;
@@ -176,12 +176,12 @@ header.header {
   cursor: pointer;
 }
 
-.header__top-nav .header-menu > li:first-child,
-.header__main-nav .header-menu > li:first-child {
+.header__top-nav .header-menu>li:first-child,
+.header__main-nav .header-menu>li:first-child {
   margin-left: 0;
 }
 
-header.header .header__top-nav .header__top-nav-inner > ul.header-menu > li > a {
+header.header .header__top-nav .header__top-nav-inner>ul.header-menu>li>a {
   display: block;
   font-size: 0.8125rem;
   font-weight: 400;
@@ -192,7 +192,7 @@ header.header .header__top-nav .header__top-nav-inner > ul.header-menu > li > a 
   transition: color 0.2s ease;
 }
 
-header.header .header__main-nav .header__main-nav-inner > ul.header-menu > li > a {
+header.header .header__main-nav .header__main-nav-inner>ul.header-menu>li>a {
   display: block;
   font-size: 0.9rem;
   font-weight: 400;
@@ -203,17 +203,17 @@ header.header .header__main-nav .header__main-nav-inner > ul.header-menu > li > 
   transition: color 0.2s ease;
 }
 
-header.header .header__top-nav .header__top-nav-inner > ul.header-menu > li > a:hover,
-header.header .header__top-nav .header__top-nav-inner > ul.header-menu > li > a:focus,
-header.header .header__main-nav .header__main-nav-inner > ul.header-menu > li > a:hover,
-header.header .header__main-nav .header__main-nav-inner > ul.header-menu > li > a:focus {
+header.header .header__top-nav .header__top-nav-inner>ul.header-menu>li>a:hover,
+header.header .header__top-nav .header__top-nav-inner>ul.header-menu>li>a:focus,
+header.header .header__main-nav .header__main-nav-inner>ul.header-menu>li>a:hover,
+header.header .header__main-nav .header__main-nav-inner>ul.header-menu>li>a:focus {
   color: var(--color-brand-orange-accent);
 }
 
-header.header .header__main-nav .header__main-nav-inner > ul.header-menu > .current-menu-item > a,
-header.header .header__main-nav .header__main-nav-inner > ul.header-menu > .current_page_item > a,
-header.header .header__top-nav .header__top-nav-inner > ul.header-menu > .current-menu-item > a,
-header.header .header__top-nav .header__top-nav-inner > ul.header-menu > .current_page_item > a {
+header.header .header__main-nav .header__main-nav-inner>ul.header-menu>.current-menu-item>a,
+header.header .header__main-nav .header__main-nav-inner>ul.header-menu>.current_page_item>a,
+header.header .header__top-nav .header__top-nav-inner>ul.header-menu>.current-menu-item>a,
+header.header .header__top-nav .header__top-nav-inner>ul.header-menu>.current_page_item>a {
   color: var(--color-text-body-on-light);
   font-weight: 400;
 }
@@ -222,13 +222,13 @@ header.header .header__top-nav .header__top-nav-inner > ul.header-menu > .curren
 .header__main-nav .menu-item-has-children {
   position: relative;
 
-  &:hover > .sub-menu,
-  &:focus-within > .sub-menu {
+  &:hover>.sub-menu,
+  &:focus-within>.sub-menu {
     opacity: 1;
     pointer-events: all;
   }
 
-  & > a {
+  &>a {
     padding-right: 22px;
 
     &::before {
@@ -310,18 +310,23 @@ header.header .header__top-nav .header__top-nav-inner > ul.header-menu > .curren
 
   header.header {
     padding: 6px 0;
+
+    .container {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
   }
 
   .header__row--top {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding-bottom: 0;
     margin-bottom: 0;
     border-bottom: none;
     gap: 12px;
-    padding-left: 48px;
+    padding-left: 0;
     padding-right: 48px;
     box-sizing: border-box;
   }
@@ -337,6 +342,10 @@ header.header .header__top-nav .header__top-nav-inner > ul.header-menu > .curren
   .header__logo-link {
     height: 34px;
     justify-self: auto;
+
+    img {
+      object-position: left center;
+    }
   }
 
   .header__row--bottom {

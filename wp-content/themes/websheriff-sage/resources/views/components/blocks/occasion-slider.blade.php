@@ -46,12 +46,14 @@ $show_nav = $slide_count > 1;
                 $b_url = $button_obj['url'] ?? null;
                 $b_title = $button_obj['title'] ?? null;
                 $b_target = $button_obj['target'] ?? '_self';
+                $bs = isset($button['button_style']) && is_string($button['button_style']) ? trim($button['button_style']) : '';
+                $btnRowClass = \App\acf_button_style_class($bs !== '' ? $bs : null, 'secondary');
                 @endphp
                 @if($b_url && $b_title)
                 <a
                     href="{{ esc_url($b_url) }}"
                     target="{{ esc_attr($b_target) }}"
-                    class="btn-secondary"
+                    class="{{ esc_attr($btnRowClass) }}"
                     @if(($b_target ?? '_self') === '_blank') rel="noopener noreferrer" @endif>{{ $b_title }}</a>
                 @endif
                 @endforeach

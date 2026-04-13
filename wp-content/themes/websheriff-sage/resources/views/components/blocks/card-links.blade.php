@@ -9,9 +9,9 @@ $is_preview = $is_preview ?? false;
     id="@if($id) {{ $id }} @endif"
     class="card-links">
     <div class="container">
-        <div class="card-links-banner">
+        <div class="card-links-banner" data-aos="fade-up">
             <div class="card-links-layout">
-                <div class="card-links-intro content" data-aos="fade-up">
+                <div class="card-links-intro content">
                     @if($title)
                     <h2>{{ $title }}</h2>
                     @endif
@@ -24,7 +24,7 @@ $is_preview = $is_preview ?? false;
                 </div>
 
                 @if(count($cards ?? []))
-                <div class="card-links-cards" data-aos="fade-up">
+                <div class="card-links-cards">
                     @foreach($cards ?? [] as $card)
                     <article class="card-links-card">
                         @if($card['name'] !== '')
@@ -35,7 +35,7 @@ $is_preview = $is_preview ?? false;
                         @endif
                         @if($card['url'] !== '' && $card['button_label'] !== '')
                         <div class="buttons">
-                            <a href="{{ esc_url($card['url']) }}" class="btn-secondary">{{ $card['button_label'] }}</a>
+                            <a href="{{ esc_url($card['url']) }}" class="{{ esc_attr(\App\acf_button_style_class($card['button_style'] ?? null, 'secondary')) }}">{{ $card['button_label'] }}</a>
                         </div>
                         @endif
                     </article>
