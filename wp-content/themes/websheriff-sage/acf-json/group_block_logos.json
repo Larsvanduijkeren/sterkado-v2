@@ -1,0 +1,113 @@
+{
+    "key": "group_block_logos",
+    "title": "Block: Logos",
+    "fields": [
+        {
+            "key": "field_logos_heading",
+            "label": "Title",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown on the left inside the card (e.g. “Zij geloven in ons”).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_logos_items",
+            "label": "Logos",
+            "name": "logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Up to five columns per row on desktop; extra logos wrap to the next row.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_logos_item_image",
+            "button_label": "Add logo",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_logos_item_image",
+                    "label": "Logo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_logos_items"
+                },
+                {
+                    "key": "field_logos_item_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_logos_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/logos"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1776000000
+}

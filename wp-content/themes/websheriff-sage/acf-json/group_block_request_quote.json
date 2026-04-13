@@ -1,0 +1,233 @@
+{
+    "key": "group_block_request_quote",
+    "title": "Block: Request quote",
+    "fields": [
+        {
+            "key": "field_rq_hero_title",
+            "label": "Hero title",
+            "name": "hero_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {"width": "", "class": "", "id": ""},
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_rq_hero_text",
+            "label": "Hero text",
+            "name": "hero_text",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_rq_quote_image",
+            "label": "Quote image",
+            "name": "quote_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_rq_quote",
+            "label": "Quote",
+            "name": "quote",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_rq_quote_author",
+            "label": "Quote author",
+            "name": "quote_author",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_rq_explanation_title",
+            "label": "Explanation title (sidebar)",
+            "name": "explanation_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_rq_explanation_text",
+            "label": "Explanation text",
+            "name": "explanation_text",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_rq_usps_title",
+            "label": "USPs title",
+            "name": "usps_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_rq_usps",
+            "label": "USPs",
+            "name": "usps",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add USP",
+            "sub_fields": [
+                {
+                    "key": "field_rq_usp_text",
+                    "label": "Text",
+                    "name": "usp",
+                    "type": "text",
+                    "required": 0,
+                    "parent_repeater": "field_rq_usps"
+                }
+            ]
+        },
+        {
+            "key": "field_rq_contact_title",
+            "label": "Contact card title",
+            "name": "contact_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0
+        },
+        {
+            "key": "field_rq_contact_text",
+            "label": "Contact card text",
+            "name": "contact_text",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_rq_phone_title",
+            "label": "Phone label",
+            "name": "phone_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {"width": "50"}
+        },
+        {
+            "key": "field_rq_phone_text",
+            "label": "Phone value",
+            "name": "phone_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {"width": "50"}
+        },
+        {
+            "key": "field_rq_email_title",
+            "label": "Email label",
+            "name": "email_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {"width": "50"}
+        },
+        {
+            "key": "field_rq_email_text",
+            "label": "Email value",
+            "name": "email_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "wrapper": {"width": "50"}
+        },
+        {
+            "key": "field_rq_contact_meta",
+            "label": "Contact image badge",
+            "name": "contact_meta",
+            "type": "text",
+            "instructions": "Small label over the contact photo.",
+            "required": 0
+        },
+        {
+            "key": "field_rq_contact_image",
+            "label": "Contact image",
+            "name": "contact_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_rq_request_quote_text",
+            "label": "Offerte CTA intro",
+            "name": "request_quote_text",
+            "type": "wysiwyg",
+            "instructions": "Text above the “Vraag vrijblijvend een offerte aan” button.",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_rq_order_now_text",
+            "label": "Bestellen CTA intro",
+            "name": "order_now_text",
+            "type": "wysiwyg",
+            "instructions": "Text above the “Direct bestellen” button.",
+            "required": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_rq_step_feedback_shortcode",
+            "label": "Feedback shortcode (step 1)",
+            "name": "step_feedback_shortcode",
+            "type": "textarea",
+            "instructions": "Optional shortcode next to the step-1 continue button (e.g. Feedback Company bar).",
+            "required": 0,
+            "rows": 2,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/request-quote"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1776200000
+}

@@ -1,6 +1,6 @@
 section.hero {
     /* Background from .bg-* (styling.css); do not force white or it overrides bg-grey etc. */
-    color: var(--color-white);
+    color: var(--color-surface-white);
     position: relative;
     overflow: hidden;
     font-size: 1.3rem;
@@ -15,7 +15,7 @@ section.hero {
 
         .card {
             padding: 80px;
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-outside-400);
             overflow: hidden;
             position: relative;
             background-color: rgb(151, 151, 151);
@@ -28,7 +28,7 @@ section.hero {
 
     h1,
     h2 {
-        color: var(--color-white) !important;
+        color: var(--color-surface-white) !important;
     }
 
     .hero__breadcrumb {
@@ -135,10 +135,10 @@ section.hero {
         align-items: center;
         gap: 8px;
         padding: 8px 14px;
-        background: var(--color-white);
+        background: var(--color-surface-white);
         border-radius: 999px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-        color: var(--color-text);
+        color: var(--color-text-body-on-light);
         font-size: 0.85rem;
         font-weight: 500;
         text-decoration: none;
@@ -167,7 +167,7 @@ section.hero {
     }
 
     .hero-google-badge__star {
-        color: #f9ab00;
+        color: var(--color-brand-orange-accent);
         font-size: 1rem;
         line-height: 1;
     }
@@ -179,7 +179,7 @@ section.hero {
     }
 
     .hero-google-badge__sep {
-        color: var(--color-text-light);
+        color: var(--color-text-muted-on-light);
         font-weight: 400;
     }
 
@@ -198,7 +198,7 @@ section.hero {
         p,
         ul,
         ol {
-            color: var(--color-white);
+            color: var(--color-surface-white);
         }
 
         .wrapper {
@@ -206,18 +206,6 @@ section.hero {
             max-width: 700px;
         }
 
-        /* First CTA: accent (global .btn-accent); second: white — both hover to primary blue */
-        .buttons {
-            .btn.white {
-
-                &:hover,
-                &:focus {
-                    background-color: var(--color-primary) !important;
-                    border-color: var(--color-primary) !important;
-                    color: var(--color-white) !important;
-                }
-            }
-        }
     }
 }
 
@@ -230,7 +218,7 @@ section.hero {
 }
 
         .card {
-            border-radius: var(--radius-md) !important;
+            border-radius: var(--radius-outside-400) !important;
             padding: 40px 20px !important;
 
             .image:before {
@@ -238,6 +226,7 @@ section.hero {
             }
 
             .btn,
+            .btn-secondary,
             .btn-ghost {
                 width: 100%;
             }

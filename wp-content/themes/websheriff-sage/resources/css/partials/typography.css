@@ -1,3 +1,9 @@
+/* Sterkado brand typography — Montserrat; breakpoints: mobile ≤767, tablet 768–1199, desktop ≥1200 */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;1,400&display=swap");
+
+/* Icomoon (Iconfont): icon symbols only. All headings/body use Montserrat. */
+
 @font-face {
   font-family: 'Iconfont';
   src: url('../../fonts/icomoon.eot');
@@ -7,48 +13,6 @@
     url('../../fonts/icomoon.ttf') format('truetype'),
     url('../../fonts/icomoon.svg#Iconfont') format('svg');
   font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Centra';
-  src: url('../../fonts/CentraNo2-Book.eot');
-  src:
-    url('../../fonts/CentraNo2-Book.eot?#iefix') format('embedded-opentype'),
-    url('../../fonts/CentraNo2-Book.woff') format('woff'),
-    url('../../fonts/CentraNo2-Book.woff2') format('woff2'),
-    url('../../fonts/CentraNo2-Book.ttf') format('truetype'),
-    url('../../fonts/CentraNo2-Book.svg#Iconfont') format('svg');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Centra';
-  src: url('../../fonts/CentraNo2-Medium.eot');
-  src:
-    url('../../fonts/CentraNo2-Medium.eot?#iefix') format('embedded-opentype'),
-    url('../../fonts/CentraNo2-Medium.woff') format('woff'),
-    url('../../fonts/CentraNo2-Medium.woff2') format('woff2'),
-    url('../../fonts/CentraNo2-Medium.ttf') format('truetype'),
-    url('../../fonts/CentraNo2-Medium.svg#Iconfont') format('svg');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lalka';
-  src: url('../../fonts/lalka.eot');
-  src:
-    url('../../fonts/lalka.eot?#iefix') format('embedded-opentype'),
-    url('../../fonts/lalka.woff') format('woff'),
-    url('../../fonts/lalka.woff2') format('woff2'),
-    url('../../fonts/lalka.ttf') format('truetype'),
-    url('../../fonts/lalka.svg#Iconfont') format('svg');
-  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -64,9 +28,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body,
+html {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  body,
+  html {
+    font-size: 16px;
+  }
 }
 
 h1, .h1,
@@ -76,61 +50,179 @@ h4, .h4,
 h5, .h5 {
   font-family: var(--font-heading);
   margin: 0 0 var(--space-sm) 0;
-  line-height: 1;
   position: relative;
   z-index: 10;
-  font-weight: 500;
-  color: var(--color-primary);
+  color: var(--color-brand-purple-secondary);
 
   span {
-    color: var(--color-accent);
+    color: var(--color-brand-orange-accent);
   }
 }
 
+/* H1 — primary heading (may pair with .h1--light / Extra Light 200) */
 h1, .h1 {
-  font-size: 70px;
-  line-height: 1;
-
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: 34px;
 }
 
-h2, .h2 {
-  font-size: 48px;
-  line-height: 1.2;
-}
-
-h3, .h3 {
-  font-size: 36px;
-  line-height: 1.2;
-  font-weight: 500;
-}
-
-h4, .h4 {
-  font-size: 28px;
-  line-height: 1.2;
-}
-
-h5, .h5 {
-  font-size: 18px;
-  line-height: 1.2;
-  font-family: var(--font-body);
-  font-weight: 500;
-}
-
-@media only screen and (max-width: 991px) {
+@media (min-width: 768px) {
   h1, .h1 {
-    font-size: 40px;
+    font-size: 48px;
   }
+}
 
+.h1--light,
+h1 .h1--light {
+  font-weight: 200;
+}
+
+/* H2 — section subheading */
+h2, .h2 {
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: 26px;
+}
+
+@media (min-width: 768px) {
   h2, .h2 {
+    font-size: 35px;
+  }
+}
+
+/* H3 — secondary heading */
+h3, .h3 {
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: 22px;
+}
+
+@media (min-width: 768px) {
+  h3, .h3 {
     font-size: 28px;
   }
+}
 
-  h3, .h3 {
+/* H4 — card / compact headings */
+h4, .h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  h4, .h4 {
     font-size: 22px;
   }
+}
 
-  h4, .h4 {
+/* H5 — not in brand sheet; stepped below H4 */
+h5, .h5 {
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  h5, .h5 {
     font-size: 18px;
-    margin-bottom: 10px;
   }
+}
+
+@media (min-width: 1200px) {
+  h5, .h5 {
+    font-size: 20px;
+  }
+}
+
+/* Kop Diensten */
+.heading-services,
+.h-services {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: 20px;
+}
+
+@media (min-width: 1200px) {
+  .heading-services,
+  .h-services {
+    font-size: 25px;
+  }
+}
+
+/* Body default — set on root; prose inherits */
+p,
+li,
+td,
+th {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Intro / lead blog — bold body */
+.text-intro,
+.intro-blog {
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .text-intro,
+  .intro-blog {
+    font-size: 16px;
+  }
+}
+
+/* Paragraph directly under primary H1 (hero) */
+.header-lead,
+.hero-lead {
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .header-lead,
+  .hero-lead {
+    font-size: 22px;
+  }
+}
+
+/* Small / labels */
+small,
+.text-small {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1;
+  font-size: 11px;
+}
+
+@media (min-width: 768px) {
+  small,
+  .text-small {
+    font-size: 13px;
+  }
+}
+
+.label,
+span.label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1;
+  font-size: 11px;
+}
+
+@media (min-width: 768px) {
+  .label,
+  span.label {
+    font-size: 13px;
+  }
+}
+
+.label--uppercase,
+span.label.label--uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }

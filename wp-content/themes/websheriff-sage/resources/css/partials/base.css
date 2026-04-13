@@ -10,12 +10,25 @@ body,
 html {
   margin: 0;
   padding: 0;
-  line-height: 1.8;
-  font-weight: 200;
-  font-family: var(--font-body);
-  font-size: 17px;
-  color: var(--color-text);
-  background: var(--color-white);
+  color: var(--color-text-body-on-light);
+  background: var(--color-surface-white);
+}
+
+/* Sticky footer: keep footer at bottom of viewport when content is short */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#main.page-content {
+  flex: 1 0 auto;
+}
+
+body.admin-bar #app {
+  min-height: calc(100vh - var(--wp-admin--admin-bar--height, 32px));
+  min-height: calc(100dvh - var(--wp-admin--admin-bar--height, 32px));
 }
 
 * {
@@ -28,11 +41,11 @@ html {
 a {
   font-weight: 700;
   text-decoration: none;
-  color: var(--color-accent);
+  color: var(--color-brand-purple-secondary);
 
   &:hover,
   &:focus {
-    color: var(--color-primary);
+    color: var(--color-brand-green-primary);
   }
 }
 
@@ -44,7 +57,7 @@ ul,
 ol {
   margin: 0 0 var(--space-sm) 0;
   padding: 0;
-  color: var(--color-text-light);
+  color: var(--color-text-muted-on-light);
 
   li {
     margin: 0 0 0 20px;
@@ -65,13 +78,13 @@ blockquote {
     top: 0;
     width: 4px;
     height: 100%;
-    background: var(--color-primary);
+    background: var(--color-brand-purple-secondary);
   }
 }
 
 strong,
 b {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 ol {
@@ -80,23 +93,12 @@ ol {
 
 p {
   margin: 0 0 var(--space-sm) 0;
-  color: var(--color-text-light);
+  color: var(--color-text-body-on-light);
 }
 
 span.label {
   display: block;
   margin-bottom: 10px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 1px;
   position: relative;
-  color: var(--color-accent) !important;
-}
-
-@media only screen and (max-width: 991px) {
-  body,
-  html {
-    font-size: 16px;
-  }
+  color: var(--color-brand-orange-accent) !important;
 }

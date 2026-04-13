@@ -1,161 +1,84 @@
+/* Sterkado brand buttons: primary (orange CTA), secondary (green), tertiary (outline) */
+
 .btn,
+.btn-secondary,
+.btn-ghost,
 button[type=submit]:not(.dgwt-wcas-search-submit),
 input[type=submit] {
   appearance: none;
   -webkit-appearance: none;
+  box-sizing: border-box;
   display: inline-flex;
-  background-color: var(--color-primary) !important;
-  color: var(--color-white) !important;
-  font-weight: 500 !important;
-  font-size: .9rem;
-  padding: 12px 20px !important;
-  font-family: var(--font-body);
-  line-height: 1.6;
-  border-radius: var(--radius-sm);
   align-items: center;
   justify-content: center;
+  min-height: 44px;
+  padding: 12px 25px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: var(--radius-inside-400);
   cursor: pointer;
   outline: none;
   box-shadow: none;
-  border: 1px solid var(--color-primary);
-  transition: all 0.3s ease-in-out;
-  letter-spacing: 0.5px;
-
-  &.small {
-    padding: 10px 20px !important;
-    font-size: 0.8rem;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: var(--color-accent) !important;
-    color: var(--color-white) !important;
-    border-color: var(--color-accent) !important;
-  }
-
-  &.white {
-    background-color: var(--color-white) !important;
-    color: var(--color-text) !important;
-    border-color: var(--color-white);
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-accent) !important;
-      color: var(--color-white) !important;
-      border-color: var(--color-accent) !important;
-    }
-  }
-
-  &.btn-accent {
-    background-color: var(--color-accent) !important;
-    color: var(--color-white) !important;
-    border-color: var(--color-accent) !important;
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-primary) !important;
-      color: var(--color-white) !important;
-      border-color: var(--color-primary) !important;
-    }
-  }
-}
-
-.btn-ghost {
-  appearance: none;
-  -webkit-appearance: none;
-  display: inline-flex;
-  background-color: transparent !important;
-  color: var(--color-text) !important;
-  font-weight: 500 !important;
-  font-size: .9rem;
-  padding: 12px 20px !important;
-  font-family: var(--font-body);
-  line-height: 1.6;
-  border-radius: var(--radius-sm);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  outline: none;
-  box-shadow: none;
-  border: 2px solid var(--color-text);
-  transition: all 0.3s ease-in-out;
-
-  &.forward {
-    &:after {
-      font-family: 'Iconfont' !important;
-      content: '\e910';
-      position: relative;
-      margin-left: 10px;
-      font-size: 0.8rem;
-    }
-  }
-
-  &.small {
-    padding: 10px 20px !important;
-    font-size: 0.8rem;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: var(--color-accent) !important;
-    color: var(--color-white) !important;
-    border-color: var(--color-accent) !important;
-  }
-
-  &.white {
-    color: var(--color-white) !important;
-    border-color: var(--color-white);
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-accent) !important;
-      color: var(--color-white) !important;
-      border-color: var(--color-accent) !important;
-    }
-  }
-}
-
-.btn-text {
-  appearance: none;
-  -webkit-appearance: none;
-  display: inline-flex;
-  align-items: center;
-  font-weight: 500;
-  font-size: 0.9rem;
-  font-family: var(--font-body);
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
-  background: transparent !important;
-  color: var(--color-text) !important;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  cursor: pointer;
   text-decoration: none;
-  text-underline-offset: 0.15em;
-  transition: color 0.2s ease;
+  border-style: solid;
+  border-width: 1px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
 
-  &:after {
-    font-family: 'Iconfont' !important;
-    content: '\e910';
-    margin-left: 10px;
-    font-size: 0.6rem;
+@media (min-width: 768px) {
+  .btn,
+  .btn-secondary,
+  .btn-ghost,
+  button[type=submit]:not(.dgwt-wcas-search-submit),
+  input[type=submit] {
+    padding: 15px 40px;
+    font-size: 16px;
   }
+}
+
+/* Primary CTA — orange */
+.btn,
+button[type=submit]:not(.dgwt-wcas-search-submit),
+input[type=submit] {
+  background-color: var(--color-brand-orange-accent) !important;
+  color: var(--color-text-on-purple-background) !important;
+  border-color: var(--color-brand-orange-accent) !important;
 
   &:hover,
   &:focus {
-    color: var(--color-accent) !important;
+    background-color: var(--color-button-primary-hover-bg) !important;
+    border-color: var(--color-button-primary-hover-bg) !important;
+    color: var(--color-text-on-purple-background) !important;
   }
+}
 
-  &.white {
-    color: var(--color-white) !important;
+/* Secondary — green */
+.btn-secondary {
+  background-color: var(--color-brand-green-primary) !important;
+  color: var(--color-text-on-purple-background) !important;
+  border-color: var(--color-brand-green-primary) !important;
 
-    &:hover,
-    &:focus {
-      color: var(--color-white) !important;
-      opacity: 0.85;
-    }
+  &:hover,
+  &:focus {
+    background-color: var(--color-button-secondary-hover-bg) !important;
+    border-color: var(--color-button-secondary-hover-bg) !important;
+    color: var(--color-text-on-purple-background) !important;
+  }
+}
+
+/* Tertiary — white, orange text & border */
+.btn-ghost {
+  background-color: var(--color-surface-white) !important;
+  color: var(--color-brand-orange-accent) !important;
+  border-color: var(--color-brand-orange-accent) !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-button-tertiary-hover-bg) !important;
+    border-color: var(--color-brand-orange-accent) !important;
+    color: var(--color-brand-orange-accent) !important;
   }
 }
 

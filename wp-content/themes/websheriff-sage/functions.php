@@ -34,9 +34,8 @@ require $composer;
 Application::configure()
     ->withProviders([
         App\Providers\ThemeServiceProvider::class,
-        App\Providers\PostTypeServiceProvider::class,
-        App\Providers\TaxonomyServiceProvider::class,
         App\Providers\AcfBlockServiceProvider::class,
+        App\Providers\RequestQuoteServiceProvider::class,
         App\Providers\WpFormsServiceProvider::class,
     ])
     ->boot();

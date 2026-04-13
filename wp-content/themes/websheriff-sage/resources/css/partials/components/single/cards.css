@@ -10,8 +10,8 @@ section.single-cards {
   .single-card {
     display: flex;
     flex-direction: column;
-    background: var(--color-white);
-    border-radius: var(--radius-md);
+    background: var(--color-surface-white);
+    border-radius: var(--radius-outside-400);
     overflow: hidden;
     box-shadow: var(--shadow-card);
     border: 1px solid rgba(0, 0, 0, 0.1);

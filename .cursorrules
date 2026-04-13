@@ -85,7 +85,7 @@
 
 - **Native CSS with nesting**: Use plain CSS; nest selectors under a block root (e.g. `section.faq { .flex-wrapper { ... } }`) for block-scoped styles
 - **Spacing units**: Use **px** for margins, padding, gutters, gaps, and other layout spacing. Avoid rem for these; keep rem/em for typography (font-size, line-height) where appropriate.
-- **Variables**: Put design tokens in `resources/css/modules/variables.css` as `:root` custom properties (e.g. `--gutter`, `--font-body`, `--card-shadow`, `--radius-small`)
+- **Variables**: Put design tokens in `resources/css/modules/variables.css` as `:root` custom properties (e.g. `--gutter`, `--font-body`, `--card-shadow`, `--radius-outside-400`, `--radius-inside-400`)
 - **Structure**: `app.css` imports variables, then base/partials (typography, buttons, inputs, etc.), then component partials, then each Gutenberg block file from `partials/components/gutenberg/<block-name>.css`
 - **Block styles**: One file per block in `resources/css/partials/components/gutenberg/` named to match block slug (e.g. `faq.css`, `hero.css`); scope under a top-level selector (e.g. `section.faq`, `section.hero`)
 - **Editor**: `editor.css` imports `app.css` and adds block-editor overrides (e.g. `.block-editor-block-list__block` with nested section/block rules so editor preview matches frontend)

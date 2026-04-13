@@ -47,12 +47,12 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_69a9758512bcb_hbtn",
-            "label": "Header button",
-            "name": "header_button",
+            "key": "field_sterk_header_feedback_shortcode",
+            "label": "Feedback widget (shortcode)",
+            "name": "header_feedback_shortcode",
             "aria-label": "",
-            "type": "link",
-            "instructions": "Single CTA on the right of the header (accent style). Leave empty to hide.",
+            "type": "textarea",
+            "instructions": "Paste the shortcode from your feedback\/reviews provider (top-left in the header). Leave empty to hide.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -60,71 +60,45 @@
                 "class": "",
                 "id": ""
             },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "",
+            "placeholder": "[your_feedback_shortcode]"
+        },
+        {
+            "key": "field_sterk_header_cta_tertiary",
+            "label": "Header button (outline)",
+            "name": "header_cta_tertiary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Left CTA in the header bar (tertiary \/ outline style), e.g. Direct bestellen. Leave empty to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
             "return_format": "array",
             "allow_in_bindings": 0
         },
         {
-            "key": "field_69a976001234",
-            "label": "Header USPs",
-            "name": "",
+            "key": "field_sterk_header_cta_secondary",
+            "label": "Header button (solid green)",
+            "name": "header_cta_secondary",
             "aria-label": "",
-            "type": "tab",
-            "instructions": "",
+            "type": "link",
+            "instructions": "Right CTA in the header bar (secondary green style), e.g. Offerte aanvragen. Leave empty to hide.",
             "required": 0,
-            "conditional_logic": false,
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_69a976001235",
-            "label": "Header USPs",
-            "name": "header_usps",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Unique selling points shown as a slider above the header. Leave empty to hide the bar.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add USP",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_69a976001236",
-                    "label": "Text",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "e.g. Een compleet dagje uit in Harderwijk",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_69a976001235"
-                }
-            ]
+            "return_format": "array",
+            "allow_in_bindings": 0
         },
         {
             "key": "field_69a975d743ddf",
@@ -150,7 +124,7 @@
             "name": "phone",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Shown in the header top row (click-to-call).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -285,12 +259,12 @@
             "append": ""
         },
         {
-            "key": "field_69a975_footer_tab",
-            "label": "Footer",
+            "key": "field_sterk_social_tab",
+            "label": "Social",
             "name": "",
             "aria-label": "",
             "type": "tab",
-            "instructions": "Site footer columns and slogan.",
+            "instructions": "Social profile links in the footer card (bottom row, right-aligned).",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -301,6 +275,118 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_sterk_social_links",
+            "label": "Social links",
+            "name": "social_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "One row per profile. Icons use Font Awesome (loaded by the theme).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_sterk_social_link",
+            "button_label": "Add social link",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_sterk_social_platform",
+                    "label": "Platform",
+                    "name": "platform",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "facebook": "Facebook",
+                        "instagram": "Instagram",
+                        "linkedin": "LinkedIn",
+                        "youtube": "YouTube",
+                        "tiktok": "TikTok",
+                        "x_twitter": "X (Twitter)",
+                        "other": "Other"
+                    },
+                    "default_value": "other",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_sterk_social_links"
+                },
+                {
+                    "key": "field_sterk_social_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_sterk_social_links"
+                }
+            ]
+        },
+        {
+            "key": "field_69a975_footer_tab",
+            "label": "Footer",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "Intro heading, optional logo override, and column titles. Assign WordPress menus to Footer kolom 1–5 under Appearance → Menus. Social icons are under the Social tab.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_sterk_footer_heading",
+            "label": "Intro heading",
+            "name": "footer_heading",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Main line above the link columns (left side of the card). Wrap a word in <span class=\"footer__squiggle\">...<\/span> for the orange decorative underline (e.g. around “helpen”).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "",
+            "placeholder": ""
         },
         {
             "key": "field_69a975_footer_logo",
@@ -329,286 +415,104 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_69a975_footer_description",
-            "label": "Description",
-            "name": "footer_description",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "Short text under the logo.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
-        },
-        {
-            "key": "field_69a975_footer_facebook",
-            "label": "Facebook URL",
-            "name": "footer_facebook",
+            "key": "field_sterk_footer_nav_1_title",
+            "label": "Footer kolom 1 titel",
+            "name": "footer_nav_1_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Heading above the menu “Footer kolom 1”.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
-                "width": "50",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "https://",
             "maxlength": "",
+            "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_69a975_footer_instagram",
-            "label": "Instagram URL",
-            "name": "footer_instagram",
+            "key": "field_sterk_footer_nav_2_title",
+            "label": "Footer kolom 2 titel",
+            "name": "footer_nav_2_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Heading above “Footer kolom 2”.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
-                "width": "50",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "https://",
             "maxlength": "",
+            "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_69a975_footer_offer_title",
-            "label": "Offer column title",
-            "name": "footer_offer_title",
+            "key": "field_sterk_footer_nav_3_title",
+            "label": "Footer kolom 3 titel",
+            "name": "footer_nav_3_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Default: Ons aanbod (translated).",
+            "instructions": "Heading above “Footer kolom 3”.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
             "maxlength": "",
+            "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_69a975_footer_offer_links",
-            "label": "Offer links",
-            "name": "footer_offer_links",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_69a975_footer_offer_link",
-            "button_label": "Add link",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_69a975_footer_offer_link",
-                    "label": "Link",
-                    "name": "link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "parent_repeater": "field_69a975_footer_offer_links"
-                }
-            ]
-        },
-        {
-            "key": "field_69a975_footer_links_title",
-            "label": "Links column title",
-            "name": "footer_links_title",
+            "key": "field_sterk_footer_nav_4_title",
+            "label": "Footer kolom 4 titel",
+            "name": "footer_nav_4_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Default: Handige links (translated).",
+            "instructions": "Heading above “Footer kolom 4”.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
             "maxlength": "",
+            "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_69a975_footer_links_rep",
-            "label": "Footer links",
-            "name": "footer_links",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_69a975_footer_nav_link",
-            "button_label": "Add link",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_69a975_footer_nav_link",
-                    "label": "Link",
-                    "name": "link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": false,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "parent_repeater": "field_69a975_footer_links_rep"
-                }
-            ]
-        },
-        {
-            "key": "field_69a975_footer_contact_title",
-            "label": "Contact column title",
-            "name": "footer_contact_title",
+            "key": "field_sterk_footer_nav_5_title",
+            "label": "Footer kolom 5 titel",
+            "name": "footer_nav_5_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Default: Contact (translated).",
+            "instructions": "Heading above “Footer kolom 5”.",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
             "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69a975_footer_phone",
-            "label": "Phone",
-            "name": "footer_phone",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69a975_footer_email",
-            "label": "Email",
-            "name": "footer_email",
-            "aria-label": "",
-            "type": "email",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_69a975_footer_address",
-            "label": "Address",
-            "name": "footer_address",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
-        },
-        {
-            "key": "field_69a975_footer_slogan",
-            "label": "Slogan (bottom bar)",
-            "name": "footer_slogan",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "Optional full-width line below the columns. Allows basic HTML.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0,
-            "delay": 0
         },
         {
             "key": "field_69a975_footer_credits_tab",
@@ -669,5 +573,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1775300600
+    "modified": 1775901200
 }

@@ -7,7 +7,7 @@
 }
 
 .swiper-scrollbar-drag {
-  background: var(--color-primary) !important;
+  background: var(--color-brand-green-primary) !important;
 }
 
 .swiper-scrollbar {
@@ -19,15 +19,15 @@
 .swiper-pagination .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  background: var(--color-white);
-  border-radius: 5px;
+  background: var(--color-surface-white);
+  border-radius: var(--radius-inside-400);
   border: 1px solid rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
   opacity: 1;
 
   &.swiper-pagination-bullet-active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--color-brand-green-primary);
+    border-color: var(--color-brand-green-primary);
     width: 60px;
   }
 }
@@ -36,12 +36,12 @@
 .swiper-button-next {
   width: 40px !important;
   height: 40px !important;
-  background: var(--color-white);
+  background: var(--color-surface-white);
   border-radius: 100%;
   box-shadow: var(--shadow-card);
   transition: all 0.3s ease-in-out;
   opacity: 1;
-  color: var(--color-text);
+  color: var(--color-text-body-on-light);
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -50,10 +50,10 @@
 
   &:hover,
   &:focus {
-    background: var(--color-accent);
+    background: var(--color-brand-orange-accent);
 
     &:before {
-      color: var(--color-white);
+      color: var(--color-surface-white);
     }
   }
 
@@ -63,7 +63,7 @@
     font-size: 1rem;
     transform: rotate(-90deg) translateY(5%);
     transition: all 0.3s ease-in-out;
-    color: var(--color-accent);
+    color: var(--color-brand-orange-accent);
   }
 
   &.swiper-button-prev {
@@ -89,14 +89,13 @@ section:not(.hero) {
 }
 
 /* Gutenberg wraps ACF blocks; default overflow can clip section.has-waves ::before (drawn below the section). */
-.wp-block-acf-vacancy-archive,
 .wp-block-acf-hero {
   overflow: visible;
 }
 
 /* Wave mask URLs: use ../../images/… from this file so Vite resolves to hashed assets in production. */
 section {
-  background: var(--color-white);
+  background: var(--color-surface-white);
   position: relative;
 
   &.has-waves {
@@ -111,7 +110,7 @@ section {
       top: 100%;
       height: 30px;
       width: 100%;
-      background-color: var(--color-white);
+      background-color: var(--color-surface-white);
       background-image: none;
       mask-image: url(../../images/wave-white.svg);
       -webkit-mask-image: url(../../images/wave-white.svg);
@@ -145,17 +144,17 @@ section {
         position: absolute;
         left: 0;
         top: 7px;
-      color: var(--color-green);
+      color: var(--color-brand-green-primary);
         font-size: .6rem;
       }
     }
   }
 
   &.bg-red {
-    background: var(--color-accent-secondary);
+    background: var(--color-surface-purple-tint-muted);
 
     &.has-waves::before {
-      background-color: var(--color-accent-secondary);
+      background-color: var(--color-surface-purple-tint-muted);
       mask-image: url(../../images/wave-white.svg);
       -webkit-mask-image: url(../../images/wave-white.svg);
       mask-size: auto 100%;
@@ -170,10 +169,10 @@ section {
   }
 
   &.bg-grey {
-    background: var(--color-bg-subtle);
+    background: var(--color-surface-purple-tint-subtle);
 
     &.has-waves::before {
-      background-color: var(--color-bg-subtle);
+      background-color: var(--color-surface-purple-tint-subtle);
       mask-image: url(../../images/wave-white.svg);
       -webkit-mask-image: url(../../images/wave-white.svg);
       mask-size: auto 100%;
@@ -188,10 +187,10 @@ section {
   }
 
   &.bg-sand {
-    background: var(--color-accent-tertiary);
+    background: var(--color-surface-orange-tint-subtle);
 
     &.has-waves::before {
-      background-color: var(--color-accent-tertiary);
+      background-color: var(--color-surface-orange-tint-subtle);
       mask-image: url(../../images/wave-white.svg);
       -webkit-mask-image: url(../../images/wave-white.svg);
       mask-size: auto 100%;

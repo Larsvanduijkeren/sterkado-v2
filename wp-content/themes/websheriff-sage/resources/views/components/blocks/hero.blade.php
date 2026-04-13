@@ -80,7 +80,7 @@ $showGoogleBadge = $googleBadgeShow && ($googleRating !== '' || $googleReviewCou
                         <a
                             href="{{ esc_url($url) }}"
                             target="{{ esc_attr($target) }}"
-                            class="{{ $loop->first ? 'btn btn-accent' : 'btn white' }}">
+                            class="{{ $loop->first ? 'btn' : 'btn btn-ghost' }}">
                             {{ $button_title }}
                         </a>
                         @endif

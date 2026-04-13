@@ -1,32 +1,47 @@
-/* Design tokens – CSS custom properties */
+/* Design tokens – CSS custom properties (Sterkado brand) */
 
 :root {
-  /* --- Colors --- */
-  --color-white: #fff;
-  --color-black: #000;
-  --color-green: #479d41;
-  --color-text: #30357a;
-  --color-text-light: #5d5d5d; 
-  --color-primary: #30357a;
-  --color-accent: #af935b;
-  --color-bg-subtle: #f0f0f0;
-  --color-accent-secondary: #DDD1DB;
-  --color-accent-tertiary: #e6e4de;
+  /* --- Brand colors (kleurgebruik) --- */
+  --color-brand-green-primary: #52ae32;
+  --color-brand-purple-secondary: #59358c;
+  --color-brand-orange-accent: #ef7d00;
+  --color-button-primary-hover-bg: #b44a24;
+  --color-button-secondary-hover-bg: #459a2c;
+  --color-button-tertiary-hover-bg: #eeeeee;
+
+  /* Body copy on light backgrounds */
+  --color-text-body-on-light: #686868;
+
+  /* Headings and body on purple / dark brand surfaces */
+  --color-text-on-purple-background: #ffffff;
+
+  /* White surfaces */
+  --color-surface-white: #ffffff;
+
+  /* Section / UI tints — only color-mix from brand hues + white */
+  --color-surface-purple-tint-subtle: color-mix(in srgb, var(--color-brand-purple-secondary) 6%, var(--color-surface-white));
+  --color-surface-purple-tint-muted: color-mix(in srgb, var(--color-brand-purple-secondary) 14%, var(--color-surface-white));
+  --color-surface-orange-tint-subtle: color-mix(in srgb, var(--color-brand-orange-accent) 10%, var(--color-surface-white));
+
+  /* Softer secondary text on light (single gray in palette → derived) */
+  --color-text-muted-on-light: color-mix(in srgb, var(--color-text-body-on-light) 68%, var(--color-surface-white));
 
   /* --- Spacing --- */
   --space-sm: 20px;
   --space-md: 40px;
   --space-lg: 80px;
 
-  /* --- Typography --- */
-  --font-heading: "Centra", sans-serif;
-  --font-body: "Centra", sans-serif;
-  --font-extra: "lalka", sans-serif;
+  /* --- Typography (Sterkado: Montserrat) --- */
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Montserrat", sans-serif;
 
-  /* --- Radius --- */
-  --radius-sm: 8px;
-  --radius-md: 18px;
-  --radius-lg: 40px;
+  /* Brand breakpoints: mobile ≤767, tablet 768–1199, desktop ≥1200 */
+  --bp-tablet: 768px;
+  --bp-desktop: 1200px;
+
+  /* --- Borderradius (brandboek): element >400px breed → 25px; ≤400px breed → 5px --- */
+  --radius-outside-400: 25px;
+  --radius-inside-400: 5px;
 
   /* --- Shadows --- */
   --shadow-card: 0 0 15px rgba(0, 0, 0, 0.02);

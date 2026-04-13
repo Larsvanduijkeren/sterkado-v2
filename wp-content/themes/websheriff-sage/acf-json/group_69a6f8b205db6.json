@@ -61,11 +61,6 @@
                 "param": "block",
                 "operator": "!=",
                 "value": "acf\/hero"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "acf\/vacancy-archive"
             }
         ]
     ],
@@ -79,5 +74,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1774900000
+    "modified": 1776100000
 }

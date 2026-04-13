@@ -50,7 +50,7 @@ section.text-images {
       .swiper-slide {
         position: relative;
         display: block;
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-outside-400);
         overflow: hidden;
         box-shadow: var(--shadow-card);
 

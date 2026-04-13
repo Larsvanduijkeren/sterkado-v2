@@ -20,7 +20,7 @@
 
     section {
       margin-bottom: 20px;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-outside-400);
       box-shadow: var(--shadow-card);
       overflow: hidden;
 
@@ -74,15 +74,15 @@
     .rank-math-breadcrumb,
     [class*="breadcrumb"] {
       font-size: 0.875rem;
-      color: var(--color-text-light);
+      color: var(--color-text-muted-on-light);
     }
   }
 
   .single-top-bar__badge {
     flex-shrink: 0;
     display: inline-block;
-    background: #c0392b;
-    color: var(--color-white);
+    background: var(--color-brand-orange-accent);
+    color: var(--color-text-on-purple-background);
     padding: 6px 14px;
     border-radius: 999px;
     font-size: 0.75rem;
@@ -98,7 +98,7 @@
 
   .single-heading-information__title {
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
     line-height: 1.2;
   }
 
@@ -106,7 +106,7 @@
     margin: 0;
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
 
     p:last-child {
       margin-bottom: 0;
@@ -118,7 +118,7 @@
     margin: 0 0 var(--space-md);
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
 
     p:last-child {
       margin-bottom: 0;
@@ -130,9 +130,9 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    background: var(--color-white);
+    background: var(--color-surface-white);
     padding: var(--space-sm);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-outside-400);
     box-shadow: var(--shadow-card);
 
     >*:last-child {
@@ -151,8 +151,8 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: var(--color-brand-purple-secondary);
+    color: var(--color-surface-white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,7 +174,7 @@
     display: block;
     font-weight: 700;
     font-size: 1rem;
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
     margin: 0;
     line-height: 1.1;
   }
@@ -183,40 +183,40 @@
     display: block;
     font-weight: 300;
     font-size: .9rem;
-    color: var(--color-text-light);
+    color: var(--color-text-muted-on-light);
     line-height: 1.4;
   }
 
   .single-meta-item__price-was {
     margin-right: 0.35em;
-    color: var(--color-text-light);
+    color: var(--color-text-muted-on-light);
     text-decoration: line-through;
     font-weight: 300;
   }
 
   .single-meta-item__price-vanaf {
     margin-right: 0.25em;
-    color: var(--color-text-light);
+    color: var(--color-text-muted-on-light);
     font-weight: 300;
     font-size: 0.9em;
   }
 
   .single-meta-item__price-now.is-offer {
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-brand-orange-accent);
   }
 
   .single-meta-item__price-label {
     font-weight: 300;
-    color: var(--color-text-light);
+    color: var(--color-text-muted-on-light);
   }
 
   /* Sidebar CTA form */
   .single-cta-form {
     margin-top: var(--space-sm);
-    background: var(--color-white);
+    background: var(--color-surface-white);
     padding: var(--space-sm);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-outside-400);
     box-shadow: var(--shadow-card);
     position: sticky;
     top: 180px;
@@ -234,7 +234,7 @@
     input,
     select,
     textarea {
-      background: var(--color-sand) !important;
+      background: var(--color-surface-orange-tint-subtle) !important;
     }
   }
 
@@ -242,7 +242,7 @@
     margin: 0 0 0.5em;
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
     line-height: 1.3;
   }
 
@@ -250,7 +250,7 @@
     margin-bottom: var(--space-sm);
     font-size: 0.9375rem;
     line-height: 1.6;
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
 
     p:last-child {
       margin-bottom: 0;
@@ -286,7 +286,7 @@
     font-size: 0.875rem;
     line-height: 1.45;
     font-weight: 300;
-    color: var(--color-text-light);
+    color: var(--color-text-muted-on-light);
   }
 
   .single-cta-form__note-icon {
@@ -297,11 +297,11 @@
   }
 
   .single-cta-form__note--reply .single-cta-form__note-icon {
-    color: var(--color-green);
+    color: var(--color-brand-green-primary);
   }
 
   .single-cta-form__note--contact .single-cta-form__note-icon {
-    color: var(--color-text);
+    color: var(--color-text-body-on-light);
   }
 
   .single-cta-form__note-text {

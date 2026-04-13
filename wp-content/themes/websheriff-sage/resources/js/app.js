@@ -3,7 +3,16 @@ import $ from 'jquery';
 window.$ = window.jQuery = $;
 
 // Pull in static assets for dev/build (fonts/images)
-import.meta.glob(['../images/**', '../fonts/**'], { eager: true });
+import.meta.glob(
+    [
+        '../images/**',
+        '../fonts/icomoon.eot',
+        '../fonts/icomoon.woff',
+        '../fonts/icomoon.ttf',
+        '../fonts/icomoon.svg',
+    ],
+    { eager: true },
+);
 
 // Core features load immediately (lightweight)
 import initTheme from './main';
@@ -16,8 +25,6 @@ import initTheme from './main';
     const hasLenis = isDesktop; // Lenis only on desktop
 
     let Swiper = null;
-    let Navigation = null;
-    let Pagination = null;
     let Scrollbar = null;
     let EffectFade = null;
     let Autoplay = null;
@@ -29,16 +36,12 @@ import initTheme from './main';
         const swiperModule = await import('swiper');
         const swiperMods = await import('swiper/modules');
         Swiper = swiperModule.default;
-        Navigation = swiperMods.Navigation;
-        Pagination = swiperMods.Pagination;
         Scrollbar = swiperMods.Scrollbar;
         EffectFade = swiperMods.EffectFade;
         Autoplay = swiperMods.Autoplay;
         Thumbs = swiperMods.Thumbs;
         await import('swiper/css');
         await import('swiper/css/effect-fade');
-        await import('swiper/css/navigation');
-        await import('swiper/css/pagination');
         await import('swiper/css/scrollbar');
     }
 
@@ -51,5 +54,14 @@ import initTheme from './main';
         Lenis = (await import('lenis')).default;
     }
 
-    initTheme({ $, AOS, Lenis, Swiper, Navigation, Pagination, Scrollbar, EffectFade, Autoplay, Thumbs });
+    initTheme({ $, AOS, Lenis, Swiper, Scrollbar, EffectFade, Autoplay, Thumbs });
+
+    $(function () {
+        if (!$('.request-quote').length) {
+            return;
+        }
+        void import('./request-quote.js').then((rq) => {
+            rq.initRequestQuote();
+        });
+    });
 })();

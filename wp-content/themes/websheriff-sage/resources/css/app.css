@@ -17,7 +17,6 @@
 @import "partials/components/post-card.css";
 @import "partials/components/single-post.css";
 @import "partials/components/single-layout.css";
-@import "partials/components/vacancy-card.css";
 @import "partials/components/single/gallery.css";
 @import "partials/components/single/text.css";
 @import "partials/components/single/cards.css";
@@ -25,13 +24,8 @@
 
 /* Gutenberg blocks */
 @import "partials/components/gutenberg/hero.css";
-@import "partials/components/gutenberg/home-hero.css";
+@import "partials/components/gutenberg/logos.css";
 @import "partials/components/gutenberg/text.css";
 @import "partials/components/gutenberg/text-images.css";
-@import "partials/components/gutenberg/content-tabs.css";
-@import "partials/components/gutenberg/content-cards.css";
-@import "partials/components/gutenberg/faq.css";
-@import "partials/components/gutenberg/vacancy-selection.css";
-@import "partials/components/gutenberg/vacancy-archive.css";
-@import "partials/components/gutenberg/partners.css";
+@import "partials/components/gutenberg/request-quote.css";
 @import "partials/components/gutenberg/contact.css";

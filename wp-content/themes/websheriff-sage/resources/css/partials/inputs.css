@@ -11,18 +11,18 @@ select {
   appearance: none;
   -webkit-appearance: none;
   font-size: 1rem;
-  color: var(--color-text) !important;
+  color: var(--color-text-body-on-light) !important;
   padding: 10px !important;
   max-width: 100%;
-  background: var(--color-white);
-  border-radius: var(--radius-sm) !important;
+  background: var(--color-surface-white);
+  border-radius: var(--radius-inside-400) !important;
   border: 1px solid rgba(0, 0, 0, 0.2) !important;
   outline: none;
   box-shadow: none;
   line-height: 1 !important;
 font-weight: 300 !important;
   &::placeholder {
-    color: #686868 !important;
+    color: var(--color-text-muted-on-light) !important;
     opacity: 1 !important;
   }
 }

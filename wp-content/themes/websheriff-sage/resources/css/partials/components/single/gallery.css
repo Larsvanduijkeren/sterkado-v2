@@ -10,7 +10,7 @@ section.single-gallery {
   .main-wrap {
     width: 100%;
     overflow: hidden;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-outside-400);
 
     .main {
       width: 100%;
@@ -28,7 +28,7 @@ section.single-gallery {
       .image {
         width: 100%;
         aspect-ratio: 16 / 10;
-        background: var(--color-bg-subtle);
+        background: var(--color-surface-purple-tint-subtle);
 
         img {
           width: 100%;
@@ -53,7 +53,7 @@ section.single-gallery {
         height: auto;
         flex-shrink: 0;
         cursor: pointer;
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-outside-400);
         overflow: hidden;
         border: 2px solid transparent;
         opacity: 0.6;
@@ -62,7 +62,7 @@ section.single-gallery {
 
       .swiper-slide-thumb-active {
         opacity: 1;
-        border-color: var(--color-primary);
+        border-color: var(--color-brand-purple-secondary);
       }
 
       .thumb {

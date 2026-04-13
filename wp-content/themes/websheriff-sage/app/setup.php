@@ -88,11 +88,14 @@
          * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
          */
         register_nav_menus([
-            'header-nav'    => __('Header Nav', 'sage'),
-            'footer-nav-1'  => __('Footer Nav 1', 'sage'),
-            'footer-nav-2'  => __('Footer Nav 2', 'sage'),
-            'footer-nav-3'  => __('Footer Nav 3', 'sage'),
-            'copyright-nav' => __('Copyright Nav', 'sage'),
+            'header-top-nav'  => __('Header top (rechts)', 'sage'),
+            'header-main-nav' => __('Header hoofdmenu', 'sage'),
+            'footer-nav-1'    => __('Footer kolom 1', 'sage'),
+            'footer-nav-2'    => __('Footer kolom 2', 'sage'),
+            'footer-nav-3'    => __('Footer kolom 3', 'sage'),
+            'footer-nav-4'    => __('Footer kolom 4', 'sage'),
+            'footer-nav-5'    => __('Footer kolom 5', 'sage'),
+            'copyright-nav'   => __('Copyright Nav', 'sage'),
         ]);
         
         /**
@@ -187,14 +190,6 @@
         if (function_exists('acf_add_options_page')) {
             acf_add_options_page();
         }
-
-        add_filter('body_class', function (array $classes): array {
-            $usps = function_exists('get_field') ? get_field('header_usps', 'option') : null;
-            if (!empty($usps) && is_array($usps)) {
-                $classes[] = 'has-header-usps';
-            }
-            return $classes;
-        });
 
         add_image_size('big', 600, 600, false);
         add_image_size('full', 2000, 2000, false);

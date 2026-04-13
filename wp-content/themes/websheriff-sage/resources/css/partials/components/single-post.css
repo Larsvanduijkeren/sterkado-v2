@@ -13,7 +13,7 @@ section.post-content .flex-wrapper {
     background: rgba(255, 255, 255, 0.6);
     padding: 40px;
     box-shadow: var(--shadow-card);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-inside-400);
     position: sticky;
     top: 10vh;
 
@@ -36,7 +36,7 @@ section.post-content .flex-wrapper {
           transform: translate(50%, -50%);
           width: 3px;
           height: 3px;
-          background: var(--color-text);
+          background: var(--color-text-body-on-light);
           border-radius: 100%;
         }
       }
@@ -56,8 +56,8 @@ section.post-content .flex-wrapper {
 
       &.is-active::before,
       &:hover::before {
-        background: var(--color-accent);
-        border-color: var(--color-accent);
+        background: var(--color-brand-orange-accent);
+        border-color: var(--color-brand-orange-accent);
       }
 
       &::before {
@@ -67,7 +67,7 @@ section.post-content .flex-wrapper {
         position: absolute;
         left: 0;
         top: 8px;
-        background: var(--color-white);
+        background: var(--color-surface-white);
         border-radius: 100%;
         border: 1px solid rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease-in-out;
@@ -86,7 +86,7 @@ section.post-content .flex-wrapper {
     padding-left: 60px;
 
     img {
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-inside-400);
       box-shadow: var(--shadow-card);
     }
 

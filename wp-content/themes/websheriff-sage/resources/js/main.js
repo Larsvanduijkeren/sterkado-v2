@@ -1,4 +1,4 @@
-export default function initTheme({$, AOS, Lenis, Swiper, Navigation, Pagination, Scrollbar, EffectFade, Autoplay, Thumbs}) {
+export default function initTheme({$, AOS, Lenis, Swiper, Scrollbar, EffectFade, Autoplay, Thumbs}) {
     if (window.__wsThemeInitialized) return;
     window.__wsThemeInitialized = true;
 
@@ -6,7 +6,6 @@ export default function initTheme({$, AOS, Lenis, Swiper, Navigation, Pagination
         smoothScroll($);
         menu($);
         accordion($);
-        faq($, AOS);
         headerController($);
         stickyFeatures($);
         postIndex($);
@@ -15,12 +14,6 @@ export default function initTheme({$, AOS, Lenis, Swiper, Navigation, Pagination
         singleGallerySlider(Swiper, Thumbs);
         textImagesSlider(Swiper, Scrollbar, EffectFade);
         heroGallerySlider($, Swiper, EffectFade, Autoplay);
-        partnersSlider(Swiper, Scrollbar);
-        headerUspsSlider(Swiper, Autoplay);
-        vacancySelectionSlider(Swiper, Scrollbar);
-        homeHeroSlider($, Swiper, Scrollbar);
-        contentTabs($);
-
         initAosAndLenis($, AOS, Lenis);
     });
 }
@@ -203,26 +196,6 @@ function singleGallerySlider(Swiper, Thumbs) {
     });
 }
 
-function partnersSlider(Swiper, Scrollbar) {
-    initSwiperSliders({
-        Swiper,
-        selector: '.partners .swiper',
-        modules: [Scrollbar],
-        defaults: {
-            ...slickLikeDefaults,
-            loop: true,
-            spaceBetween: 40,
-            slidesPerView: 1,
-            breakpoints: {
-                576: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                992: { slidesPerView: 4 },
-                1200: { slidesPerView: 5 },
-            },
-        },
-    });
-}
-
 function textImagesSlider(Swiper, Scrollbar, EffectFade) {
     initSwiperSliders({
         Swiper,
@@ -280,98 +253,6 @@ function heroGallerySlider($, Swiper, EffectFade, Autoplay) {
             navigation: false,
             scrollbar: false,
         });
-    });
-}
-
-function headerUspsSlider(Swiper, Autoplay) {
-    initSwiperSliders({
-        Swiper,
-        selector: '.header-usps-swiper',
-        modules: [Autoplay],
-        scrollbar: false,
-        defaults: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            spaceBetween: 24,
-            loop: true,
-            speed: 600,
-            centeredSlides: false,
-            autoplay: {
-                delay: 4000,
-            },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                992: { slidesPerView: 3 },
-            },
-            pagination: false,
-            navigation: false,
-        },
-    });
-}
-
-function vacancySelectionSlider(Swiper, Scrollbar) {
-    initSwiperSliders({
-        Swiper,
-        selector: '.vacancy-selection .selection-swiper',
-        modules: [Scrollbar],
-        defaults: {
-            ...slickLikeDefaults,
-            slidesPerView: 1,
-            breakpoints: {
-                576: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-            },
-        },
-    });
-}
-
-function homeHeroSlider($, Swiper, Scrollbar) {
-    const selector = '.home-hero .home-hero-swiper';
-    if (!Swiper || !Scrollbar || !$(selector).length) {
-        return;
-    }
-
-    const mobileMax = 768;
-    let resizeTimer;
-
-    const apply = () => {
-        const mobile = window.innerWidth <= mobileMax;
-        $(selector).each(function () {
-            const el = this;
-            if (mobile) {
-                if (el.swiper) {
-                    return;
-                }
-                const $el = $(el);
-                const scrollbarEl = $el.find('.swiper-scrollbar')[0];
-                new Swiper(el, {
-                    modules: [Scrollbar],
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    speed: 400,
-                    watchOverflow: true,
-                    grabCursor: true,
-                    resistanceRatio: 0,
-                    pagination: false,
-                    navigation: false,
-                    scrollbar: scrollbarEl
-                        ? {
-                            el: scrollbarEl,
-                            draggable: true,
-                            hide: false,
-                        }
-                        : false,
-                });
-            } else if (el.swiper) {
-                el.swiper.destroy(true, true);
-            }
-        });
-    };
-
-    apply();
-    $(window).on('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(apply, 150);
     });
 }
 
@@ -446,59 +327,6 @@ function initAccordion($, $scope) {
     });
 }
 
-function faq($, AOS) {
-    const $faqs = $('.faq');
-    if (!$faqs.length) return;
-
-    const refreshAos = () => {
-        if (AOS && typeof AOS.refresh === 'function') {
-            requestAnimationFrame(() => AOS.refresh());
-        }
-    };
-
-    $faqs.each(function () {
-        const $root = $(this);
-        const $topics = $root.find('.faq-topic');
-        const $panels = $root.find('.faq-panel');
-
-        initAccordion($, $root);
-
-        $root.find('.faq-topic-all').addClass('is-active');
-
-        const reset = () => {
-            $topics.removeClass('is-active');
-            $panels.removeClass('hide');
-        };
-
-        $root.on('click', '.faq-topic', function () {
-            const termId = $(this).data('term-id');
-            const isAll = termId === '' || typeof termId === 'undefined';
-
-            if (isAll) {
-                reset();
-                $(this).addClass('is-active');
-                refreshAos();
-                return;
-            }
-
-            const wasActive = $(this).hasClass('is-active');
-            if (wasActive) {
-                reset();
-                refreshAos();
-                return;
-            }
-
-            $topics.removeClass('is-active');
-            $(this).addClass('is-active');
-
-            $panels.addClass('hide');
-            $panels.filter(`[data-term-id="${termId}"]`).removeClass('hide');
-
-            refreshAos();
-        });
-    });
-}
-
 function headerController($) {
     const scrollWrapper = $(window);
     const body = $('body');
@@ -537,19 +365,3 @@ function menu($) {
         setTimeout(() => $('body, html').toggleClass('no-scroll'), 500);
     });
 }
-
-function contentTabs($) {
-    $(document).on('click', '.content-tabs .tab-trigger', function () {
-        const $trigger = $(this);
-        const $section = $trigger.closest('.content-tabs');
-        const panelId = $trigger.attr('aria-controls');
-        if (!panelId || !$section.length) return;
-
-        $section.find('.tab-trigger').removeClass('is-active').attr('aria-selected', 'false');
-        $trigger.addClass('is-active').attr('aria-selected', 'true');
-
-        $section.find('.tab-panel').removeClass('is-active').attr('hidden', true);
-        $section.find('.tab-panel#' + panelId).addClass('is-active').removeAttr('hidden');
-    });
-}
-
