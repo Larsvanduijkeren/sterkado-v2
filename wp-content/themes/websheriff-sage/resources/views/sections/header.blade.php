@@ -35,8 +35,6 @@ $topNavHtml = wp_nav_menu([
     'feedbackRaw' => $feedbackRaw,
 ])
 
-<span class="hamburger"></span>
-
 <div class="header-wrapper">
 <header class="header">
     <div class="container">
@@ -65,6 +63,8 @@ $topNavHtml = wp_nav_menu([
                 </nav>
                 @endif
             </div>
+
+            <span class="hamburger" role="button" tabindex="0" aria-label="{{ esc_attr(__('Menu', 'sage')) }}" aria-expanded="false"></span>
         </div>
 
         <div class="header__row header__row--bottom">

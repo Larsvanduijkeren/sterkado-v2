@@ -29,6 +29,8 @@ import initTheme from './main';
     let EffectFade = null;
     let Autoplay = null;
     let Thumbs = null;
+    let Navigation = null;
+    let Pagination = null;
     let AOS = null;
     let Lenis = null;
 
@@ -40,9 +42,13 @@ import initTheme from './main';
         EffectFade = swiperMods.EffectFade;
         Autoplay = swiperMods.Autoplay;
         Thumbs = swiperMods.Thumbs;
+        Navigation = swiperMods.Navigation;
+        Pagination = swiperMods.Pagination;
         await import('swiper/css');
         await import('swiper/css/effect-fade');
         await import('swiper/css/scrollbar');
+        await import('swiper/css/navigation');
+        await import('swiper/css/pagination');
     }
 
     if (hasAos) {
@@ -54,7 +60,7 @@ import initTheme from './main';
         Lenis = (await import('lenis')).default;
     }
 
-    initTheme({ $, AOS, Lenis, Swiper, Scrollbar, EffectFade, Autoplay, Thumbs });
+    initTheme({ $, AOS, Lenis, Swiper, Scrollbar, EffectFade, Autoplay, Thumbs, Navigation, Pagination });
 
     $(function () {
         if (!$('.request-quote').length) {

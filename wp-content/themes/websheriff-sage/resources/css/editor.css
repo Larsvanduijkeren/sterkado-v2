@@ -36,13 +36,29 @@
   @nested-import "./partials/components/mobile-nav.css";
   @nested-import "./partials/components/post-card.css";
   @nested-import "./partials/components/single-post.css";
+  @nested-import "./partials/components/single-product.css";
+  @nested-import "./partials/components/single-question.css";
+  @nested-import "./partials/components/vacancy.css";
   /* Gutenberg blocks */
   @nested-import "./partials/components/gutenberg/hero.css";
   @nested-import "./partials/components/gutenberg/logos.css";
+  @nested-import "./partials/components/gutenberg/gallery-marquee.css";
   @nested-import "./partials/components/gutenberg/text.css";
   @nested-import "./partials/components/gutenberg/text-images.css";
+  @nested-import "./partials/components/gutenberg/content-cards.css";
+  @nested-import "./partials/components/gutenberg/occasion-slider.css";
+  @nested-import "./partials/components/gutenberg/post-selection.css";
+  @nested-import "./partials/components/gutenberg/product-selection.css";
+  @nested-import "./partials/components/gutenberg/cta.css";
+  @nested-import "./partials/components/gutenberg/card-links.css";
   @nested-import "./partials/components/gutenberg/request-quote.css";
+  @nested-import "./partials/components/gutenberg/lead-form.css";
   @nested-import "./partials/components/gutenberg/contact.css";
+  @nested-import "./partials/components/gutenberg/office-map.css";
+  @nested-import "./partials/components/gutenberg/faq.css";
+  @nested-import "./partials/components/gutenberg/faq-selection.css";
+  @nested-import "./partials/components/gutenberg/review-selection.css";
+  @nested-import "./partials/components/gutenberg/not-found.css";
 
   .card {
     max-width: 100%;

@@ -1,0 +1,217 @@
+{
+    "key": "group_block_faq",
+    "title": "Block: FAQ",
+    "fields": [
+        {
+            "key": "field_faq_intro_title",
+            "label": "Intro title",
+            "name": "intro_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Centered heading above the search field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_faq_intro_text",
+            "label": "Intro text",
+            "name": "intro_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Optional subtitle below the title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_faq_search_placeholder",
+            "label": "Search placeholder",
+            "name": "search_placeholder",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leave empty for the default “Zoek op onderwerp”.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_faq_search_button_label",
+            "label": "Search button label",
+            "name": "search_button_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leave empty for the default “Zoeken”.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_faq_questions_per_category",
+            "label": "Questions per category card",
+            "name": "questions_per_category",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Maximum questions listed per taxonomy card (1–100).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 50,
+            "min": 1,
+            "max": 100,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_faq_card_icon",
+            "label": "Card header icon",
+            "name": "card_icon",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Shown on every category card header.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "gift": "Gift",
+                "truck": "Truck",
+                "shield": "Shield",
+                "comments": "Comments",
+                "info": "Info"
+            },
+            "default_value": "gift",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_faq_background_color",
+            "label": "Background color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "white": "White",
+                "red": "Red",
+                "sand": "Sand",
+                "grey": "Grey"
+            },
+            "default_value": "grey",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_faq_add_waves",
+            "label": "Add waves",
+            "name": "add_waves",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Wave at the bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/faq"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1776035200
+}

@@ -5,6 +5,6 @@
 
 @while(have_posts())
 @php(the_post())
-@includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+@includeFirst(['partials.loop-' . get_post_type(), 'partials.loop-default'])
 @endwhile
 @endsection

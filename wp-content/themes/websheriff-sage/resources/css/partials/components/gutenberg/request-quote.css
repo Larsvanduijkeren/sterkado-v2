@@ -62,6 +62,28 @@ section.request-quote-hero {
     font-weight: 700;
     font-size: 0.9375rem;
   }
+
+  @media only screen and (max-width: 991px) {
+    .container {
+      padding-top: 72px;
+      padding-bottom: 36px;
+    }
+
+    .request-quote-hero__inner.flex-wrapper {
+      gap: 28px;
+    }
+
+    .request-quote-hero__intro {
+      max-width: none;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .container {
+      padding-top: 56px;
+      padding-bottom: 28px;
+    }
+  }
 }
 
 .request-quote__modal {
@@ -608,12 +630,35 @@ section.request-quote {
       position: static;
     }
 
+    .request-quote__layout.flex-wrapper {
+      gap: 24px;
+    }
+
+    .request-quote__sidebar {
+      flex: 1 1 100%;
+      max-width: none;
+    }
+
     .form-group {
       grid-template-columns: 1fr;
     }
 
     .request-quote__cta-row {
       grid-template-columns: 1fr;
+    }
+
+    .request-quote__controls {
+      flex-direction: column;
+    }
+
+    .request-quote__control {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .request-quote__card {
+      padding: 20px 16px;
     }
   }
 }

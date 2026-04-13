@@ -1,0 +1,180 @@
+{
+    "key": "group_cpt_vacancy",
+    "title": "Vacature",
+    "fields": [
+        {
+            "key": "field_vacancy_hero_title",
+            "label": "Hero titel",
+            "name": "hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Grote titel bovenaan de vacaturepagina. Leeg laten om de WordPress-titel te gebruiken.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_vacancy_intro",
+            "label": "Intro",
+            "name": "intro",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Korte intro onder de titel.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_vacancy_hero_cta_label",
+            "label": "Tekst knop (scroll naar inhoud)",
+            "name": "hero_cta_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Ontdek de vacature",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_vacancy_hours_label",
+            "label": "Uren / omvang (regel op kaarten)",
+            "name": "hours_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optioneel, bijv. “32–40 uur”. Wordt op het overzicht en op kaarten getoond.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_vacancy_team_photos",
+            "label": "Teamfoto’s (slider)",
+            "name": "team_photos",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Horizontale autoscroll met ronde portretten.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_vacancy_form_shortcode",
+            "label": "Formulier (shortcode)",
+            "name": "form_shortcode",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Plak de shortcode van je formulierplugin (bijv. WPForms). Verschijnt in de zijbalk.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_vacancy_related_heading",
+            "label": "Kop boven gerelateerde vacatures",
+            "name": "related_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leeg laten voor de standaardtekst.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "vacancy"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1776240000
+}

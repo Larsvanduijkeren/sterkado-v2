@@ -53,6 +53,27 @@
             "ui": 1
         },
         {
+            "key": "field_text_images_show_feedback_company",
+            "label": "Feedback shortcode above label",
+            "name": "show_feedback_company",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "When enabled, outputs the [feedback_company] shortcode above the label (requires the shortcode to be registered, e.g. by a plugin).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_69a6cd5096945",
             "label": "Label",
             "name": "label",
@@ -205,5 +226,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1772560927
+    "modified": 1776092000
 }

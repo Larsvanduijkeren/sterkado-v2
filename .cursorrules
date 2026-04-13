@@ -71,12 +71,10 @@
 
 ### Naming convention
 
-- **All class names**: kebab-case only (e.g. `flex-wrapper`, `post-archive__filters`, `faq-topic`).
+- **All class names**: kebab-case only (e.g. `flex-wrapper`, `post-archive-filters`, `faq-topic`). Do **not** use BEM double underscores (`block__element`); use hyphenated segments only.
 - **Block/section root**: One class on the outer element, matching the block or section name in kebab-case (e.g. `class="faq"`, `class="post-archive"`, `class="content-tabs"`, `class="review-selection"`). For blocks, this is the block slug.
 - **Generic/shared names**: When styles are scoped by nesting under the block root, use short generic names with no prefix: `container`, `flex-wrapper`, `content`, `intro`, `gradient`, `buttons`, `image`, `accordion`, `question`, `answer`, `meta`, `label`, `summary`, `slider`, `overflow-wrap`, etc. Rely on the parent selector (e.g. `section.faq .question`) to avoid clashes.
-- **Block-specific elements**: When the element is specific to one block, use a block prefix:
-  - **Hyphenated**: `block-element` (e.g. `faq-topic`, `faq-topic-all`, `faq-content`, `faq-panel`, `faq-topics-list`).
-  - **BEM (double underscore)**: `block__element` when you want a clear element list (e.g. `post-archive__filters`, `post-archive__filter-list`, `post-archive__filter-item`, `pagination__list`, `pagination__item`).
+- **Block-specific elements**: When the element is specific to one block, use a **hyphenated** block prefix only: `block-element`, `block-element-subpart` (e.g. `faq-topic`, `faq-topic-all`, `faq-content`, `faq-panel`, `faq-topics-list`, `post-archive-filters`, `post-archive-filter-list`, `post-archive-filter-item`, `pagination-list`, `pagination-item`).
 - **Reusable cards/components**: Name as `something-card` (e.g. `question-card`, `arrangement-card`, `activity-card`, `review-card`, `post-card`, `domain-card`).
 - **Modifiers**: Add as separate classes: variant `block-element-modifier` or `block-modifier` (e.g. `faq-topic-all`); state classes `is-active`, `open`, `hide`; buttons `btn`, `btn-ghost`, plus colour/size like `white`, `blue`, `small`, `mobile`.
 - **Typography as class**: Use semantic appearance classes where needed (e.g. `h2`, `h4` for heading look on a different tag).
@@ -84,7 +82,7 @@
 ### Structure and files
 
 - **Native CSS with nesting**: Use plain CSS; nest selectors under a block root (e.g. `section.faq { .flex-wrapper { ... } }`) for block-scoped styles
-- **Spacing units**: Use **px** for margins, padding, gutters, gaps, and other layout spacing. Avoid rem for these; keep rem/em for typography (font-size, line-height) where appropriate.
+- **Spacing units**: Use **px** for margins, padding, gutters, gaps, and other layout spacing. **Never** use rem or em for margins, padding, gutters, or gaps. Keep rem/em for typography (font-size, line-height) where appropriate.
 - **Variables**: Put design tokens in `resources/css/modules/variables.css` as `:root` custom properties (e.g. `--gutter`, `--font-body`, `--card-shadow`, `--radius-outside-400`, `--radius-inside-400`)
 - **Structure**: `app.css` imports variables, then base/partials (typography, buttons, inputs, etc.), then component partials, then each Gutenberg block file from `partials/components/gutenberg/<block-name>.css`
 - **Block styles**: One file per block in `resources/css/partials/components/gutenberg/` named to match block slug (e.g. `faq.css`, `hero.css`); scope under a top-level selector (e.g. `section.faq`, `section.hero`)

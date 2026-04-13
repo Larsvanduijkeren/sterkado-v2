@@ -1,6 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+$notFoundPageId = 0;
+if (function_exists('get_field')) {
+    $raw = get_field('not_found_page', 'option');
+    if (is_object($raw) && isset($raw->ID)) {
+        $notFoundPageId = (int) $raw->ID;
+    } else {
+        $notFoundPageId = (int) $raw;
+    }
+}
+$notFoundPost = null;
+if ($notFoundPageId > 0 && get_post_status($notFoundPageId) === 'publish') {
+    $candidate = get_post($notFoundPageId);
+    $notFoundPost = $candidate instanceof \WP_Post ? $candidate : null;
+}
+@endphp
+
+@if ($notFoundPost instanceof \WP_Post)
+@php
+$GLOBALS['post'] = $notFoundPost;
+setup_postdata($notFoundPost);
+@endphp
+<div class="not-found-page-content">
+    {!! apply_filters('the_content', $notFoundPost->post_content) !!}
+</div>
+@php
+wp_reset_postdata();
+@endphp
+@else
 @include('partials.page-header')
 
 @if (! have_posts())
@@ -13,5 +42,6 @@
         </div>
     </div>
 </section>
+@endif
 @endif
 @endsection

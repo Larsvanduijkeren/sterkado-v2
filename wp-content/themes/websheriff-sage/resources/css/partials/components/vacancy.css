@@ -1,0 +1,317 @@
+/* Vacature archive, single, cards — uses design tokens only */
+
+.vacancy-archive {
+  padding-top: 48px;
+  padding-bottom: 72px;
+}
+
+.vacancy-archive-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.vacancy-archive-title {
+  margin: 0 0 16px;
+  color: var(--color-text-body-on-light);
+}
+
+.vacancy-archive-title-ring {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 1px 6px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px var(--color-brand-orange-accent);
+}
+
+.vacancy-archive-lead {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-muted-on-light);
+}
+
+.vacancy-archive-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media only screen and (min-width: 768px) {
+  .vacancy-archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .vacancy-archive-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+}
+
+.vacancy-archive-empty {
+  margin: 0;
+  text-align: center;
+  color: var(--color-text-muted-on-light);
+}
+
+.vacancy-archive .pagination {
+  margin-top: 40px;
+}
+
+/* --- Card (archive + related) --- */
+
+.vacancy-card {
+  height: 100%;
+}
+
+.vacancy-card-inner {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 28px 24px 32px;
+  border-radius: var(--radius-outside-400);
+  background: var(--color-surface-white);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.vacancy-card-label {
+  margin: 0 0 12px;
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: var(--radius-inside-400);
+  border: 1px solid var(--color-brand-green-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-purple-secondary);
+}
+
+.vacancy-card-title {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  color: var(--color-text-body-on-light);
+}
+
+.vacancy-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vacancy-card-title a:hover,
+.vacancy-card-title a:focus-visible {
+  color: var(--color-brand-purple-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.vacancy-card-meta {
+  margin: 0 0 20px;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted-on-light);
+}
+
+.vacancy-card-actions {
+  margin-top: auto;
+}
+
+.vacancy-card-btn {
+  border-radius: 999px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 480px) {
+  .vacancy-card-btn {
+    width: auto;
+  }
+}
+
+/* --- Single --- */
+
+.single-vacancy {
+  padding-bottom: 72px;
+}
+
+.single-vacancy-hero {
+  padding: 40px 0 32px;
+  background: var(--color-surface-white);
+}
+
+.single-vacancy-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.single-vacancy-badge {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 6px 12px;
+  border-radius: var(--radius-inside-400);
+  border: 1px solid var(--color-brand-green-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-purple-secondary);
+}
+
+.single-vacancy-title {
+  margin: 0 0 16px;
+  color: var(--color-text-body-on-light);
+}
+
+.single-vacancy-intro {
+  margin: 0 0 24px;
+  color: var(--color-text-body-on-light);
+  text-align: center;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.single-vacancy-hero-cta-wrap {
+  margin: 0;
+}
+
+.single-vacancy-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.single-vacancy-hero-cta-icon {
+  display: inline-flex;
+  line-height: 1;
+}
+
+/* Round team portraits (reuses gallery-marquee animation) */
+
+section.single-vacancy-team.gallery-marquee .gallery-marquee-cell {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-surface-white);
+  box-sizing: border-box;
+  box-shadow: var(--shadow-card);
+}
+
+.single-vacancy-body-wrap {
+  padding-top: 40px;
+}
+
+.single-vacancy-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.single-vacancy-main {
+  min-width: 0;
+}
+
+.single-vacancy-content {
+  color: var(--color-text-body-on-light);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  img,
+  iframe,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.single-vacancy-sidebar {
+  min-width: 0;
+}
+
+.single-vacancy-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.single-vacancy-form-panel {
+  box-sizing: border-box;
+  padding: 24px 20px 28px;
+  border-radius: var(--radius-outside-400);
+  background: var(--color-surface-orange-tint-subtle);
+}
+
+.single-vacancy-form-title {
+  margin: 0 0 20px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-brand-purple-secondary);
+}
+
+.single-vacancy-form {
+  color: var(--color-text-body-on-light);
+
+  .wpforms-container,
+  .wpforms-container-full {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .single-vacancy-layout:has(.single-vacancy-sidebar) {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 40px;
+  }
+
+  .single-vacancy-sidebar-inner {
+    position: sticky;
+    top: 24px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .single-vacancy-sidebar-inner {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.single-vacancy-related {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid color-mix(in srgb, var(--color-text-body-on-light) 18%, var(--color-surface-white));
+}
+
+.single-vacancy-related-title {
+  margin: 0 0 28px;
+  text-align: center;
+  color: var(--color-text-body-on-light);
+}
+
+.vacancy-archive-grid--related {
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .vacancy-archive {
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+
+  .single-vacancy-hero {
+    padding-top: 28px;
+  }
+}

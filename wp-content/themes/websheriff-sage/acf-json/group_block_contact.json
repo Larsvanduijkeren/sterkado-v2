@@ -1,7 +1,246 @@
 {
     "key": "group_block_contact",
     "title": "Block: Contact",
-    "fields": [],
+    "fields": [
+        {
+            "key": "field_contact_title",
+            "label": "Title",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading in the left column.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_contact_intro",
+            "label": "Intro text",
+            "name": "intro",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_contact_methods",
+            "label": "Contact methods",
+            "name": "contact_methods",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Choose a Font Awesome icon per row. Optional link wraps the row (e.g. tel: or mailto:).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_contact_method_icon",
+            "button_label": "Add method",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_contact_method_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "phone": "Phone (handset)",
+                        "mobile": "Mobile",
+                        "envelope": "E-mail",
+                        "location": "Location",
+                        "clock": "Clock / hours",
+                        "user": "User / person",
+                        "message": "Chat / message",
+                        "whatsapp": "WhatsApp",
+                        "info": "Info (generic)"
+                    },
+                    "default_value": "phone",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_contact_methods"
+                },
+                {
+                    "key": "field_contact_method_line_primary",
+                    "label": "Primary line",
+                    "name": "line_primary",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Main text (e.g. phone number or e-mail address).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_contact_methods"
+                },
+                {
+                    "key": "field_contact_method_line_secondary",
+                    "label": "Secondary line",
+                    "name": "line_secondary",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional smaller line (e.g. opening hours).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_contact_methods"
+                },
+                {
+                    "key": "field_contact_method_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional. Makes the row clickable (tel:, mailto:, or URL).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_contact_methods"
+                }
+            ]
+        },
+        {
+            "key": "field_contact_form_shortcode",
+            "label": "Form shortcode",
+            "name": "form_shortcode",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Paste the full shortcode (e.g. WPForms).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "placeholder": "[wpforms id=\"123\"]",
+            "new_lines": ""
+        },
+        {
+            "key": "field_contact_background_color",
+            "label": "Background color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "white": "White",
+                "red": "Red",
+                "sand": "Sand",
+                "grey": "Grey"
+            },
+            "default_value": "grey",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_contact_add_waves",
+            "label": "Add waves",
+            "name": "add_waves",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Wave at the bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        }
+    ],
     "location": [
         [
             {
@@ -16,8 +255,10 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
+    "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775600000
+    "display_title": "",
+    "modified": 1776234000
 }

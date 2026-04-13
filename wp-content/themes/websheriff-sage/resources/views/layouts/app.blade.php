@@ -48,6 +48,8 @@
         @include('sections.footer')
     </div>
 
+    @includeWhen(! empty($overlayPopup) && is_array($overlayPopup), 'components.overlay-popup', ['overlayPopup' => $overlayPopup])
+
     @php(do_action('get_footer'))
     @php(wp_footer())
 </body>

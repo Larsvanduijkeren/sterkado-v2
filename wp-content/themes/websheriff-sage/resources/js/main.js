@@ -1,4 +1,4 @@
-export default function initTheme({$, AOS, Lenis, Swiper, Scrollbar, EffectFade, Autoplay, Thumbs}) {
+export default function initTheme({$, AOS, Lenis, Swiper, Scrollbar, EffectFade, Autoplay, Thumbs, Navigation, Pagination}) {
     if (window.__wsThemeInitialized) return;
     window.__wsThemeInitialized = true;
 
@@ -13,7 +13,12 @@ export default function initTheme({$, AOS, Lenis, Swiper, Scrollbar, EffectFade,
         postSlider(Swiper, Scrollbar);
         singleGallerySlider(Swiper, Thumbs);
         textImagesSlider(Swiper, Scrollbar, EffectFade);
+        occasionSlider(Swiper, Navigation);
+        postSelectionSlider(Swiper, Pagination);
+        reviewSelectionSlider(Swiper, Pagination);
+        singleQuestion($);
         heroGallerySlider($, Swiper, EffectFade, Autoplay);
+        overlayPopup($);
         initAosAndLenis($, AOS, Lenis);
     });
 }
@@ -217,6 +222,137 @@ function textImagesSlider(Swiper, Scrollbar, EffectFade) {
     });
 }
 
+function occasionSlider(Swiper, Navigation) {
+    const $blocks = $('.occasion-slider');
+    if (!$blocks.length || !Swiper || !Navigation) {
+        return;
+    }
+
+    $blocks.each(function () {
+        const $block = $(this);
+        const el = $block.find('.occasion-slider-swiper')[0];
+        if (!el || el.swiper) {
+            return;
+        }
+
+        const slidesDesktop = parseInt($block.attr('data-slides-desktop'), 10);
+        const cols = slidesDesktop === 3 ? 3 : 2;
+        const prevEl = $block.find('.occasion-slider-nav-prev')[0];
+        const nextEl = $block.find('.occasion-slider-nav-next')[0];
+        if (!prevEl || !nextEl) {
+            return;
+        }
+
+        new Swiper(el, {
+            modules: [Navigation],
+            slidesPerView: 1.1,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+            speed: 400,
+            watchOverflow: true,
+            resistanceRatio: 0,
+            grabCursor: true,
+            loop: false,
+            navigation: {
+                prevEl,
+                nextEl,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: cols,
+                    spaceBetween: 20,
+                },
+            },
+        });
+    });
+}
+
+function postSelectionSlider(Swiper, Pagination) {
+    const $blocks = $('.post-selection');
+    if (!$blocks.length || !Swiper || !Pagination) {
+        return;
+    }
+
+    $blocks.each(function () {
+        const $block = $(this);
+        const el = $block.find('.post-selection-swiper')[0];
+        const progressEl = $block.find('.post-selection-pagination')[0];
+        if (!el || !progressEl || el.swiper) {
+            return;
+        }
+
+        new Swiper(el, {
+            modules: [Pagination],
+            slidesPerView: 1.12,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+            speed: 400,
+            watchOverflow: true,
+            resistanceRatio: 0,
+            grabCursor: true,
+            pagination: {
+                el: progressEl,
+                type: 'progressbar',
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            },
+        });
+    });
+}
+
+function reviewSelectionSlider(Swiper, Pagination) {
+    const $blocks = $('.review-selection');
+    if (!$blocks.length || !Swiper || !Pagination) {
+        return;
+    }
+
+    $blocks.each(function () {
+        const $block = $(this);
+        const el = $block.find('.review-selection-swiper')[0];
+        const progressEl = $block.find('.review-selection-pagination')[0];
+        if (!el || !progressEl || el.swiper) {
+            return;
+        }
+
+        new Swiper(el, {
+            modules: [Pagination],
+            slidesPerView: 1.12,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+            speed: 400,
+            watchOverflow: true,
+            resistanceRatio: 0,
+            grabCursor: true,
+            pagination: {
+                el: progressEl,
+                type: 'progressbar',
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            },
+        });
+    });
+}
+
 function heroGallerySlider($, Swiper, EffectFade, Autoplay) {
     const selector = '.hero .hero-gallery-swiper';
     const $els = $(selector);
@@ -337,6 +473,96 @@ function headerController($) {
     scrollWrapper.on('scroll', setScrolled);
 }
 
+function singleQuestion($) {
+    const $wrap = $('.single-question');
+    if (!$wrap.length) return;
+
+    const $followup = $wrap.find('#single-question-followup');
+    const $btnNo = $wrap.find('.single-question-feedback-btn--no');
+    const $btnYes = $wrap.find('.single-question-feedback-btn--yes');
+    if (!$followup.length || !$btnNo.length) return;
+
+    $btnNo.on('click', function (e) {
+        e.preventDefault();
+        if ($followup.data('question-followup-open')) return;
+        $followup.data('question-followup-open', true);
+        $followup.removeAttr('hidden').hide().slideDown(350, function () {
+            const $first = $followup.find('input, textarea, select, button').filter(':visible:first');
+            if ($first.length) {
+                $first.trigger('focus');
+            }
+        });
+    });
+
+    $btnYes.on('click', function (e) {
+        e.preventDefault();
+        if (!$followup.data('question-followup-open')) return;
+        $followup.slideUp(350, function () {
+            $followup.attr('hidden', 'hidden').show();
+            $followup.data('question-followup-open', false);
+        });
+    });
+
+    if ($wrap.attr('data-open-followup') === '1') {
+        $followup.removeAttr('hidden').show();
+        $followup.data('question-followup-open', true);
+    }
+}
+
+function overlayPopup($) {
+    const $root = $("#ws-overlay-popup");
+    if (!$root.length) {
+        return;
+    }
+
+    const name = ($root.attr("data-cookie-name") || "ws_overlay_popup_dismiss").toString();
+    const maxAge = parseInt($root.attr("data-cookie-max-age"), 10);
+    const maxAgeSec = Number.isFinite(maxAge) && maxAge > 0 ? maxAge : 604800;
+
+    function readCookie(n) {
+        const esc = n.replace(/([.$?*|{}()[\]\\/+^])/g, "\\$1");
+        const m = document.cookie.match(new RegExp("(?:^|; )" + esc + "=([^;]*)"));
+        return m ? decodeURIComponent(m[1]) : null;
+    }
+
+    if (readCookie(name)) {
+        return;
+    }
+
+    function dismiss() {
+        const secure = window.location.protocol === "https:" ? "; Secure" : "";
+        document.cookie =
+            encodeURIComponent(name) +
+            "=1; Max-Age=" +
+            maxAgeSec +
+            "; Path=/; SameSite=Lax" +
+            secure;
+        $root.removeClass("is-open").attr("hidden", "hidden");
+        $("html, body").removeClass("no-scroll");
+        $(document).off("keydown.wsOverlayPopup");
+    }
+
+    requestAnimationFrame(function () {
+        $root.removeAttr("hidden").addClass("is-open");
+        $("html, body").addClass("no-scroll");
+        const $focus = $root.find(".ws-overlay-popup-close").first();
+        if ($focus.length) {
+            $focus.trigger("focus");
+        }
+    });
+
+    $root.on("click", "[data-ws-overlay-close]", function (e) {
+        e.preventDefault();
+        dismiss();
+    });
+
+    $(document).on("keydown.wsOverlayPopup", function (e) {
+        if (e.key === "Escape") {
+            dismiss();
+        }
+    });
+}
+
 function accordion($) {
     initAccordion($);
 }
@@ -361,7 +587,10 @@ function menu($) {
     });
 
     $(document).on('click', '.hamburger', function () {
+        const $btn = $(this);
         $('body').toggleClass('mobile-nav-open');
+        const open = $('body').hasClass('mobile-nav-open');
+        $btn.attr('aria-expanded', open ? 'true' : 'false');
         setTimeout(() => $('body, html').toggleClass('no-scroll'), 500);
     });
 }

@@ -1,0 +1,115 @@
+section.card-links {
+  .card-links-banner {
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: var(--radius-outside-400);
+    background: var(--color-surface-purple-tint-subtle);
+  }
+
+  .card-links-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .card-links-intro {
+    max-width: 520px;
+
+    h2 {
+      margin: 0 0 16px;
+      color: var(--color-brand-purple-secondary);
+    }
+  }
+
+  .card-links-intro-text {
+    margin: 0;
+    color: var(--color-text-body-on-light);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .card-links-preview-note {
+    margin: 16px 0 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-text-muted-on-light);
+  }
+
+  .card-links-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .card-links-card {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px 20px 24px;
+    border-radius: var(--radius-outside-400);
+    background: var(--color-surface-white);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .card-links-card-title {
+    margin: 0 0 12px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-body-on-light);
+  }
+
+  .card-links-card-text {
+    flex: 1 1 auto;
+    margin: 0 0 20px;
+    color: var(--color-text-muted-on-light);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .card-links-card .buttons {
+    margin-top: auto;
+    margin-bottom: 0;
+    justify-content: flex-start;
+  }
+
+  @media only screen and (min-width: 992px) {
+    .card-links-banner {
+      padding: 40px 40px;
+    }
+
+    .card-links-layout {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 40px;
+      align-items: center;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .card-links-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .card-links-intro {
+      max-width: none;
+    }
+
+    .card-links-card {
+      padding: 16px 16px 20px;
+    }
+
+    .card-links-card .buttons a {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}

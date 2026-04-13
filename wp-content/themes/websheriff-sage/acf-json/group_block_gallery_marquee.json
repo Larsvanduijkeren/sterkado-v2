@@ -1,0 +1,54 @@
+{
+    "key": "group_block_gallery_marquee",
+    "title": "Block: Gallery marquee",
+    "fields": [
+        {
+            "key": "field_gallery_marquee_gallery",
+            "label": "Images",
+            "name": "gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Images are split across two rows (first half on top, second half on bottom). Use enough images so each row has visible width; rows loop infinitely in opposite directions.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/gallery-marquee"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1776089000
+}

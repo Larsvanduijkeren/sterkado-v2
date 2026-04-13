@@ -1,0 +1,249 @@
+section.occasion-slider {
+  .intro {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+      margin: 0 0 16px;
+      color: var(--color-brand-purple-secondary);
+    }
+
+    .intro-text {
+      margin: 0 0 24px;
+      color: var(--color-text-body-on-light);
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+  }
+
+  .occasion-slider-outer {
+    position: relative;
+    margin-top: 0;
+    padding: 0 48px;
+  }
+
+  &.has-intro .occasion-slider-outer {
+    margin-top: 40px;
+  }
+
+  .occasion-slider-swiper {
+    overflow: hidden;
+  }
+
+  .occasion-slider-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .occasion-slider-swiper .swiper-slide {
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .occasion-slider-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    border-radius: var(--radius-outside-400);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+  }
+
+  .occasion-slider-card:focus-visible {
+    outline: 2px solid var(--color-brand-orange-accent);
+    outline-offset: 3px;
+  }
+
+  .occasion-slider-card-media {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    margin: 0;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    background: var(--color-surface-purple-tint-muted);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .occasion-slider-card-media--empty {
+    min-height: 140px;
+  }
+
+  .occasion-slider-highlight {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    min-height: 72px;
+    max-width: calc(100% - 24px);
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: var(--color-brand-orange-accent);
+    color: var(--color-surface-white);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .occasion-slider-highlight {
+      font-size: 13px;
+      min-width: 88px;
+      min-height: 88px;
+      top: 16px;
+      right: 16px;
+    }
+  }
+
+  .occasion-slider-card-divider {
+    display: block;
+    flex-shrink: 0;
+    line-height: 0;
+    margin: -1px 0 0;
+    color: var(--color-brand-purple-secondary);
+    background: var(--color-brand-purple-secondary);
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 12px;
+      vertical-align: top;
+    }
+  }
+
+  .occasion-slider-card-footer {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 16px 16px 22px;
+    background: var(--color-brand-purple-secondary);
+    color: var(--color-surface-white);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+  }
+
+  .occasion-slider-card-footer--empty {
+    min-height: 48px;
+  }
+
+  .occasion-slider-card-label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-surface-white);
+  }
+
+  .occasion-slider-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 4;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-brand-orange-accent);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+
+    &::before {
+      font-family: 'Iconfont' !important;
+      content: '\e904';
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--color-surface-white);
+      transform: rotate(-90deg) translateY(5%);
+      transition: color 0.2s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: var(--color-button-primary-hover-bg);
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  .occasion-slider-nav-prev {
+    left: 0;
+
+    &::before {
+      transform: rotate(90deg) translateY(5%);
+    }
+  }
+
+  .occasion-slider-nav-next {
+    right: 0;
+
+    &::before {
+      transform: rotate(-90deg) translateY(5%);
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .occasion-slider-outer {
+      padding: 0 44px;
+    }
+
+    .occasion-slider-nav {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .intro .buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .intro .buttons a {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &.has-intro .occasion-slider-outer {
+      margin-top: 28px;
+    }
+  }
+}

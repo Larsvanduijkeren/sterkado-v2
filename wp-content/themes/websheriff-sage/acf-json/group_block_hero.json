@@ -8,7 +8,7 @@
             "name": "gallery",
             "aria-label": "",
             "type": "gallery",
-            "instructions": "Background images. Multiple images fade automatically every 5 seconds.",
+            "instructions": "Right column. Multiple images fade automatically every 5 seconds.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -29,6 +29,35 @@
             "mime_types": "",
             "insert": "append",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_hero_image_layout",
+            "label": "Image width",
+            "name": "image_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Bleed extends the image to the right edge of the viewport. Contained keeps the image inside the hero content width.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "contained": "Contained",
+                "bleed": "Bleed to edge"
+            },
+            "default_value": "contained",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_69a6f4af3405c",
@@ -52,12 +81,58 @@
             "append": ""
         },
         {
+            "key": "field_hero_checklist",
+            "label": "Checklist",
+            "name": "checklist",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Up to three lines with a checkmark. If rows are filled, the WYSIWYG text below is ignored on the front end.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "field_hero_checklist_item",
+            "button_label": "Add line",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_hero_checklist_item",
+                    "label": "Line",
+                    "name": "item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_checklist"
+                }
+            ]
+        },
+        {
             "key": "field_69a6f4b23405d",
-            "label": "Text",
+            "label": "Text (legacy)",
             "name": "text",
             "aria-label": "",
             "type": "wysiwyg",
-            "instructions": "",
+            "instructions": "Used only when the checklist is empty. Prefer the checklist for simple bullet-style lines.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -78,7 +153,7 @@
             "name": "buttons",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "First button is green (secondary). Further buttons use the ghost style.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -111,6 +186,194 @@
                     "return_format": "array",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_69a6f4b73405e"
+                }
+            ]
+        },
+        {
+            "key": "field_hero_stat_cards",
+            "label": "Stat cards",
+            "name": "stat_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Up to three purple cards over the image. Choose corner placement per card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "field_hero_stat_title",
+            "button_label": "Add card",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_hero_stat_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_stat_cards"
+                },
+                {
+                    "key": "field_hero_stat_subtitle",
+                    "label": "Subtitle",
+                    "name": "subtitle",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_stat_cards"
+                },
+                {
+                    "key": "field_hero_stat_position",
+                    "label": "Position",
+                    "name": "position",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "top-left": "Top left",
+                        "bottom-left": "Bottom left",
+                        "bottom-right": "Bottom right"
+                    },
+                    "default_value": "bottom-left",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_hero_stat_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_hero_partner_heading",
+            "label": "Partner line heading",
+            "name": "partner_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short line before the logo row (e.g. “Zij geloven in ons”).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_partner_logos",
+            "label": "Partner logos",
+            "name": "partner_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Grayscale logos. Optional link wraps the image.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_hero_partner_logo_image",
+            "button_label": "Add logo",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_hero_partner_logo_image",
+                    "label": "Logo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_hero_partner_logos"
+                },
+                {
+                    "key": "field_hero_partner_logo_link",
+                    "label": "Link (optional)",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_hero_partner_logos"
                 }
             ]
         },
@@ -186,5 +449,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1774903000
+    "modified": 1776031200
 }

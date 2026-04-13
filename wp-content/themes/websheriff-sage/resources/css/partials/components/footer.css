@@ -83,7 +83,6 @@ footer.footer {
   .footer__card {
     background: var(--color-surface-purple-tint-subtle);
     border-radius: var(--radius-outside-400);
-    box-shadow: var(--shadow-card);
     padding: 40px 32px 32px;
   }
 
@@ -191,9 +190,79 @@ footer.footer {
 
   .footer__social-row {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: flex-end;
+    gap: 16px 24px;
     margin-top: 32px;
     padding-top: 8px;
+  }
+
+  .footer__social-row:has(.footer__bar-start) {
+    justify-content: space-between;
+  }
+
+  .footer__bar-start {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    min-width: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-text-muted-on-light);
+  }
+
+  .footer__copyright {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .footer__bar-sep {
+    flex-shrink: 0;
+    color: color-mix(in srgb, var(--color-text-body-on-light) 42%, var(--color-surface-white));
+    user-select: none;
+  }
+
+  .footer__legal-nav {
+    min-width: 0;
+  }
+
+  .footer__legal-menu {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
+    }
+
+    li + li::before {
+      content: '|';
+      margin: 0 10px;
+      color: color-mix(in srgb, var(--color-text-body-on-light) 42%, var(--color-surface-white));
+      font-weight: 400;
+      pointer-events: none;
+    }
+
+    a {
+      color: var(--color-text-body-on-light);
+      font-size: 0.875rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover,
+      &:focus {
+        color: var(--color-brand-orange-accent);
+      }
+    }
   }
 
   .footer__social {
@@ -201,6 +270,7 @@ footer.footer {
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
   }
 
   .footer__social-link {
@@ -260,7 +330,13 @@ footer.footer {
     }
 
     .footer__social-row {
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: flex-start;
+    }
+
+    .footer__social-row:has(.footer__bar-start) .footer__social {
+      align-self: flex-end;
     }
   }
 }

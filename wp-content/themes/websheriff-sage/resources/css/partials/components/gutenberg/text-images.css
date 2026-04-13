@@ -1,4 +1,8 @@
 section.text-images {
+  .text-images-feedback {
+    margin-bottom: 12px;
+  }
+
   &.images-first .flex-wrapper {
     flex-direction: row-reverse;
   }
@@ -79,6 +83,8 @@ section.text-images {
   }
 
   @media only screen and (max-width: 991px) {
+    overflow-x: clip;
+
     .flex-wrapper {
       display: block;
       margin: 0;
@@ -103,6 +109,31 @@ section.text-images {
       width: 100% !important;
       max-width: 100% !important;
       flex-basis: 100% !important;
+    }
+
+    .content .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .content .buttons a {
+      width: 100%;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .images > img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-outside-400);
+      box-shadow: var(--shadow-card);
+    }
+
+    .images .text-images-swiper {
+      padding-bottom: 28px;
     }
   }
 }

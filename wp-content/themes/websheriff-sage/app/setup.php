@@ -95,7 +95,7 @@
             'footer-nav-3'    => __('Footer kolom 3', 'sage'),
             'footer-nav-4'    => __('Footer kolom 4', 'sage'),
             'footer-nav-5'    => __('Footer kolom 5', 'sage'),
-            'copyright-nav'   => __('Copyright Nav', 'sage'),
+            'copyright-nav'   => __('Footer: copyright & juridisch (onderaan kaart)', 'sage'),
         ]);
         
         /**

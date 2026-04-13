@@ -1,31 +1,49 @@
-<p align="center">
-  <a href="https://roots.io/sage/"><img alt="Sage" src="https://cdn.roots.io/app/uploads/logo-sage.svg" height="100"></a>
-</p>
+# Websheriff Sage theme
 
-<p align="center">
-  <a href="https://packagist.org/packages/roots/sage"><img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/sage?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square"></a>
-  <a href="https://github.com/roots/sage/actions/workflows/main.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=main&logo=github&label=CI&style=flat-square"></a>
-  <a href="https://bsky.app/profile/roots.dev"><img alt="Follow roots.dev on Bluesky" src="https://img.shields.io/badge/follow-@roots.dev-0085ff?logo=bluesky&style=flat-square"></a>
-</p>
+Custom WordPress theme developed by **[Websheriff](https://websheriff.nl/)**, built on **[Roots Sage](https://roots.io/sage/)** (Blade, Acorn, Vite). Upstream concepts and APIs are covered in the official Sage documentation—use that as the reference for installation, structure, and Acorn.
 
-# Sage
+## Documentation
 
-**Advanced hybrid WordPress starter theme with Laravel Blade and Tailwind CSS**
+- **Sage**: [https://roots.io/sage/docs/](https://roots.io/sage/docs/) (start with installation and configuration)
+- **Roots / community**: [https://discourse.roots.io/](https://discourse.roots.io/)
+- **Acorn** (Laravel inside WordPress): [https://roots.io/acorn/](https://roots.io/acorn/)
 
-- 🔧 Clean, efficient theme templating with Laravel Blade
-- ⚡️ Modern front-end development workflow powered by Vite
-- 🎨 Out of the box support for Tailwind CSS
-- 🚀 Harness the power of Laravel with [Acorn integration](https://github.com/roots/acorn)
-- 📦 Block editor support built-in
+## Requirements
 
-Sage brings proper PHP templating and modern JavaScript tooling to WordPress themes. Write organized, component-based code using Laravel Blade, enjoy instant builds and CSS hot-reloading with Vite, and leverage Laravel's robust feature set through Acorn.
+- PHP **8.2+**
+- **Composer**
+- **Node.js 20+** and npm or Yarn (see `package.json` `engines`)
 
-[Read the docs to get started](https://roots.io/sage/docs/installation/)
+This project expects a normal WordPress environment with the theme under `wp-content/themes/`. **Advanced Custom Fields (ACF) Pro** is required for block field groups.
 
-## Sponsors
+## Setup (from this theme directory)
 
-Sage is an open source project and completely free to use. If you've benefited from our projects and would like to support our future endeavors, [please consider sponsoring us](https://github.com/sponsors/roots).
+1. Install PHP dependencies:
 
-<div align="center">
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="120" height="90"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="120" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" width="120" height="90"></a> <a href="https://bonsai.so/"><img src="https://cdn.roots.io/app/uploads/bonsai.svg" alt="Bonsai" width="120" height="90"></a>
-</div>
+   ```bash
+   composer install
+   ```
+
+2. Install front-end dependencies:
+
+   ```bash
+   npm install
+   ```
+
+   or `yarn`.
+
+3. **Development** (Vite dev server + HMR):
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Production assets**:
+
+   ```bash
+   npm run build
+   ```
+
+5. Activate the theme in WordPress (**Appearance → Themes**). If ACF field groups are shipped as JSON, sync them under **ACF → Tools** when prompted.
+
+For Bedrock or other Roots stacks, follow your host project’s theme path and env conventions; the Sage docs above still apply to how this theme is structured and built.

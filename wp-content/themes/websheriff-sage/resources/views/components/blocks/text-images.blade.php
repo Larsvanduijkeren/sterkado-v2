@@ -1,6 +1,7 @@
 @php
 $order = $fields['order'] ?? null;
 $small_images = $fields['small_images'] ?? null;
+$show_feedback_company = filter_var($fields['show_feedback_company'] ?? false, FILTER_VALIDATE_BOOLEAN);
 $label = $fields['label'] ?? null;
 $title = $fields['title'] ?? null;
 $text = $fields['text'] ?? null;
@@ -19,6 +20,9 @@ $is_preview = $is_preview ?? false;
     <div class="container">
         <div class="flex-wrapper">
             <div class="content" data-aos="fade-up">
+                @if($show_feedback_company)
+                <div class="text-images-feedback">{!! do_shortcode('[feedback_company]') !!}</div>
+                @endif
                 @if($label)
                 <span class="label">{{$label}}</span>
                 @endif

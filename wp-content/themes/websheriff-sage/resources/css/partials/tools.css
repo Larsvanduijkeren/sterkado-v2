@@ -187,7 +187,8 @@
   }
 
   @media only screen and (max-width: 991px) {
-    padding-top: 88px;
+    /* Match fixed mobile header: ~6+34+6px bar + small buffer (was 88px and felt too tall). */
+    padding-top: 52px;
 
     section:first-child {
       margin-top: 0 !important;
@@ -248,5 +249,11 @@ button.lity-close::after {
 @media only screen and (max-width: 991px) {
   .container {
     padding: 60px 20px !important;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .container {
+    padding: 48px 16px !important;
   }
 }

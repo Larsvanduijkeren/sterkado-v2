@@ -1,0 +1,109 @@
+/* Site-wide promo overlay (ACF options). Tokens only; no layout px beyond gutters. */
+
+.ws-overlay-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.ws-overlay-popup.is-open {
+  display: flex;
+}
+
+.ws-overlay-popup-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.ws-overlay-popup-panel {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 24px 24px;
+  border-radius: var(--radius-outside-400);
+  background: var(--color-surface-white);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text-body-on-light);
+}
+
+.ws-overlay-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-inside-400);
+  background: transparent;
+  color: var(--color-text-body-on-light);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.ws-overlay-popup-close:hover,
+.ws-overlay-popup-close:focus-visible {
+  background: var(--color-surface-orange-tint-subtle);
+  color: var(--color-brand-purple-secondary);
+}
+
+.ws-overlay-popup-title {
+  margin: 0 36px 12px 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-brand-purple-secondary);
+  line-height: 1.2;
+}
+
+.ws-overlay-popup-text {
+  margin: 0 0 20px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text-body-on-light);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ws-overlay-popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+@media only screen and (max-width: 575px) {
+  .ws-overlay-popup-panel {
+    padding: 24px 20px 20px;
+  }
+
+  .ws-overlay-popup-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ws-overlay-popup-actions .btn,
+  .ws-overlay-popup-actions .btn-ghost {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}

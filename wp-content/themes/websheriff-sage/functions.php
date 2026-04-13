@@ -34,6 +34,11 @@ require $composer;
 Application::configure()
     ->withProviders([
         App\Providers\ThemeServiceProvider::class,
+        App\Providers\ProductPostTypeServiceProvider::class,
+        App\Providers\QuestionPostTypeServiceProvider::class,
+        App\Providers\ReviewPostTypeServiceProvider::class,
+        App\Providers\VacancyPostTypeServiceProvider::class,
+        App\Providers\MegaMenuServiceProvider::class,
         App\Providers\AcfBlockServiceProvider::class,
         App\Providers\RequestQuoteServiceProvider::class,
         App\Providers\WpFormsServiceProvider::class,

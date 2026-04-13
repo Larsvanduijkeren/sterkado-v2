@@ -2,8 +2,9 @@
 
 namespace App\View\Composers;
 
-use function App\last_section_footer_modifiers;
 use Roots\Acorn\View\Composer;
+
+use function App\last_section_footer_modifiers;
 
 class Footer extends Composer
 {
@@ -21,16 +22,24 @@ class Footer extends Composer
     {
         $headingHtml = $this->footerHeadingHtml();
         $displayLogo = $this->footerDisplayLogo();
+        $socialRows = $this->footerSocialRows();
+        $copyrightText = $this->footerCopyrightText();
+        $legalMenuHtml = $this->footerLegalMenuHtml();
+        $showBottomMeta = $copyrightText !== '' || trim(wp_strip_all_tags($legalMenuHtml)) !== '';
 
         return [
             'footerAfterSectionClass' => $this->footerAfterSectionClass(),
-            'footerHeadingHtml'       => $headingHtml,
-            'footerDisplayLogo'       => $displayLogo,
-            'footerNavColumns'        => $this->footerNavColumns(),
-            'footerSocialRows'        => $this->footerSocialRows(),
-            'footerCreditsRaw'        => $this->footerCreditsRaw(),
-            'footerShowCredits'       => trim(wp_strip_all_tags($this->footerCreditsRaw())) !== '',
-            'footerShowTopRow'        => $headingHtml !== '' || $displayLogo !== null,
+            'footerHeadingHtml' => $headingHtml,
+            'footerDisplayLogo' => $displayLogo,
+            'footerNavColumns' => $this->footerNavColumns(),
+            'footerSocialRows' => $socialRows,
+            'footerCopyrightText' => $copyrightText,
+            'footerLegalMenuHtml' => $legalMenuHtml,
+            'footerShowBottomMeta' => $showBottomMeta,
+            'footerShowBottomRow' => $showBottomMeta || $socialRows !== [],
+            'footerCreditsRaw' => $this->footerCreditsRaw(),
+            'footerShowCredits' => trim(wp_strip_all_tags($this->footerCreditsRaw())) !== '',
+            'footerShowTopRow' => $headingHtml !== '' || $displayLogo !== null,
         ];
     }
 
@@ -66,11 +75,11 @@ class Footer extends Composer
         }
 
         return wp_kses($trimmed, [
-            'span'   => [
+            'span' => [
                 'class' => true,
             ],
-            'br'     => [],
-            'em'     => [],
+            'br' => [],
+            'em' => [],
             'strong' => [],
         ]);
     }
@@ -104,14 +113,29 @@ class Footer extends Composer
                 $v = get_field("footer_nav_{$i}_title", 'option');
                 $title = is_string($v) ? trim($v) : '';
             }
-            $html = $this->footerNavMenuHtml("footer-nav-{$i}");
+            $html = $this->footerNavMenuHtml("footer-nav-{$i}", 'link-list', 2);
             $out[] = [
                 'title' => $title,
-                'html'  => $html,
+                'html' => $html,
             ];
         }
 
         return $out;
+    }
+
+    protected function footerCopyrightText(): string
+    {
+        if (! function_exists('get_field')) {
+            return '';
+        }
+        $v = get_field('footer_copyright', 'option');
+
+        return is_string($v) ? trim($v) : '';
+    }
+
+    protected function footerLegalMenuHtml(): string
+    {
+        return $this->footerNavMenuHtml('copyright-nav', 'footer__legal-menu', 1);
     }
 
     /**
@@ -119,37 +143,7 @@ class Footer extends Composer
      */
     protected function footerSocialRows(): array
     {
-        if (! function_exists('get_field')) {
-            return [];
-        }
-        $rows = get_field('social_links', 'option');
-        if (! is_array($rows)) {
-            return [];
-        }
-        $out = [];
-        foreach ($rows as $row) {
-            if (! is_array($row)) {
-                continue;
-            }
-            $platform = isset($row['platform']) ? (string) $row['platform'] : 'other';
-            $link = $row['link'] ?? null;
-            if (! is_array($link) || empty($link['url'])) {
-                continue;
-            }
-            $url = (string) $link['url'];
-            $target = ! empty($link['target']) ? (string) $link['target'] : '_blank';
-            $title = isset($link['title']) ? trim((string) $link['title']) : '';
-            $aria = $title !== '' ? $title : $this->socialPlatformAriaLabel($platform);
-            $out[] = [
-                'platform'   => $platform,
-                'url'        => $url,
-                'target'     => $target,
-                'aria_label' => $aria,
-                'icon_class' => $this->socialPlatformIconClass($platform),
-            ];
-        }
-
-        return $out;
+        return \App\social_links_from_options();
     }
 
     protected function footerCreditsRaw(): string
@@ -162,46 +156,20 @@ class Footer extends Composer
         return is_string($credits) ? $credits : '';
     }
 
-    protected function footerNavMenuHtml(string $themeLocation): string
+    protected function footerNavMenuHtml(string $themeLocation, string $menuClass = 'link-list', int $depth = 2): string
     {
         if (! has_nav_menu($themeLocation)) {
             return '';
         }
         $html = wp_nav_menu([
             'theme_location' => $themeLocation,
-            'echo'           => false,
-            'container'      => false,
-            'menu_class'     => 'link-list',
-            'fallback_cb'    => false,
-            'depth'          => 2,
+            'echo' => false,
+            'container' => false,
+            'menu_class' => $menuClass,
+            'fallback_cb' => false,
+            'depth' => $depth,
         ]);
 
         return is_string($html) ? $html : '';
-    }
-
-    protected function socialPlatformAriaLabel(string $platform): string
-    {
-        return match ($platform) {
-            'facebook'  => __('Facebook', 'sage'),
-            'instagram' => __('Instagram', 'sage'),
-            'linkedin'  => __('LinkedIn', 'sage'),
-            'youtube'   => __('YouTube', 'sage'),
-            'tiktok'    => __('TikTok', 'sage'),
-            'x_twitter' => __('X', 'sage'),
-            default     => __('Social link', 'sage'),
-        };
-    }
-
-    protected function socialPlatformIconClass(string $platform): string
-    {
-        return match ($platform) {
-            'facebook'  => 'fa-brands fa-facebook-f',
-            'instagram' => 'fa-brands fa-instagram',
-            'linkedin'  => 'fa-brands fa-linkedin-in',
-            'youtube'   => 'fa-brands fa-youtube',
-            'tiktok'    => 'fa-brands fa-tiktok',
-            'x_twitter' => 'fa-brands fa-x-twitter',
-            default     => 'fa-solid fa-link',
-        };
     }
 }

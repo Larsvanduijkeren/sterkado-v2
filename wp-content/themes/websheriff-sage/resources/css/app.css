@@ -11,9 +11,11 @@
 
 /* Component specific styling */
 @import "partials/components/header.css";
+@import "partials/components/header-mega.css";
 @import "partials/components/not-found.css";
 @import "partials/components/footer.css";
 @import "partials/components/mobile-nav.css";
+@import "partials/components/overlay-popup.css";
 @import "partials/components/post-card.css";
 @import "partials/components/single-post.css";
 @import "partials/components/single-layout.css";
@@ -21,11 +23,27 @@
 @import "partials/components/single/text.css";
 @import "partials/components/single/cards.css";
 @import "partials/components/single/accordion.css";
+@import "partials/components/single-product.css";
+@import "partials/components/single-question.css";
+@import "partials/components/vacancy.css";
 
 /* Gutenberg blocks */
 @import "partials/components/gutenberg/hero.css";
 @import "partials/components/gutenberg/logos.css";
+@import "partials/components/gutenberg/gallery-marquee.css";
 @import "partials/components/gutenberg/text.css";
 @import "partials/components/gutenberg/text-images.css";
+@import "partials/components/gutenberg/content-cards.css";
+@import "partials/components/gutenberg/occasion-slider.css";
+@import "partials/components/gutenberg/post-selection.css";
+@import "partials/components/gutenberg/product-selection.css";
+@import "partials/components/gutenberg/cta.css";
+@import "partials/components/gutenberg/card-links.css";
 @import "partials/components/gutenberg/request-quote.css";
+@import "partials/components/gutenberg/lead-form.css";
 @import "partials/components/gutenberg/contact.css";
+@import "partials/components/gutenberg/office-map.css";
+@import "partials/components/gutenberg/faq.css";
+@import "partials/components/gutenberg/faq-selection.css";
+@import "partials/components/gutenberg/review-selection.css";
+@import "partials/components/gutenberg/not-found.css";

@@ -101,6 +101,634 @@
             "allow_in_bindings": 0
         },
         {
+            "key": "field_header_mega_menus",
+            "label": "Mega menus (main nav)",
+            "name": "header_mega_menus",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add one row per mega panel. Set “Menu item CSS class” on the same top-level item in Appearance → Menus (Screen options → CSS classes) to match the trigger class exactly, e.g. mega-momenten.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_header_mega_trigger",
+            "button_label": "Add mega menu",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_header_mega_trigger",
+                    "label": "Trigger CSS class",
+                    "name": "trigger_class",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "No dot. Must match the CSS class on the menu item.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "mega-momenten",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_layout",
+                    "label": "Layout",
+                    "name": "mega_layout",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "card_grid": "Card grid (intro + image cards)",
+                        "featured_links": "Featured panel + two text columns"
+                    },
+                    "default_value": "card_grid",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_grid_intro_title",
+                    "label": "Intro title (grid)",
+                    "name": "grid_intro_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "card_grid"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_grid_intro_text",
+                    "label": "Intro text (grid)",
+                    "name": "grid_intro_text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "card_grid"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 4,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_grid_section_title",
+                    "label": "Cards section title (grid)",
+                    "name": "grid_section_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Heading above the card grid.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "card_grid"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_grid_cards",
+                    "label": "Cards (grid)",
+                    "name": "grid_cards",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "card_grid"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_header_mega_card_title",
+                    "button_label": "Add card",
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_header_mega_menus",
+                    "sub_fields": [
+                        {
+                            "key": "field_header_mega_card_image",
+                            "label": "Image",
+                            "name": "card_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium",
+                            "parent_repeater": "field_header_mega_grid_cards"
+                        },
+                        {
+                            "key": "field_header_mega_card_link",
+                            "label": "Link",
+                            "name": "card_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "parent_repeater": "field_header_mega_grid_cards"
+                        },
+                        {
+                            "key": "field_header_mega_card_title",
+                            "label": "Title",
+                            "name": "card_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_header_mega_grid_cards"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_header_mega_feat_col1_title",
+                    "label": "Column 1 title (featured)",
+                    "name": "feat_col1_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_col1_text",
+                    "label": "Column 1 text (featured)",
+                    "name": "feat_col1_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_social_heading",
+                    "label": "Social heading (featured)",
+                    "name": "feat_social_heading",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_social",
+                    "label": "Social links (featured)",
+                    "name": "feat_social",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add social link",
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_header_mega_menus",
+                    "sub_fields": [
+                        {
+                            "key": "field_header_mega_social_icon",
+                            "label": "Icon",
+                            "name": "social_icon",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "youtube": "YouTube",
+                                "linkedin": "LinkedIn",
+                                "instagram": "Instagram",
+                                "facebook": "Facebook"
+                            },
+                            "default_value": "linkedin",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0,
+                            "parent_repeater": "field_header_mega_feat_social"
+                        },
+                        {
+                            "key": "field_header_mega_social_link",
+                            "label": "URL",
+                            "name": "social_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "70",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "parent_repeater": "field_header_mega_feat_social"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_header_mega_feat_col2_title",
+                    "label": "Column 2 title (featured)",
+                    "name": "feat_col2_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_column_links",
+                    "label": "Column 2 links (featured)",
+                    "name": "feat_column_links",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add link",
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_header_mega_menus",
+                    "sub_fields": [
+                        {
+                            "key": "field_header_mega_feat_col2_link",
+                            "label": "Link",
+                            "name": "link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0,
+                            "parent_repeater": "field_header_mega_feat_column_links"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_header_mega_feat_highlight_title",
+                    "label": "Featured title",
+                    "name": "feat_highlight_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_highlight_meta",
+                    "label": "Featured meta line (e.g. date)",
+                    "name": "feat_highlight_meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_highlight_excerpt",
+                    "label": "Featured excerpt",
+                    "name": "feat_highlight_excerpt",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_header_mega_menus"
+                },
+                {
+                    "key": "field_header_mega_feat_highlight_link",
+                    "label": "Featured read-more link",
+                    "name": "feat_highlight_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_header_mega_layout",
+                                "operator": "==",
+                                "value": "featured_links"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_header_mega_menus"
+                }
+            ]
+        },
+        {
             "key": "field_69a975d743ddf",
             "label": "Contact",
             "name": "",
@@ -156,105 +784,6 @@
             "default_value": "",
             "allow_in_bindings": 0,
             "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69a975_google_tab",
-            "label": "Google review badge",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "Optional badge on the hero (rating and review count).",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_69a975_google_show",
-            "label": "Show Google badge",
-            "name": "google_badge_show",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Display the badge when at least rating or review count is filled in.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_69a975_google_rating",
-            "label": "Rating",
-            "name": "google_badge_rating",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "e.g. 4,8",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "4,8",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69a975_google_count",
-            "label": "Review count",
-            "name": "google_badge_review_count",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "e.g. 120+",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "120+",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69a975_google_link",
-            "label": "Link to reviews",
-            "name": "google_badge_link",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Optional URL to your Google Business / reviews page.",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "https://",
-            "maxlength": "",
             "prepend": "",
             "append": ""
         },
@@ -351,12 +880,157 @@
             ]
         },
         {
+            "key": "field_ws_overlay_popup_tab",
+            "label": "Overlay popup",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "Optionele promo-overlay op de site. Sluiten zet een cookie (standaard 1 week); daarna verschijnt de popup niet opnieuw.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_ws_overlay_popup_enabled",
+            "label": "Overlay tonen",
+            "name": "overlay_popup_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_ws_overlay_popup_cookie_days",
+            "label": "Cookie (dagen na sluiten)",
+            "name": "overlay_popup_cookie_days",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Hoe lang de popup verborgen blijft na sluiten. Standaard 7 dagen.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 7,
+            "min": 1,
+            "max": 90,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_ws_overlay_popup_title",
+            "label": "Titel",
+            "name": "overlay_popup_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "67",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_ws_overlay_popup_text",
+            "label": "Tekst",
+            "name": "overlay_popup_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optioneel. Regels worden als alinea’s getoond.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "new_lines": "br",
+            "placeholder": ""
+        },
+        {
+            "key": "field_ws_overlay_popup_buttons",
+            "label": "Knoppen",
+            "name": "overlay_popup_buttons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Eerste knop: primaire stijl; volgende: outline (ghost).",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_ws_overlay_popup_button_link",
+            "button_label": "Knop toevoegen",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_ws_overlay_popup_button_link",
+                    "label": "Link",
+                    "name": "button",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_ws_overlay_popup_buttons"
+                }
+            ]
+        },
+        {
             "key": "field_69a975_footer_tab",
             "label": "Footer",
             "name": "",
             "aria-label": "",
             "type": "tab",
-            "instructions": "Intro heading, optional logo override, and column titles. Assign WordPress menus to Footer kolom 1–5 under Appearance → Menus. Social icons are under the Social tab.",
+            "instructions": "Intro heading, optional logo override, and column titles. Assign WordPress menus to Footer kolom 1–5 under Appearance → Menus. Social icons: Social tab. Bottom row: field “Copyrightregel” + menu “Copyright Nav” (left of the icons).",
             "required": 0,
             "conditional_logic": false,
             "wrapper": {
@@ -515,6 +1189,26 @@
             "append": ""
         },
         {
+            "key": "field_sterk_footer_copyright",
+            "label": "Copyrightregel (footerkaart)",
+            "name": "footer_copyright",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Korte regel links van de social icons, gescheiden met | van het menu “Copyright Nav” (Weergave → Menu’s). Bijv. © 2026 Sterkado — alle rechten voorbehouden.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_69a975_footer_credits_tab",
             "label": "Credits",
             "name": "",
@@ -573,5 +1267,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1775901200
+    "modified": 1776242000
 }

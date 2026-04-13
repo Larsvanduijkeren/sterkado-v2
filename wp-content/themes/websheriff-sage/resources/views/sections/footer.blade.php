@@ -44,8 +44,24 @@ $showTopRow = $footerShowTopRow ?? false;
                     @endif
                     @endforeach
                 </div>
-                @if(!empty($socialRows))
+                @if($footerShowBottomRow ?? false)
                 <div class="footer__social-row">
+                    @if($footerShowBottomMeta ?? false)
+                    <div class="footer__bar-start">
+                        @if(($footerCopyrightText ?? '') !== '')
+                        <p class="footer__copyright">{{ esc_html($footerCopyrightText) }}</p>
+                        @endif
+                        @if(($footerCopyrightText ?? '') !== '' && ($footerLegalMenuHtml ?? '') !== '')
+                        <span class="footer__bar-sep" aria-hidden="true">|</span>
+                        @endif
+                        @if(($footerLegalMenuHtml ?? '') !== '')
+                        <nav class="footer__legal-nav" aria-label="{{ esc_attr(__('Juridisch en info', 'sage')) }}">
+                            {!! $footerLegalMenuHtml !!}
+                        </nav>
+                        @endif
+                    </div>
+                    @endif
+                    @if(!empty($socialRows))
                     <div class="footer__social" aria-label="{{ esc_attr(__('Social media', 'sage')) }}">
                         @foreach($socialRows as $row)
                         <a href="{{ esc_url($row['url']) }}" class="footer__social-link" target="{{ esc_attr($row['target']) }}" rel="noopener noreferrer" aria-label="{{ esc_attr($row['aria_label']) }}">
@@ -53,6 +69,7 @@ $showTopRow = $footerShowTopRow ?? false;
                         </a>
                         @endforeach
                     </div>
+                    @endif
                 </div>
                 @endif
             </div>
