@@ -16,7 +16,7 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
     class="content-cards columns-{{ $column_count }}{{ $has_intro ? ' has-intro' : '' }}">
     <div class="container">
         @if($intro_title || $intro_text || $intro_buttons)
-        <div class="intro content" data-aos="fade-up">
+        <div class="intro center" data-aos="fade-up">
             @if($intro_title)
             <h2>{{ $intro_title }}</h2>
             @endif
@@ -56,6 +56,7 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
             $highlight = $card['highlight_label'] ?? '';
             $tag = $card['label'] ?? '';
             $cardTitle = $card['title'] ?? '';
+            $cardTitle = is_string($cardTitle) ? trim($cardTitle) : '';
             $cardText = $card['text'] ?? '';
             $link = $card['link'] ?? null;
             $link = is_array($link) ? $link : [];
@@ -74,7 +75,7 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
                         loading="lazy"
                         decoding="async">
                     @if($highlight !== '')
-                    <span class="label content-cards-highlight">{{ $highlight }}</span>
+                    <span class="content-cards-highlight">{{ e($highlight) }}</span>
                     @endif
                 </div>
                 @endif
@@ -83,7 +84,7 @@ $has_intro = (bool) ($intro_title || $intro_text || $intro_buttons);
                     <span class="label label--uppercase">{{ $tag }}</span>
                     @endif
                     @if($cardTitle !== '')
-                    <h3>{{ $cardTitle }}</h3>
+                    <h2>{{ e($cardTitle) }}</h2>
                     @endif
                     @if($cardText !== '')
                     <div class="text">{!! wp_kses_post($cardText) !!}</div>

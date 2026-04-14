@@ -30,6 +30,9 @@
   --color-surface-purple-tint-muted: color-mix(in srgb, var(--color-brand-purple-secondary) 14%, var(--color-surface-white));
   --color-surface-orange-tint-subtle: color-mix(in srgb, var(--color-brand-orange-accent) 10%, var(--color-surface-white));
 
+  /* Mega menu card strip (mint, old sterkenado.nl moments nav) */
+  --color-surface-mega-mint: color-mix(in srgb, #6ab8a6 24%, var(--color-surface-white));
+
   /* Softer secondary text on light (single gray in palette → derived) */
   --color-text-muted-on-light: color-mix(in srgb, var(--color-text-body-on-light) 68%, var(--color-surface-white));
 

@@ -201,7 +201,7 @@
                     "name": "highlight_label",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "Optional badge on the image (white text on orange).",
+                    "instructions": "Optional pill on the image (lavender background, purple text).",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -223,7 +223,7 @@
                     "name": "label",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "Small green tag above the title (uppercase styling).",
+                    "instructions": "Small purple tag above the title (uppercase, white text).",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -246,28 +246,6 @@
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_cc_cards"
-                },
-                {
-                    "key": "field_cc_card_title_squiggle",
-                    "label": "Title underline phrase",
-                    "name": "title_squiggle_phrase",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Optional. Exact phrase that appears inside the title above; it will be shown with the orange wavy underline. Leave empty for a plain title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -376,5 +354,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776200000
+    "modified": 1776300000
 }

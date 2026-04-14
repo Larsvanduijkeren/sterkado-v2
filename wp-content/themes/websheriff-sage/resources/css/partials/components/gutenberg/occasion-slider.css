@@ -1,35 +1,8 @@
 section.occasion-slider {
-  .intro {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-
-    h2 {
-      margin: 0 0 16px;
-      color: var(--color-brand-purple-secondary);
-    }
-
-    .intro-text {
-      margin: 0 0 24px;
-      color: var(--color-text-body-on-light);
-
-      p:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-  }
-
   .occasion-slider-outer {
     position: relative;
     margin-top: 0;
-    padding: 0 48px;
+    padding: 0 36px;
   }
 
   &.has-intro .occasion-slider-outer {
@@ -92,13 +65,13 @@ section.occasion-slider {
   .occasion-slider-card-footer {
     flex: 1 1 auto;
     margin: 0;
-    padding: 16px 16px 22px;
-    background: var(--color-brand-purple-secondary);
-    color: var(--color-surface-white);
-    text-align: center;
+    padding: 18px 20px 22px;
+    background: var(--color-surface-purple-tint-subtle);
+    color: var(--color-brand-purple-secondary);
+    text-align: left;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 56px;
   }
 
@@ -108,29 +81,30 @@ section.occasion-slider {
 
   .occasion-slider-card-label {
     font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--color-surface-white);
+    font-weight: 500;
+    color: var(--color-brand-purple-secondary);
   }
 
   .occasion-slider-nav {
     position: absolute;
-    top: 50%;
+    /* Bias above vertical center so controls sit nearer the image band than the label strip */
+    top: 42%;
     z-index: 4;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     margin: 0;
     padding: 0;
     border: none;
     border-radius: 50%;
-    background: var(--color-brand-orange-accent);
+    background: var(--color-brand-purple-secondary);
     box-shadow: var(--shadow-card);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition:
-      background-color 0.2s ease,
+      filter 0.2s ease,
       opacity 0.2s ease;
 
     &::before {
@@ -138,14 +112,14 @@ section.occasion-slider {
       content: '\e904';
       font-size: 1rem;
       line-height: 1;
-      color: var(--color-surface-white);
+      color: var(--color-text-on-purple-background);
       transform: rotate(-90deg) translateY(5%);
       transition: color 0.2s ease;
     }
 
     &:hover,
     &:focus-visible {
-      background: var(--color-button-primary-hover-bg);
+      filter: brightness(1.08);
     }
 
     &.swiper-button-disabled {
@@ -156,7 +130,8 @@ section.occasion-slider {
   }
 
   .occasion-slider-nav-prev {
-    left: 0;
+    left: 20px;
+    transform: translate(-50%, -50%);
 
     &::before {
       transform: rotate(90deg) translateY(5%);
@@ -164,7 +139,8 @@ section.occasion-slider {
   }
 
   .occasion-slider-nav-next {
-    right: 0;
+    right: 20px;
+    transform: translate(50%, -50%);
 
     &::before {
       transform: rotate(-90deg) translateY(5%);
@@ -173,12 +149,20 @@ section.occasion-slider {
 
   @media only screen and (max-width: 767px) {
     .occasion-slider-outer {
-      padding: 0 44px;
+      padding: 0 28px;
     }
 
     .occasion-slider-nav {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .occasion-slider-nav-prev {
+      left: 16px;
+    }
+
+    .occasion-slider-nav-next {
+      right: 16px;
     }
   }
 

@@ -15,6 +15,11 @@ $has_image = $image && has_post_thumbnail($image);
     <div class="single-hero__layout">
         <div class="single-hero__content" data-aos="fade-up">
             <div class="single-hero__content-inner">
+                @if(! is_front_page())
+                <div class="single-hero__breadcrumb">
+                    {!! do_shortcode('[rank_math_breadcrumb]') !!}
+                </div>
+                @endif
                 @if($label)
                 <span class="label">{{ $label }}</span>
                 @endif
@@ -52,7 +57,7 @@ $has_image = $image && has_post_thumbnail($image);
             {!! get_the_post_thumbnail($image, 'large', [
                 'loading' => 'eager',
                 'decoding' => 'async',
-                'sizes' => '(max-width: 991px) 100vw, min(800px, calc((100vw - 80px) / 2))',
+                'sizes' => '(max-width: 991px) 100vw, min(400px, 36vw)',
             ]) !!}
         </div>
         @endif

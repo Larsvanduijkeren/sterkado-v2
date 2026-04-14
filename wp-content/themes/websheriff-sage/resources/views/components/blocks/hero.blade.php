@@ -3,7 +3,6 @@ $galleryRaw = $fields['gallery'] ?? null;
 $gallery = is_array($galleryRaw) ? array_values(array_filter($galleryRaw, static function ($item): bool {
     return is_array($item) && (!empty($item['ID']) || !empty($item['url']));
 })) : [];
-$image_layout = $fields['image_layout'] ?? 'contained';
 $title = $fields['title'] ?? null;
 $checklist_raw = $fields['checklist'] ?? null;
 $checklist = [];
@@ -51,20 +50,21 @@ $partner_logos = is_array($partner_logos_raw) ? array_values(array_filter($partn
     return is_array($img) && (!empty($img['ID']) || !empty($img['url']));
 })) : [];
 $id = $block['anchor'] ?? null;
-$is_bleed = $image_layout === 'bleed';
 @endphp
 
 <section
     @if($id) id="{{ $id }}" @endif
-    class="hero hero--split{{ $is_bleed ? ' hero-image-bleed' : ' hero-image-contained' }}">
+    class="hero hero--split hero-image-contained">
     <div class="hero-split">
         <div class="hero-split-grid">
             <div class="hero-copy-col">
                 <div class="hero-copy" data-aos="fade-up">
                     <div class="title-wrapper">
+                        @if(! is_front_page())
                         <div class="hero-breadcrumb">
                             {!! do_shortcode('[rank_math_breadcrumb]') !!}
                         </div>
+                        @endif
                         @if($title)
                         <h1>{{ $title }}</h1>
                         @endif

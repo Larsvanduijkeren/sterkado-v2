@@ -16,11 +16,6 @@ section.card-links {
 
   .card-links-intro {
     max-width: 520px;
-
-    h2 {
-      margin: 0 0 16px;
-      color: var(--color-brand-purple-secondary);
-    }
   }
 
   .card-links-intro-text {

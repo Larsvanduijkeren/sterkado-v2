@@ -117,6 +117,7 @@ section.lead-form {
     font-size: 0.9375rem;
     color: var(--color-text-body-on-light);
     line-height: 1.35;
+    margin-left: 0;
   }
 
   .lead-form-feature:last-child {

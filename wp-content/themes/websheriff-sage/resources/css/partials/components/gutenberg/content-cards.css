@@ -1,31 +1,9 @@
 section.content-cards {
-  .intro {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-
-    h2 {
-      margin: 0 0 16px;
-      color: var(--color-brand-purple-secondary);
-    }
-
-    .intro-text {
-      margin: 0 0 24px;
-      color: var(--color-text-body-on-light);
-
-      p:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .buttons {
-      justify-content: center;
-    }
-  }
+ 
 
   .content-cards-grid {
     display: grid;
-    gap: 24px;
+    gap: 40px;
     margin-top: 0;
   }
 
@@ -42,117 +20,80 @@ section.content-cards {
   }
 
   .content-cards-card {
-    background: var(--color-surface-white);
-    border-radius: var(--radius-outside-400);
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
-    height: 100%;
-  }
+    align-items: start;
 
-  .content-cards-card .image {
-    position: relative;
-    margin: 0;
-    aspect-ratio: 16 / 9;
-    background: var(--color-surface-purple-tint-subtle);
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-
-  /* Image overlay: uses global .label; keep compact width */
-  .content-cards-card .image .content-cards-highlight {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    left: auto;
-    z-index: 2;
-    margin: 0;
-    max-width: min(240px, calc(100% - 24px));
-    text-align: center;
-    text-wrap: balance;
-  }
-
-  @media (min-width: 768px) {
-    .content-cards-card .image .content-cards-highlight {
-      top: 16px;
-      right: 16px;
-      max-width: min(260px, calc(100% - 32px));
-    }
-  }
-
-  /* Flex column defaults to stretch — label was growing full card width; do not override global .label (green pill) */
-  .content-cards-card .body > .label {
-    align-self: flex-start;
-    max-width: min(100%, 280px);
-  }
-
-  .content-cards-card .body {
-    padding: 24px 20px 28px;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    min-height: 0;
-    background: var(--color-brand-purple-secondary);
-    color: var(--color-text-on-purple-background);
-
-    h3 {
-      margin: 0 0 12px;
-      color: var(--color-text-on-purple-background);
-      font-family: var(--font-heading);
+    .content-cards-highlight {
+      background: var(--color-brand-purple-secondary);
+      color: var(--color-surface-white);
+      padding: 13px;
+      border-radius: 100%;
+      font-size: .9rem;
       font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 5;
     }
 
-    .text {
-      flex: 1 1 auto;
-      margin: 0 0 20px;
-      color: var(--color-text-on-purple-background);
+    .image {
+      margin: 0 auto;
+      width: 100%;
+      height: 300px;
+      max-width: calc(100% - 80px);
+      display: block;
+      position: relative;
+      flex-grow: 0;
+      flex-shrink: 0;
 
-      p,
-      li,
-      ul,
-      ol,
-      blockquote {
-        color: var(--color-text-on-purple-background);
-      }
-
-      p:last-child {
-        margin-bottom: 0;
-      }
-
-      a {
-        color: var(--color-text-on-purple-background);
-        text-decoration: underline;
-        text-decoration-color: var(--color-brand-orange-accent);
-        text-underline-offset: 2px;
-
-        &:hover,
-        &:focus-visible {
-          color: var(--color-text-on-purple-background);
-          text-decoration-color: var(--color-brand-orange-accent);
-        }
-      }
-
-      strong {
-        color: var(--color-text-on-purple-background);
-      }
-
-      li::marker {
-        color: var(--color-text-on-purple-background);
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
       }
     }
 
-    .buttons {
-      margin-top: auto;
-      margin-bottom: 0;
+    .body {
+      flex-grow: 1;
+      flex-shrink: 1;
+      background: var(--color-surface-purple-tint-subtle);
+      border-radius: var(--radius-outside-400);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      padding: 260px 40px 40px 40px;
+      margin-top: -220px;
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      .label {
+        background: var(--color-brand-purple-secondary) !important;
+      }
+
+      .buttons {
+        margin-top: auto;
+      }
     }
+
   }
+
+
+
 
   @media only screen and (max-width: 991px) {
     .content-cards-grid {
@@ -176,10 +117,6 @@ section.content-cards {
       width: 100%;
       margin-right: 0 !important;
       margin-bottom: 0 !important;
-    }
-
-    .content-cards-card .body {
-      padding: 20px 16px 24px;
     }
   }
 }

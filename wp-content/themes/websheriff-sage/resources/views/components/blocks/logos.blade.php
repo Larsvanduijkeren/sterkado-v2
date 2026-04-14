@@ -8,7 +8,7 @@ $logoRows = is_array($logos) ? $logos : [];
     <div class="container">
         <div class="logos__card" data-aos="fade-up">
             @if($heading)
-            <h2 class="logos__heading">{{ e($heading) }}</h2>
+            <h2 class="h4">{{ e($heading) }}</h2>
             @endif
             @if(!empty($logoRows))
             <ul class="logos__grid">

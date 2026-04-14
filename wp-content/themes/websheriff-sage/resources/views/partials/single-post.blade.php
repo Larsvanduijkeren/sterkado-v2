@@ -70,3 +70,10 @@ if (has_post_thumbnail($post)) {
         </div>
     </div>
 </section>
+
+@if(! empty($related_posts ?? []))
+@include('components.related-posts-slider', [
+    'posts' => $related_posts,
+    'heading' => __('Gerelateerde artikelen', 'sage'),
+])
+@endif

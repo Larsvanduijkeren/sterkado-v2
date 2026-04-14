@@ -31,7 +31,7 @@ $show_nav = $slide_count > 1;
     data-slides-tablet="{{ $column_count }}">
     <div class="container">
         @if($has_intro)
-        <div class="intro content" data-aos="fade-up">
+        <div class="intro center" data-aos="fade-up">
             @if($intro_title)
             <h2>{{ $intro_title }}</h2>
             @endif

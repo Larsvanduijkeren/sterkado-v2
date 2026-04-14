@@ -29,7 +29,7 @@ $productSecondaryBtnClass = \App\acf_button_style_class(
     class="product-selection">
     <div class="container">
         @if($intro_title || $intro_text)
-        <div class="product-selection-intro content" data-aos="fade-up">
+        <div class="intro center" data-aos="fade-up">
             @if($intro_title)
             <h2>{{ $intro_title }}</h2>
             @endif

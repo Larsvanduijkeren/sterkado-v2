@@ -22,6 +22,69 @@ function reading_time_label(\WP_Post $post, int $wpm = 220): string
 }
 
 /**
+ * Related articles for a single post: same categories first (by date), then recent posts to fill the count.
+ *
+ * @return list<\WP_Post>
+ */
+function related_posts_for_article(\WP_Post $post, int $limit = 8): array
+{
+    if ($post->post_type !== 'post' || $post->post_status !== 'publish') {
+        return [];
+    }
+
+    $limit = max(1, min(48, $limit));
+    $exclude = [(int) $post->ID];
+    $out = [];
+
+    $catIds = wp_get_post_categories($post->ID, ['fields' => 'ids']);
+    if ($catIds !== []) {
+        $same = get_posts([
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => $limit,
+            'post__not_in' => $exclude,
+            'category__in' => $catIds,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'ignore_sticky_posts' => true,
+            'no_found_rows' => true,
+        ]);
+        foreach ($same as $p) {
+            if ($p instanceof \WP_Post) {
+                $out[] = $p;
+                $exclude[] = (int) $p->ID;
+            }
+        }
+    }
+
+    if (count($out) < $limit) {
+        $need = $limit - count($out);
+        $filler = get_posts([
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => $need,
+            'post__not_in' => $exclude,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'ignore_sticky_posts' => true,
+            'no_found_rows' => true,
+        ]);
+        foreach ($filler as $p) {
+            if ($p instanceof \WP_Post) {
+                $out[] = $p;
+                $exclude[] = (int) $p->ID;
+            }
+        }
+    }
+
+    if ($out !== [] && function_exists('update_post_caches')) {
+        update_post_caches($out);
+    }
+
+    return $out;
+}
+
+/**
  * Social links from ACF Options (same source as the footer).
  *
  * @return list<array{platform: string, url: string, target: string, aria_label: string, icon_class: string}>

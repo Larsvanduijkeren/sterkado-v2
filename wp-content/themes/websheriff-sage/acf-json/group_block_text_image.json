@@ -53,12 +53,79 @@
             "ui": 1
         },
         {
+            "key": "field_text_images_quote_image",
+            "label": "Quote logo",
+            "name": "quote_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional logo or portrait beside the quote (same layout as Request quote hero).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_text_images_quote",
+            "label": "Quote",
+            "name": "quote",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Shown above the feedback shortcode when set (Request quote hero style).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_text_images_quote_author",
+            "label": "Quote author",
+            "name": "quote_author",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Name and role on one line (e.g. “Tilly Dobbe, Executive Assistant, Yanmar Europe”).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_text_images_show_feedback_company",
             "label": "Feedback shortcode above label",
             "name": "show_feedback_company",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "When enabled, outputs the [feedback_company] shortcode above the label (requires the shortcode to be registered, e.g. by a plugin).",
+            "instructions": "When enabled, outputs the [feedback_company] shortcode above the label (below the optional quote). Requires the shortcode to be registered, e.g. by a plugin.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -257,5 +324,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776092000
+    "modified": 1776200400
 }

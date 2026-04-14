@@ -1,0 +1,63 @@
+@php
+$posts = isset($posts) && is_array($posts) ? $posts : [];
+$heading = isset($heading) && is_string($heading) && $heading !== ''
+    ? $heading
+    : __('Gerelateerde artikelen', 'sage');
+@endphp
+
+@if(count($posts))
+<section class="post-selection related-posts" aria-label="{{ esc_attr($heading) }}">
+    <div class="container">
+        <div class="post-selection-intro" data-aos="fade-up">
+            <h2 class="post-selection-intro-title">{{ $heading }}</h2>
+        </div>
+        <div class="post-selection-slider-wrap" data-aos="fade-up">
+            <div class="swiper post-selection-swiper">
+                <div class="swiper-wrapper">
+                    @foreach($posts as $cardPost)
+                    @php
+                    $permalink = get_permalink($cardPost);
+                    $card_title = get_the_title($cardPost);
+                    $summary = function_exists('get_field') ? get_field('summary', $cardPost->ID) : null;
+                    $excerpt_raw = is_string($summary) && $summary !== '' ? $summary : get_the_excerpt($cardPost);
+                    $excerpt = wp_strip_all_tags((string) $excerpt_raw);
+                    $date_display = get_the_date('', $cardPost);
+                    @endphp
+                    <div class="swiper-slide">
+                        <a
+                            href="{{ esc_url($permalink) }}"
+                            class="post-selection-card"
+                            @if($card_title !== '') aria-label="{{ esc_attr(sprintf(__('Read article: %s', 'sage'), $card_title)) }}" @endif>
+                            @if(has_post_thumbnail($cardPost))
+                            <div class="post-selection-card-media">
+                                {!! get_the_post_thumbnail($cardPost, 'large', ['loading' => 'lazy', 'decoding' => 'async']) !!}
+                            </div>
+                            @endif
+                            <div class="post-selection-card-body">
+                                @if($card_title !== '')
+                                <h3 class="post-selection-card-title">{{ $card_title }}</h3>
+                                @endif
+                                @if($date_display !== '')
+                                <p class="post-selection-card-meta">
+                                    <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                                    <span>{{ $date_display }}</span>
+                                </p>
+                                @endif
+                                @if($excerpt !== '')
+                                <p class="post-selection-card-excerpt">{{ $excerpt }}</p>
+                                @endif
+                                <span class="post-selection-card-more">
+                                    <span class="post-selection-card-more-text">{{ __('Lees meer', 'sage') }}</span>
+                                    <span class="post-selection-card-more-arrow" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="post-selection-pagination swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+@endif

@@ -14,9 +14,10 @@ section.hero.hero--split {
   position: relative;
   overflow-x: clip;
   font-size: 1.3rem;
+  background: var(--color-surface-neutral-soft);
 
   h1 {
-    color: var(--color-brand-purple-secondary) !important;
+    color: var(--color-text-heading-strong);
     margin: 0 0 16px;
   }
 
@@ -180,6 +181,12 @@ section.hero.hero--split {
     position: relative;
     min-width: 0;
     min-height: 360px;
+    background: linear-gradient(
+      118deg,
+      transparent 0%,
+      transparent 42%,
+      color-mix(in srgb, var(--color-brand-purple-secondary) 7%, var(--color-surface-neutral-soft)) 100%
+    );
   }
 
   .hero-visual {
@@ -187,10 +194,6 @@ section.hero.hero--split {
     height: 100%;
     min-height: 360px;
     border-radius: var(--radius-outside-400);
-    overflow: visible;
-  }
-
-  &.hero-image-contained .hero-visual {
     overflow: hidden;
   }
 
@@ -288,25 +291,6 @@ section.hero.hero--split {
     line-height: 1.35;
     font-weight: 400;
     color: color-mix(in srgb, var(--color-surface-white) 88%, transparent);
-  }
-
-  @media (min-width: 992px) {
-    &.hero-image-bleed .hero-split {
-      padding-right: 0;
-    }
-
-    &.hero-image-bleed .hero-visual-col {
-      width: calc(100% + max(0px, (100vw - 1600px) / 2));
-      margin-right: calc(-1 * max(40px, (100vw - 1600px) / 2));
-    }
-
-    &.hero-image-bleed .hero-visual {
-      border-radius: var(--radius-outside-400) 0 0 var(--radius-outside-400);
-    }
-
-    &.hero-image-bleed .hero-visual-media {
-      border-radius: inherit;
-    }
   }
 }
 

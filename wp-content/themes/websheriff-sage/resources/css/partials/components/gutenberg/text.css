@@ -29,15 +29,10 @@ section.text {
         .text-split-title-col {
             min-width: 0;
 
-            h2 {
-                margin: 0;
-                color: var(--color-brand-purple-secondary);
-            }
         }
 
         .text-split-body-col {
             min-width: 0;
-            color: var(--color-text-body-on-light);
 
             > *:last-child {
                 margin-bottom: 0;

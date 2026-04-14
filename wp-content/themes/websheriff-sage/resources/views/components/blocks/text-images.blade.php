@@ -7,6 +7,14 @@ $title = $fields['title'] ?? null;
 $text = $fields['text'] ?? null;
 $buttons = $fields['buttons'] ?? null;
 $images = $fields['images'] ?? null;
+$quote = $fields['quote'] ?? null;
+$quote = is_string($quote) ? trim($quote) : '';
+$quote_author = $fields['quote_author'] ?? null;
+$quote_author = is_string($quote_author) ? trim($quote_author) : '';
+$quote_image = $fields['quote_image'] ?? null;
+$quote_image = is_array($quote_image) ? $quote_image : [];
+$has_quote = $quote !== '';
+$has_quote_img = $has_quote && (!empty($quote_image['ID']) || !empty($quote_image['url'] ?? null));
 $id = $block['anchor'] ?? null;
 $is_preview = $is_preview ?? false;
 @endphp
@@ -17,6 +25,29 @@ $is_preview = $is_preview ?? false;
     <div class="container">
         <div class="flex-wrapper">
             <div class="content" data-aos="fade-up">
+                @if($has_quote)
+                <aside class="text-images-quote" aria-label="{{ esc_attr(__('Quote', 'sage')) }}">
+                    <div class="text-images-quote-visual">
+                        @if($has_quote_img)
+                        <div class="text-images-quote-logo">
+                            <img
+                                src="{{ esc_url($quote_image['sizes']['large'] ?? $quote_image['url'] ?? '') }}"
+                                alt="{{ esc_attr($quote_image['alt'] ?? '') }}"
+                                loading="lazy"
+                                decoding="async">
+                        </div>
+                        @endif
+                        <div class="text-images-quote-card">
+                            <blockquote class="text-images-quote-text">
+                                <p>{!! nl2br(esc_html(wp_strip_all_tags($quote))) !!}</p>
+                            </blockquote>
+                            @if($quote_author !== '')
+                            <p class="text-images-quote-author">{{ e($quote_author) }}</p>
+                            @endif
+                        </div>
+                    </div>
+                </aside>
+                @endif
                 @if($show_feedback_company)
                 <div class="text-images-feedback">{!! do_shortcode('[feedback_company]') !!}</div>
                 @endif

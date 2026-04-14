@@ -1,23 +1,4 @@
 section.product-selection {
-  .product-selection-intro {
-    max-width: 920px;
-    margin: 0 auto 40px;
-    text-align: center;
-
-    h2 {
-      margin: 0 0 16px;
-      color: var(--color-brand-purple-secondary);
-    }
-  }
-
-  .product-selection-intro-text {
-    margin: 0;
-    color: var(--color-text-body-on-light);
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-  }
 
   .product-selection-grid {
     display: grid;
@@ -112,10 +93,6 @@ section.product-selection {
   }
 
   @media only screen and (max-width: 767px) {
-    .product-selection-intro {
-      margin-bottom: 24px;
-      padding: 0 4px;
-    }
 
     .product-selection-grid {
       gap: 16px;

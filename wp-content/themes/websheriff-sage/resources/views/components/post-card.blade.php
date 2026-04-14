@@ -2,7 +2,9 @@
 $permalink = get_permalink($post);
 $summary = get_field('summary', $post);
 $title = get_the_title($post);
-$reading = \App\reading_time_label($post); // helper
+$excerpt_raw = is_string($summary) && $summary !== '' ? $summary : get_the_excerpt($post);
+$excerpt = wp_strip_all_tags((string) $excerpt_raw);
+$date_display = get_the_date('', $post);
 
 // Primary category: Yoast primary, or first assigned category
 $primary_cat = null;
@@ -33,19 +35,23 @@ $category_url = $primary_cat ? add_query_arg('archive_cat', $primary_cat->slug, 
     @endif
 
     <a href="{{ $permalink }}">
-        <span class="content">        
-            <span class="label">Nieuws</span>
-            <h3>
-                {{ $title }}
-            </h3>
+        <span class="content">
+            <h3>{{ $title }}</h3>
 
-            @if($summary)
-            <p>{{$summary}}</p>
+            @if($date_display !== '')
+            <p class="meta">
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                <span>{{ $date_display }}</span>
+            </p>
             @endif
 
-            <span class="wrap">
-                <span class="reading-time">{{ $reading }}</span>
-                <span class="arrow"></span>
+            @if($excerpt !== '')
+            <p class="excerpt">{{ $excerpt }}</p>
+            @endif
+
+            <span class="more">
+                <span class="more-text">{{ __('Lees meer', 'sage') }}</span>
+                <span class="more-arrow" aria-hidden="true"></span>
             </span>
         </span>
     </a>
